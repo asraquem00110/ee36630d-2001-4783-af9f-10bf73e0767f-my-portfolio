@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <title>Alvin Sison Raquem</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link type="text/css" rel="stylesheet"  href="./assets/css/app.css" />
+  </head>
+  <body>
+
+    <div id="app"></div>
+
+
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+
+    <!-- Load our React component. -->
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  
+    <script type="text/babel">
+
+        const GlobalContext = React.createContext()
+
+        const GlobalContextProvider = ({children})=> {
+
+          const {Provider} = GlobalContext
+
+          const [showExplorer, setShowExplorer] = React.useState(true)
+          const [completeListofPages, _] = React.useState([
+                {
+                  title: "About",
+                  component: <WelcomeMessage/>,
+                },
+                {
+                  title: "Skills",
+                  component: <WelcomeMessage/>,
+                },
+                {
+                  title: "Experience",
+                  component: <WelcomeMessage/>,
+                },
+                {
+                  title: "Projects",
+                  component: <WelcomeMessage/>,
+                },
+          ])
+          const [pages,setPages] = React.useState([
+            {
+              title: "Welcome",
+              component: <WelcomeMessage/>,
+            },
+            {
+              title: "About",
+              component: <WelcomeMessage/>,
+            },
+            {
+              title: "Skills",
+              component: <WelcomeMessage/>,
+            },
+          ])
+          const [activePage,setActivePage] = React.useState({
+            title: "Welcome",
+            component: <WelcomeMessage/>,
+          })
+
+          return (
+            <Provider
+                value={{
+                  showExplorer,
+                  setShowExplorer,
+                  pages,
+                  setPages,
+                  activePage,
+                  setActivePage,
+                  completeListofPages,
+                }}
+            >
+                {children}
+            </Provider>
+          )
+
+        }
+
+        // Main Component Here
+         const App = ()=> {
+              
+              return (
+                <div>
+                  <GlobalContextProvider>
+                    <div id="mainApp">
+                      <HeaderComponent />
+                      <SideBarComponent />  
+                      <MainContentComponent />       
+                    </div>    
+                  </GlobalContextProvider>
+                </div>
+              )
+         }
+         // Header Component
+         const HeaderComponent = ()=> {
+
+          const {pages,setPages,activePage,setActivePage,showExplorer,completeListofPages} = React.useContext(GlobalContext)
+
+          const ClosePage = (index)=> {
+            let pageinfo = pages[index]
+            pages.splice(index,1)
+            setPages([...pages])
+            if(pages.length > 0){
+              if(pageinfo.title === activePage.title) setActivePage(pages[0])
+            }else {
+              setActivePage({
+                title: "Welcome",
+                component: <WelcomeMessage/>,
+              })
+            }
+         
+          }
+
+          const changePage = (index) => {
+            setActivePage(pages[index])
+          }
+
+          const addtoPage = (index) => {
+            let check = pages.filter((page)=> completeListofPages[index].title === page.title)
+
+            if(check.length ==0){
+              setPages(oldstate => [...oldstate, completeListofPages[index]])
+            }
+            setActivePage(completeListofPages[index])
+          }
+
+          return (
+            <div>
+              <header>
+                  <p style={{fontSize:"10pt"}}>Alvin Sison Raquem's Portfolio</p>
+              </header>
+
+               {
+                    showExplorer &&  
+                    <div id="explorer">
+                        <div style={{display:"flex", flexGrow: 1, padding: "20px", alignItems:"center" ,flexDirection:"column"}}>
+                           <img src="./assets/images/pic2.jpg" alt="Alvin Raquem" style={{borderRadius:"100%", height: "120px" , width: "120px"}}/>
+                           <p style={{margin: "25px 0px 5px 0px",padding: 0}}>Hi i'm Alvin Sison Raquem </p>
+                           <span style={{fontSize: "11pt"}}><span style={{color:"#D8A31A"}}>&#60;Web & Mobile</span> <span style={{color:"#7763A9"}}>App Developer/></span></span>
+                           <span style={{fontSize: "10pt",marginTop:"5px",color:"#A5ABBD"}}><i className="fa fa-phone"/> +639163006277</span>
+                        </div>
+
+                        <div style={{
+                          borderTop:"1px solid gray",
+                          flexGrow: 1,
+                          width: "100%",
+                          paddingTop: "10px"
+                        }}>
+
+                        <span style={{fontSize:"10pt",fontWeight:"200",margin: "20px 10px"}}>EXPLORER</span>
+
+                        <div style={{
+                          display: "flex",
+                          flexDirection:"row",
+                          margin:"10px"
+                        }}>
+
+                          <i className="fa fa-caret-down" style={{flexBasis: "10px"}}/>
+                          <span style={{fontSize: "10pt",marginLeft: "10px"}}>ALVIN RAQUEM'S PORTFOLIO</span>
+                        </div>
+
+                        <div style={{
+                          display: "flex",
+                          flexDirection:"column",
+                          margin:"10px 0px"
+                        }}>
+
+                        {
+                          completeListofPages.map((page,index)=> {
+
+                              return ( <div 
+                            onClick={()=>addtoPage(index)}  
+                            style={{
+                              background: page.title == activePage.title ? "#35383D" : "transparent",
+                              padding: "5px 10px",
+                              width: "100%",
+                              display: "flex",
+                              flexDirection:"row",
+                              cursor:"pointer"
+                            }}>
+                                 <span style={{fontSize: "8pt",color:"yellow",marginLeft: "20px"}}>JS</span>
+                                 <span style={{margin: "0px 10px",fontSize: "10pt"}}>{page.title}.js</span>
+                            </div>
+                              )
+                            })
+
+                        }
+
+                        </div>
+
+                        <div style={{
+                          display: "flex",
+                          flexDirection:"row",
+                          margin:"10px"
+                        }}>
+
+                          <i className="fa fa-caret-down" style={{flexBasis: "10px"}}/>
+                          <span style={{fontSize: "10pt",marginLeft: "10px"}}>RESUME</span>
+                        </div>
+
+                        <div style={{
+                          display: "flex",
+                          flexDirection:"column",
+                          margin:"10px 0px"
+                        }}>
+
+                          <a 
+                            href="./assets/files/resume.pdf"
+                            target="_blank"
+                            style={{
+                              textDecoration:"none",
+                              padding: "5px 10px",
+                              width: "100%",
+                              display: "flex",
+                              flexDirection:"row",
+                              cursor:"pointer",
+                              color:"white"
+                            }}>
+                                 <span style={{fontSize: "8pt",color:"#e75c4a",marginLeft: "20px"}}>PDF</span>
+                                 <span style={{margin: "0px 10px",fontSize: "10pt"}}>My Resume.pdf</span>
+                            </a>
+
+                        </div>
+
+                        </div>
+                    </div>  
+               }
+
+
+              {
+                pages.length > 0 &&
+                <div id="contentNavigation">
+                    <div id="activeRowPage">
+                      {
+                        pages.map((page,index)=> {
+
+                          let background = page.title === activePage.title ? "#1F2227" : "#35383D"
+
+                          return (
+                            <div className="pagenavtitle" style={{ height: "100%", flexBasis:"100px",background,padding: "0px 10px",cursor:"pointer",borderRight: "0.5px solid #1F2227"}}>
+                              <div onClick={()=>changePage(index)}>
+                                <span style={{fontSize: "8pt",color:"yellow"}}>JS</span>
+                                <span style={{margin: "0px 25px",fontSize: "10pt"}}>{page.title}.js</span>
+                              </div>
+                                <div onClick={()=>ClosePage(index)} style={{width:"20px",height:"100%",display:"grid",justifyContent:"center",alignItems:"center"}}>
+                                {
+                                  page.title === activePage.title 
+                                  ?  <span style={{fontSize: "14pt",color:"gray",}}>x</span>
+                                  :  <span className="closePage" style={{fontSize: "14pt",color:"gray",opacity: 0,}}>x</span>
+                                }
+                                </div>
+                            </div>
+                          )
+                        })
+                      }
+                     
+                           
+            
+                    </div>
+
+                    <div id="activeRowTitle">
+                      <div style={{marginLeft: "10px",display:"flex",paddingTop: "5px"}}>
+                        <span style={{color:"white",fontSize: "8pt"}}>Alvin Sison Raquem's Portfolio > {activePage.title}.js</span>
+                      </div>
+                    </div>
+                </div>
+              }
+             
+            </div>
+          )
+         }
+         // Sidebar Component
+         const SideBarComponent = ()=> {
+            const globalContext = React.useContext(GlobalContext)
+
+            return (
+              <nav>
+                  <aside>
+                    <a onClick={()=>globalContext.setShowExplorer(!globalContext.showExplorer)} href="javascript:void(0)"><i style={{color: globalContext.showExplorer ? "white" : "#939599"}} className="fa fa-copy"></i></a>
+                    <div id="contactme">
+                      <a href="https://www.facebook.com/raquem.alvin" target="_blank"><i className="fa fa-facebook-square"></i></a>
+                      <a href="https://www.instagram.com/alvinraquem/" target="_blank"><i className="fa fa-instagram"></i></a>
+                      <a href="https://www.linkedin.com/in/alvin-raquem-167799146/" target="_blank"><i className="fa fa-linkedin"></i></a>
+                      <a href="https://github.com/asraquem00110" target="_blank"><i className="fa fa-github"></i></a>
+                    </div>
+                  </aside>
+                 
+              </nav>
+            )
+         }
+
+
+         // Main Content Component
+
+         const MainContentComponent = ()=> {
+
+          return (
+            <div id="MainContent">
+      
+            </div>
+          )
+         }
+
+
+         const WelcomeMessage = ()=> {
+
+          return (
+            <div className="PageContent">
+
+            </div>
+          )
+         }
+
+         const AboutMe = ()=> {
+
+          return (
+            <div className="PageContent">
+
+            </div>
+          )
+         }
+
+         const Skills = ()=> {
+          
+          return (
+            <div className="PageContent">
+
+            </div>
+          )
+         }
+
+         const Experience = ()=> {
+
+          return (
+            <div className="PageContent">
+
+            </div>
+          )
+         }
+
+         const SampleProjects = ()=> {
+
+          return (
+            <div className="PageContent">
+
+            </div>
+          )
+
+         }
+
+
+
+
+    
+        const domContainer = document.querySelector('#app');
+        ReactDOM.render(<App/>, domContainer);
+    </script>
+
+  </body>
+</html>
