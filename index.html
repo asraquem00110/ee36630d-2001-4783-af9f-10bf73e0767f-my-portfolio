@@ -6,6 +6,10 @@
     <title>Alvin Sison Raquem</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link type="text/css" rel="stylesheet"  href="./assets/css/app.css" />
+    <link type="text/css" rel="stylesheet"  href="./assets/css/welcome.css" />
+    <link type="text/css" rel="stylesheet"  href="./assets/css/about.css" />
+    <link type="text/css" rel="stylesheet"  href="./assets/css/skills.css" />
+    <link type="text/css" rel="stylesheet"  href="./assets/css/experience.css" />
   </head>
   <body>
 
@@ -29,35 +33,47 @@
           const [showExplorer, setShowExplorer] = React.useState(false)
           const [completeListofPages, _] = React.useState([
                 {
-                  title: "About",
+                  title:"Welcome",
                   component: <WelcomeMessage/>,
+                },
+                {
+                  title: "About",
+                  component: <AboutMe/>,
                 },
                 {
                   title: "Skills",
-                  component: <WelcomeMessage/>,
+                  component: <Skills/>,
                 },
                 {
                   title: "Experience",
-                  component: <WelcomeMessage/>,
+                  component: <Experience/>,
                 },
                 {
                   title: "Projects",
-                  component: <WelcomeMessage/>,
+                  component: <SampleProjects/>,
                 },
           ])
           const [pages,setPages] = React.useState([
-            {
-              title: "Welcome",
-              component: <WelcomeMessage/>,
-            },
-            {
-              title: "About",
-              component: <WelcomeMessage/>,
-            },
-            {
-              title: "Skills",
-              component: <WelcomeMessage/>,
-            },
+                {
+                  title:"Welcome",
+                  component: <WelcomeMessage/>,
+                },
+                {
+                  title: "About",
+                  component: <AboutMe/>,
+                },
+                {
+                  title: "Skills",
+                  component: <Skills/>,
+                },
+                {
+                  title: "Experience",
+                  component: <Experience/>,
+                },
+                {
+                  title: "Projects",
+                  component: <SampleProjects/>,
+                },
           ])
           const [activePage,setActivePage] = React.useState({
             title: "Welcome",
@@ -101,6 +117,9 @@
          const HeaderComponent = ()=> {
 
           const {pages,setPages,activePage,setActivePage,showExplorer,completeListofPages} = React.useContext(GlobalContext)
+
+          const [showPages,setShowPages] = React.useState(true)
+          const [showResume,setShowResume] = React.useState(true)
 
           const ClosePage = (index)=> {
             let pageinfo = pages[index]
@@ -155,78 +174,88 @@
 
                         <span style={{fontSize:"10pt",fontWeight:"200",margin: "20px 10px"}}>EXPLORER</span>
 
-                        <div style={{
+                        <div onClick={()=>setShowPages(!showPages)} style={{
                           display: "flex",
                           flexDirection:"row",
-                          margin:"10px"
+                          margin:"10px",
+                          cursor:"pointer"
                         }}>
 
-                          <i className="fa fa-caret-down" style={{flexBasis: "10px"}}/>
+                          <i className={showPages ? "fa fa-caret-down" : "fa fa-caret-right"} style={{flexBasis: "10px"}}/>
                           <span style={{fontSize: "10pt",marginLeft: "10px"}}>ALVIN RAQUEM'S PORTFOLIO</span>
                         </div>
 
-                        <div style={{
-                          display: "flex",
-                          flexDirection:"column",
-                          margin:"10px 0px"
-                        }}>
-
                         {
-                          completeListofPages.map((page,index)=> {
+                          showPages && 
+                                  <div style={{
+                                    display: "flex",
+                                    flexDirection:"column",
+                                    margin:"10px 0px"
+                                  }}>
 
-                              return ( <div 
-                            onClick={()=>addtoPage(index)}  
-                            style={{
-                              background: page.title == activePage.title ? "#35383D" : "transparent",
-                              padding: "5px 10px",
-                              width: "100%",
-                              display: "flex",
-                              flexDirection:"row",
-                              cursor:"pointer"
-                            }}>
-                                 <span style={{fontSize: "8pt",color:"yellow",marginLeft: "20px"}}>JS</span>
-                                 <span style={{margin: "0px 10px",fontSize: "10pt"}}>{page.title}.js</span>
-                            </div>
-                              )
-                            })
+                                  {
+                                    completeListofPages.map((page,index)=> {
 
+                                        return ( <div 
+                                      onClick={()=>addtoPage(index)}  
+                                      style={{
+                                        background: page.title == activePage.title ? "#35383D" : "transparent",
+                                        padding: "5px 10px",
+                                        width: "100%",
+                                        display: "flex",
+                                        flexDirection:"row",
+                                        cursor:"pointer"
+                                      }}>
+                                          <span style={{fontSize: "8pt",color:"yellow",marginLeft: "20px"}}>JS</span>
+                                          <span style={{margin: "0px 10px",fontSize: "10pt"}}>{page.title}.js</span>
+                                      </div>
+                                        )
+                                      })
+
+                                  }
+
+                                  </div>
                         }
 
-                        </div>
 
-                        <div style={{
+                        <div onClick={()=>setShowResume(!showResume)} 
+                        style={{
                           display: "flex",
                           flexDirection:"row",
-                          margin:"10px"
+                          margin:"10px",
+                          cursor:"pointer"
                         }}>
 
-                          <i className="fa fa-caret-down" style={{flexBasis: "10px"}}/>
+                          <i className={showResume ? "fa fa-caret-down" : "fa fa-caret-right"} style={{flexBasis: "10px"}}/>
                           <span style={{fontSize: "10pt",marginLeft: "10px"}}>RESUME</span>
                         </div>
 
-                        <div style={{
-                          display: "flex",
-                          flexDirection:"column",
-                          margin:"10px 0px"
-                        }}>
+                            {
+                              showResume && 
+                              <div style={{
+                                display: "flex",
+                                flexDirection:"column",
+                                margin:"10px 0px"
+                              }}>
 
-                          <a 
-                            href="./assets/files/resume.pdf"
-                            target="_blank"
-                            style={{
-                              textDecoration:"none",
-                              padding: "5px 10px",
-                              width: "100%",
-                              display: "flex",
-                              flexDirection:"row",
-                              cursor:"pointer",
-                              color:"white"
-                            }}>
-                                 <span style={{fontSize: "8pt",color:"#e75c4a",marginLeft: "20px"}}>PDF</span>
-                                 <span style={{margin: "0px 10px",fontSize: "10pt"}}>My Resume.pdf</span>
-                            </a>
+                                <a 
+                                  href="./assets/files/resume.pdf"
+                                  target="_blank"
+                                  style={{
+                                    textDecoration:"none",
+                                    padding: "5px 10px",
+                                    width: "100%",
+                                    display: "flex",
+                                    flexDirection:"row",
+                                    cursor:"pointer",
+                                    color:"white"
+                                  }}>
+                                      <span style={{fontSize: "8pt",color:"#e75c4a",marginLeft: "20px"}}>PDF</span>
+                                      <span style={{margin: "0px 10px",fontSize: "10pt"}}>My Resume.pdf</span>
+                                  </a>
 
-                        </div>
+                              </div>
+                            }
 
                         </div>
                     </div>  
@@ -251,8 +280,8 @@
                                 <div onClick={()=>ClosePage(index)} style={{width:"20px",height:"100%",display:"grid",justifyContent:"center",alignItems:"center"}}>
                                 {
                                   page.title === activePage.title 
-                                  ?  <span style={{fontSize: "14pt",color:"gray",}}>x</span>
-                                  :  <span className="closePage" style={{fontSize: "14pt",color:"gray",opacity: 0,}}>x</span>
+                                  ?  <span style={{fontSize: "10pt",color:"gray",}}>x</span>
+                                  :  <span className="closePage" style={{fontSize: "10pt",color:"gray",opacity: 0,}}>x</span>
                                 }
                                 </div>
                             </div>
@@ -300,9 +329,11 @@
 
          const MainContentComponent = ()=> {
 
+          const {activePage,pages} = React.useContext(GlobalContext)
+
           return (
             <div id="MainContent">
-      
+                  {pages.length > 0 && activePage.component}
             </div>
           )
          }
@@ -311,8 +342,12 @@
          const WelcomeMessage = ()=> {
 
           return (
-            <div className="PageContent">
-
+            <div className="PageContent" id="WelcomeMessageMainDiv">
+              <div id="greetings">
+                 <h1>Welcome to my Portfolio</h1>
+                 <span>This theme is inspired by <span style={{color: "#37A2EA"}}> Visual Studio</span> Code Editor ...</span>
+              </div>
+               
             </div>
           )
          }

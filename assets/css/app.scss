@@ -7,6 +7,13 @@ $explorergray: #1E1E1E;
 
 $activepageBG: $explorergray;
 
+// basic color value
+$Primary: #607D8B;
+$Info: #2196F3;
+$Success: #79AC1E;
+$Warning: #DDA765;
+$Default: #f1f1f1;
+
 html , body {
     padding: 0;
     margin: 0;
@@ -17,6 +24,166 @@ html , body {
     background-color: $contentgray;
     color: white;
 }
+
+// basic grid 12 span system
+.gridContainer {
+    display: grid;
+    grid-template-columns: repeat(12,1fr);
+    
+    [class^="grid-col"] {
+        padding: 10px,
+    }
+  
+    .grid-col-12 {
+        grid-column: span 12;
+    }
+    .grid-col-11 {
+        grid-column: span 11;
+    }
+    .grid-col-10 {
+        grid-column: span 10;
+    }
+    .grid-col-9 {
+        grid-column: span 9;
+    }
+    .grid-col-8 {
+        grid-column: span 8;
+    }
+    .grid-col-7 {
+        grid-column: span 7;
+    }
+    .grid-col-6 {
+        grid-column: span 6;
+    }
+    .grid-col-5 {
+        grid-column: span 5;
+    }
+    .grid-col-4 {
+        grid-column: span 4;
+    }
+    .grid-col-3 {
+        grid-column: span 3;
+    }
+    .grid-col-2 {
+        grid-column: span 2;
+    }
+    .grid-col-1 {
+        grid-column: span 1;
+    }
+}
+
+// basic panel
+
+.panel {
+    width: 100%;
+    overflow-x: hidden;
+    display: block;
+    box-shadow: 2px 2px 2px gray;
+
+    .panel-header {
+        padding: 10pt;
+        background: #f1f1f1;
+        border: 1px solid #ccc;
+
+        .panel-title {
+            color: white;
+            font-weight: bold;
+            font-size: 18pt;
+        }
+
+    }
+
+    .panel-info {
+        background: $Info;
+    }
+
+    
+    .panel-primary {
+        background: $Primary;
+    }
+
+     
+    .panel-success {
+        background: $Success;
+    }
+    
+    .panel-warning {
+        background: $Warning;
+        color: white;
+    }
+    
+    .panel-default {
+        background: $Default;
+    }
+
+    .panel-body {
+        padding: 10px;
+        border: 1px solid #ccc;
+        display: block;
+        background: white;
+      
+    }
+
+}
+
+// basic table
+
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+
+    text-align: left;
+    
+    thead {
+       tr {
+            border-top: 1px solid silver;
+            border-bottom: 1px solid silver;
+           th {
+            padding: 10px;
+           }
+       }
+    }
+
+    tbody {
+       tr {
+           border-top: 1px solid silver;
+           border-bottom: 1px solid silver;
+           td {
+               padding: 10px;
+               color: dimgray;
+           }
+       }
+
+       tr:nth-child(odd){
+           background:#F1F1F1;
+       }
+    }
+
+    tfoot {
+        tr {
+            td {
+                padding: 10px;
+                border: none;
+
+                .table-row-page {
+                    display: flex;
+                    justify-content: flex-end;
+                    align-items: center;
+                    ul {
+                        display: flex;
+                        li {
+                            margin: 10px;
+                            cursor: pointer;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+    
+  
 
 
 #mainApp {
@@ -133,6 +300,6 @@ nav {
     grid-column: 2 / 3;
     grid-row:  2 / 3;
     position: relative;
-    padding: 10px;
+    padding: 50px 10px 10px 10px;
    
 }

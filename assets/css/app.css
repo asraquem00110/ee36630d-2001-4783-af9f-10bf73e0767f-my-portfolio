@@ -12,6 +12,170 @@ html *, body * {
           box-sizing: border-box;
 }
 
+.gridContainer {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[12];
+      grid-template-columns: repeat(12, 1fr);
+}
+
+.gridContainer [class^="grid-col"] {
+  padding: 10px;
+}
+
+.gridContainer .grid-col-12 {
+  grid-column: span 12;
+}
+
+.gridContainer .grid-col-11 {
+  grid-column: span 11;
+}
+
+.gridContainer .grid-col-10 {
+  grid-column: span 10;
+}
+
+.gridContainer .grid-col-9 {
+  grid-column: span 9;
+}
+
+.gridContainer .grid-col-8 {
+  grid-column: span 8;
+}
+
+.gridContainer .grid-col-7 {
+  grid-column: span 7;
+}
+
+.gridContainer .grid-col-6 {
+  grid-column: span 6;
+}
+
+.gridContainer .grid-col-5 {
+  grid-column: span 5;
+}
+
+.gridContainer .grid-col-4 {
+  grid-column: span 4;
+}
+
+.gridContainer .grid-col-3 {
+  grid-column: span 3;
+}
+
+.gridContainer .grid-col-2 {
+  grid-column: span 2;
+}
+
+.gridContainer .grid-col-1 {
+  grid-column: span 1;
+}
+
+.panel {
+  width: 100%;
+  overflow-x: hidden;
+  display: block;
+  -webkit-box-shadow: 2px 2px 2px gray;
+          box-shadow: 2px 2px 2px gray;
+}
+
+.panel .panel-header {
+  padding: 10pt;
+  background: #f1f1f1;
+  border: 1px solid #ccc;
+}
+
+.panel .panel-header .panel-title {
+  color: white;
+  font-weight: bold;
+  font-size: 18pt;
+}
+
+.panel .panel-info {
+  background: #2196F3;
+}
+
+.panel .panel-primary {
+  background: #607D8B;
+}
+
+.panel .panel-success {
+  background: #79AC1E;
+}
+
+.panel .panel-warning {
+  background: #DDA765;
+  color: white;
+}
+
+.panel .panel-default {
+  background: #f1f1f1;
+}
+
+.panel .panel-body {
+  padding: 10px;
+  border: 1px solid #ccc;
+  display: block;
+  background: white;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.table thead tr {
+  border-top: 1px solid silver;
+  border-bottom: 1px solid silver;
+}
+
+.table thead tr th {
+  padding: 10px;
+}
+
+.table tbody tr {
+  border-top: 1px solid silver;
+  border-bottom: 1px solid silver;
+}
+
+.table tbody tr td {
+  padding: 10px;
+  color: dimgray;
+}
+
+.table tbody tr:nth-child(odd) {
+  background: #F1F1F1;
+}
+
+.table tfoot tr td {
+  padding: 10px;
+  border: none;
+}
+
+.table tfoot tr td .table-row-page {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.table tfoot tr td .table-row-page ul {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.table tfoot tr td .table-row-page ul li {
+  margin: 10px;
+  cursor: pointer;
+}
+
 #mainApp {
   display: -ms-grid;
   display: grid;
@@ -185,6 +349,6 @@ nav aside #contactme {
   -ms-grid-row-span: 1;
   grid-row: 2 / 3;
   position: relative;
-  padding: 10px;
+  padding: 50px 10px 10px 10px;
 }
 /*# sourceMappingURL=app.css.map */

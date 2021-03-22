@@ -1,0 +1,45 @@
+
+
+#WelcomeMessageMainDiv {
+
+    div#greetings {
+        width: "100%";
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        h1 {
+            font-size: 60pt;
+        }
+
+        span {
+            font-size: 20pt;
+        }
+    }
+}
+
+
+
+// Super Large Screen
+@media (min-width: 991px){
+
+}
+
+
+// Large Device / Web
+@media (max-width: 992px) and (min-width: 767px){
+
+}
+
+
+// Medium Device / Tablet 
+@media (max-width: 768px) and (min-width: 577px){
+
+
+}
+
+
+// Small Device / Cellphone 
+@media (max-width: 578px){
+
+
+}
