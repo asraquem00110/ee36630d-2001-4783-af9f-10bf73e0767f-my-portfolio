@@ -7,12 +7,14 @@
         display: flex;
         align-items: center;
         flex-direction: column;
+        margin-top: 20px;
+        margin-bottom: 100px;
         h1 {
-            font-size: 60pt;
+            font-size: 45pt;
         }
 
         span {
-            font-size: 20pt;
+            font-size: 18pt;
         }
     }
 }
@@ -27,6 +29,19 @@
 
 // Large Device / Web
 @media (max-width: 992px) and (min-width: 767px){
+    #greetings {
+        h1 {
+            font-size: 35pt !important;
+        }
+        span {
+            font-size: 16pt !important;
+        }
+    }
+
+    .grid-col-4 {
+        grid-column: span 6 !important;
+    }
+
 
 }
 
@@ -34,12 +49,35 @@
 // Medium Device / Tablet 
 @media (max-width: 768px) and (min-width: 577px){
 
+    #greetings {
+        h1 {
+            font-size: 30pt !important;
+        }
+        span {
+            font-size: 14pt !important;
+        }
+    }
+
+    .grid-col-4 {
+        grid-column: span 12 !important;
+    }
 
 }
 
 
 // Small Device / Cellphone 
 @media (max-width: 578px){
+    #greetings {
+        h1 {
+            font-size: 25pt !important;
+        }
+        span {
+            font-size: 14pt !important;
+        }
+    }
 
+    .grid-col-4 {
+        grid-column: span 12 !important;
+    }
 
 }

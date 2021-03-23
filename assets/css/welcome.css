@@ -10,13 +10,51 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  margin-top: 20px;
+  margin-bottom: 100px;
 }
 
 #WelcomeMessageMainDiv div#greetings h1 {
-  font-size: 60pt;
+  font-size: 45pt;
 }
 
 #WelcomeMessageMainDiv div#greetings span {
-  font-size: 20pt;
+  font-size: 18pt;
+}
+
+@media (max-width: 992px) and (min-width: 767px) {
+  #greetings h1 {
+    font-size: 35pt !important;
+  }
+  #greetings span {
+    font-size: 16pt !important;
+  }
+  .grid-col-4 {
+    grid-column: span 6 !important;
+  }
+}
+
+@media (max-width: 768px) and (min-width: 577px) {
+  #greetings h1 {
+    font-size: 30pt !important;
+  }
+  #greetings span {
+    font-size: 14pt !important;
+  }
+  .grid-col-4 {
+    grid-column: span 12 !important;
+  }
+}
+
+@media (max-width: 578px) {
+  #greetings h1 {
+    font-size: 25pt !important;
+  }
+  #greetings span {
+    font-size: 14pt !important;
+  }
+  .grid-col-4 {
+    grid-column: span 12 !important;
+  }
 }
 /*# sourceMappingURL=welcome.css.map */

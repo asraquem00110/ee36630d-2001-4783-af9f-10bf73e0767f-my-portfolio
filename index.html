@@ -338,6 +338,25 @@
           )
          }
 
+         const GridComponent = ({children})=> {
+
+           return (
+            <div className="gridContainer">
+                {children}
+            </div>
+           )
+         }
+
+         const DarkCard = ({children})=> {
+
+          return (
+            <div style={{display: "flex", padding: "10px", flexGrow: "1",background:"#35383D",margin: "10px 0px", borderRadius: "5px"}}>
+                {children}
+            </div>  
+          )
+         }
+         
+
 
          const WelcomeMessage = ()=> {
 
@@ -346,7 +365,42 @@
               <div id="greetings">
                  <h1>Welcome to my Portfolio</h1>
                  <span>This theme is inspired by <span style={{color: "#37A2EA"}}> Visual Studio</span> Code Editor ...</span>
+              
               </div>
+              
+              <GridComponent>
+                  <div className="grid-col-4">
+                      <span style={{fontSize: "14pt"}}>Start</span>
+                     
+                      
+                  </div>
+
+                  <div className="grid-col-4">
+
+                    <span style={{fontSize: "14pt"}}>Learn how to explore</span>
+
+                    <DarkCard>
+                        <span style={{color:"silver"}}>Lorem ipsum blah blah blah..</span>
+                    </DarkCard>
+
+                    <DarkCard>
+
+                    </DarkCard>
+
+                    <DarkCard>
+
+                    </DarkCard>
+                  </div>
+
+                  <div className="grid-col-4">
+
+                    <span style={{fontSize: "14pt"}}>Need Software Developer?</span>
+                    <DarkCard>
+
+                    </DarkCard>
+                    
+                  </div>
+              </GridComponent>
                
             </div>
           )
