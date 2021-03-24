@@ -251,7 +251,7 @@
                                     color:"white"
                                   }}>
                                       <span style={{fontSize: "8pt",color:"#e75c4a",marginLeft: "20px"}}>PDF</span>
-                                      <span style={{margin: "0px 10px",fontSize: "10pt"}}>My Resume.pdf</span>
+                                      <span style={{margin: "0px 10px",fontSize: "10pt"}}>Raquem.pdf</span>
                                   </a>
 
                               </div>
@@ -350,11 +350,22 @@
          const DarkCard = ({children})=> {
 
           return (
-            <div style={{display: "flex", padding: "10px", flexGrow: "1",background:"#35383D",margin: "10px 0px", borderRadius: "5px"}}>
+            <div style={{display: "column", padding: "10px", flexGrow: "1",background:"#35383D",margin: "20px 0px", borderRadius: "5px", position:"relative"}}>
                 {children}
             </div>  
           )
          }
+
+         const CardContent = ({children,title, className})=> {
+
+          return (
+            <div className={className}>
+                      <span style={{fontSize: "14pt"}}>{title}</span>
+                      <br/>
+                      {children}      
+            </div>
+          )
+         }  
          
 
 
@@ -364,42 +375,70 @@
             <div className="PageContent" id="WelcomeMessageMainDiv">
               <div id="greetings">
                  <h1>Welcome to my Portfolio</h1>
-                 <span>This theme is inspired by <span style={{color: "#37A2EA"}}> Visual Studio</span> Code Editor ...</span>
+                 <span>This theme or style is inspired by an editor that I personally used for writing codes. <span style={{color: "#37A2EA"}}> Visual Studio</span> Code Editor ...</span>
               
               </div>
               
               <GridComponent>
-                  <div className="grid-col-4">
-                      <span style={{fontSize: "14pt"}}>Start</span>
-                     
+
+                  <CardContent  className="grid-col-4" title="Start">
+                      <div style={{marginTop: "20px"}}> 
+                        <span>This website contains relative information's about Alvin Sison Raquem as a Software Developer.
+                            It includes Skills, Work Experience and Sample Projects.
+                          </span>
+                      </div>
                       
-                  </div>
 
-                  <div className="grid-col-4">
+                      <div style={{marginTop: "30px"}}> 
+                        <span style={{fontSize: "14pt"}}>Recent</span>
+                        <div style={{marginTop: "10px", display:"flex", flexDirection:"column"}}>
+                          <span className="recentItems">Welcome <span className="path">C:\Users\Alvin\Portfolio\Welcome.js</span></span>
+                          <span className="recentItems">About <span className="path">C:\Users\Alvin\Portfolio\About.js</span></span>
+                          <span className="recentItems">Skills <span className="path">C:\Users\Alvin\Portfolio\Skills.js</span></span>
+                          <span className="recentItems">Experience <span className="path">C:\Users\Alvin\Portfolio\Experience.js</span></span>
+                          <span className="recentItems">Projects <span className="path">C:\Users\Alvin\Portfolio\Projects.js</span></span>
+                        </div>
+                      </div>
 
-                    <span style={{fontSize: "14pt"}}>Learn how to explore</span>
 
+
+                  </CardContent>
+
+                  <CardContent  className="grid-col-4" title="Learn how to explore">
+  
                     <DarkCard>
-                        <span style={{color:"silver"}}>Lorem ipsum blah blah blah..</span>
+                        <span className="cardTitle">First Step</span>
+                        <br/>
+                        <span style={{color:"silver"}}>To navigate to other content of this portfolio, click the &nbsp; <i className="fa fa-copy" /> &nbsp; icon in sidebar navigation.</span>
                     </DarkCard>
 
                     <DarkCard>
-
+                      <span className="cardTitle">Second Step</span>
+                        <br/>
+                        <span style={{color:"silver"}}>Select or click a file to open the page that you want to explore.</span>
                     </DarkCard>
 
                     <DarkCard>
-
+                      <span className="cardTitle">Third Step</span>
+                        <br/>
+                        <span style={{color:"silver"}}>Switch pages in the top navigation.</span>
+                        <div style={{marginTop:"20px"}}>
+                        <img src="./assets/images/site/topnav.PNG"  style={{height:"100%",width:"100%"}}/>
+                        </div>
                     </DarkCard>
-                  </div>
 
-                  <div className="grid-col-4">
-
-                    <span style={{fontSize: "14pt"}}>Need Software Developer?</span>
+                  </CardContent>
+                 
+                  <CardContent className="grid-col-4" title="Need Software Developer?">
                     <DarkCard>
-
+                        <span className="cardTitle">Download my resume</span>
+                        <br/>
+                        <div style={{margin: "20px 0px"}}>
+                        <a href="#" target="_blank"><button className="btn btn-default">Raquem.pdf <i className="fa fa-download"/></button></a>
+                        </div>
                     </DarkCard>
                     
-                  </div>
+                  </CardContent>
               </GridComponent>
                
             </div>

@@ -22,6 +22,20 @@
   font-size: 18pt;
 }
 
+.cardTitle {
+  font-size: 12pt;
+}
+
+.recentItems {
+  color: #37A2EA;
+  cursor: pointer;
+  margin: 10px 10px 0px 0px;
+}
+
+.recentItems .path {
+  color: silver;
+}
+
 @media (max-width: 992px) and (min-width: 767px) {
   #greetings h1 {
     font-size: 35pt !important;
