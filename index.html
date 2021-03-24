@@ -371,6 +371,8 @@
 
          const WelcomeMessage = ()=> {
 
+          const {setActivePage,pages} = React.useContext(GlobalContext)
+
           return (
             <div className="PageContent" id="WelcomeMessageMainDiv">
               <div id="greetings">
@@ -392,11 +394,15 @@
                       <div style={{marginTop: "30px"}}> 
                         <span style={{fontSize: "14pt"}}>Recent</span>
                         <div style={{marginTop: "10px", display:"flex", flexDirection:"column"}}>
-                          <span className="recentItems">Welcome <span className="path">C:\Users\Alvin\Portfolio\Welcome.js</span></span>
-                          <span className="recentItems">About <span className="path">C:\Users\Alvin\Portfolio\About.js</span></span>
-                          <span className="recentItems">Skills <span className="path">C:\Users\Alvin\Portfolio\Skills.js</span></span>
-                          <span className="recentItems">Experience <span className="path">C:\Users\Alvin\Portfolio\Experience.js</span></span>
-                          <span className="recentItems">Projects <span className="path">C:\Users\Alvin\Portfolio\Projects.js</span></span>
+
+                          {
+                            pages.map((page,index)=> {
+                              return (
+                                <span onClick={()=>setActivePage(page)} className="recentItems">{page.title} <span className="path">C:\Users\Alvin\Portfolio\{page.title}.js</span></span>
+                              )
+                            })
+                          }
+                          
                         </div>
                       </div>
 
