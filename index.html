@@ -32,10 +32,7 @@
 
           const [showExplorer, setShowExplorer] = React.useState(false)
           const [completeListofPages, _] = React.useState([
-                {
-                  title:"Welcome",
-                  component: <WelcomeMessage/>,
-                },
+              
                 {
                   title: "About",
                   component: <AboutMe/>,
@@ -274,16 +271,20 @@
                           return (
                             <div className="pagenavtitle" style={{ height: "100%", flexBasis:"100px",background,padding: "0px 10px",cursor:"pointer",borderRight: "0.5px solid #1F2227"}}>
                               <div onClick={()=>changePage(index)}>
-                                <span style={{fontSize: "8pt",color:"yellow"}}>JS</span>
-                                <span style={{margin: "0px 25px",fontSize: "10pt"}}>{page.title}.js</span>
+                                <span style={{fontSize: "8pt",color:"yellow"}}>{page.title != "Welcome" && "JS"}</span>
+                                <span style={{margin: "0px 25px",fontSize: "10pt"}}>{page.title}{page.title != "Welcome" && ".js"}</span>
                               </div>
+                              {
+                                page.title != "Welcome" &&
                                 <div onClick={()=>ClosePage(index)} style={{width:"20px",height:"100%",display:"grid",justifyContent:"center",alignItems:"center"}}>
                                 {
                                   page.title === activePage.title 
                                   ?  <span style={{fontSize: "10pt",color:"gray",}}>x</span>
                                   :  <span className="closePage" style={{fontSize: "10pt",color:"gray",opacity: 0,}}>x</span>
                                 }
-                                </div>
+                                </div> 
+                              }
+                            
                             </div>
                           )
                         })
