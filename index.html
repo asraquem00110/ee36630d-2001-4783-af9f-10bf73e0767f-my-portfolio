@@ -399,7 +399,7 @@
                           {
                             pages.map((page,index)=> {
                               return (
-                                <span onClick={()=>setActivePage(page)} className="recentItems">{page.title} <span className="path">C:\Users\Alvin\Portfolio\{page.title}.js</span></span>
+                                <span onClick={()=>setActivePage(page)} className="recentItems">{page.title} <span className="path">C:\Users\Alvin\Portfolio\{page.title}{page.title != "Welcome" && ".js"}</span></span>
                               )
                             })
                           }
