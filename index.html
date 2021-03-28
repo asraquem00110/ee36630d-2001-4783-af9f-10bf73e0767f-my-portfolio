@@ -460,6 +460,20 @@
           )
          }
 
+         const AboutContent = ({title , icon , children})=> {
+           return (
+            <div className="AboutContent">
+              <div className="AboutTitle">
+                      <span className="AboutTitleLogo"><i className={icon}/></span>
+                      <span className="AboutTitleDescription">{title}</span>
+                      <hr style={{background: "#4F4180",height:"10px",width:"20%",border: "none"}} />
+              </div>
+
+              {children}
+            </div>
+           )
+         }
+
          const AboutMe = ()=> {
 
           return (
@@ -490,16 +504,30 @@
                     </div>
                   </div>
                   <div id="AboutOthers">
-                      <p>test</p>
-                      <p>test</p>
-                      <p>test</p>
-                      <p>test</p>
-                      <p>test</p>
-                      <p>test</p>
-                      <p>test</p>
-                      <p>test</p>
-                      <p>test</p>
-                      <p>test</p>
+    
+                         <AboutContent title="Education" icon="fa fa-graduation-cap">
+                            <GridComponent>
+                                <div className="grid-col-6">
+                                  
+                                    <DarkCard>
+                                     
+                                    </DarkCard>
+
+                                  </div>
+
+                                  <div className="grid-col-6">
+                                  
+                                  <DarkCard>
+                                    
+                                  </DarkCard>
+
+                                </div>
+                            </GridComponent>
+                        </AboutContent>
+
+                        <AboutContent title="Hobbies" icon="fa fa-gamepad">
+
+                        </AboutContent>
                   </div>
               </div>
             </div>

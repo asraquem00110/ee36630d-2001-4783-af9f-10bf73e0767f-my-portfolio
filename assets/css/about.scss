@@ -56,7 +56,31 @@
 
     #AboutOthers {
         flex-grow: 1;
-        margin-top: 25px;
+        margin-top: 80px;
+
+        div.AboutContent {
+            margin-bottom: 50px;
+        }
+    }
+}
+
+div.AboutTitle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    span.AboutTitleLogo {
+        background: #4F4180;
+        color:white;
+        padding:15px;
+        border-radius: 50%;
+        font-size: 20pt;
+    }
+
+    span.AboutTitleDescription {
+        font-weight:normal;
+        font-size:30pt;
     }
 }
 
