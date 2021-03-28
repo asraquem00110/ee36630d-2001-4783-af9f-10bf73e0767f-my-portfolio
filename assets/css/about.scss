@@ -1,4 +1,64 @@
+#MainAbout {
+    display: flex;
+    flex-direction: column;
+    width: "100%";
 
+    #AboutIntro {
+        // flex-basis: auto;
+        flex-basis: 400px;
+        // background-color: green;
+        padding: 20px 0px;
+        display: flex;
+
+
+        div#AboutImage {
+            background:transparent;
+            flex-basis: 40%;
+            display: grid;
+            position:relative;
+            padding: 0 50px;
+        }
+
+        #Aboutdescription {
+            background:transparent;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+
+            div#AboutName {
+                width: 100%;
+                // background-color: green;
+                flex-basis: 20%;
+                display: grid;
+                // place-items: center;
+                justify-content: flex-start;
+                align-content: flex-end;
+
+                h1 {
+                    font-size: 40pt;
+                    padding: 0;
+                    margin: 0 0 20px 0;       
+                }
+            }
+
+            div#AboutInfoExpertise {
+                flex-grow: 1;
+                background-color: #4F4180;
+                border-top-right-radius: 20px;
+                border-bottom-right-radius: 20px;
+                padding: 15px;
+                display: flex;
+                flex-direction: column;
+
+            }
+        }
+    }
+
+    #AboutOthers {
+        flex-grow: 1;
+        margin-top: 25px;
+    }
+}
 
 
 // Super Large Screen

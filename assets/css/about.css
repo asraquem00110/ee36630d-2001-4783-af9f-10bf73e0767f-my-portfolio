@@ -1,1 +1,87 @@
-/* No CSS *//*# sourceMappingURL=about.css.map */
+#MainAbout {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: "100%";
+}
+
+#MainAbout #AboutIntro {
+  -ms-flex-preferred-size: 400px;
+      flex-basis: 400px;
+  padding: 20px 0px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+#MainAbout #AboutIntro div#AboutImage {
+  background: transparent;
+  -ms-flex-preferred-size: 40%;
+      flex-basis: 40%;
+  display: -ms-grid;
+  display: grid;
+  position: relative;
+  padding: 0 50px;
+}
+
+#MainAbout #AboutIntro #Aboutdescription {
+  background: transparent;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+#MainAbout #AboutIntro #Aboutdescription div#AboutName {
+  width: 100%;
+  -ms-flex-preferred-size: 20%;
+      flex-basis: 20%;
+  display: -ms-grid;
+  display: grid;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -ms-flex-line-pack: end;
+      align-content: flex-end;
+}
+
+#MainAbout #AboutIntro #Aboutdescription div#AboutName h1 {
+  font-size: 40pt;
+  padding: 0;
+  margin: 0 0 20px 0;
+}
+
+#MainAbout #AboutIntro #Aboutdescription div#AboutInfoExpertise {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  background-color: #4F4180;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  padding: 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+#MainAbout #AboutOthers {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  margin-top: 25px;
+}
+/*# sourceMappingURL=about.css.map */
