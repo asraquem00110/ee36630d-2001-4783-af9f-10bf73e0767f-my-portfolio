@@ -116,7 +116,7 @@
           const {pages,setPages,activePage,setActivePage,showExplorer,completeListofPages} = React.useContext(GlobalContext)
 
           const [showPages,setShowPages] = React.useState(true)
-          const [showResume,setShowResume] = React.useState(true)
+          const [showResume,setShowResume] = React.useState(false)
 
           const ClosePage = (index)=> {
             let pageinfo = pages[index]
@@ -510,7 +510,15 @@
                                 <div className="grid-col-6">
                                   
                                     <DarkCard>
-                                     
+                                      <div style={{display:"flex", flexDirection:"row"}}>
+                                          <div style={{flexBasis: "200px",height:"200px", justifyContent:"center",alignItems:"center",display:"flex"}}>
+                                             <img src="./assets/images/about/tup.PNG" style={{height: "180px", width:"180px"}} />
+                                          </div>
+
+                                          <div style={{flexGrow: 1, height: "200px", background:"green"}}>
+
+                                          </div>
+                                      </div>
                                     </DarkCard>
 
                                   </div>
@@ -518,7 +526,18 @@
                                   <div className="grid-col-6">
                                   
                                   <DarkCard>
-                                    
+                                    <div style={{display:"grid", gridTemplateColumns: "200px 1fr", gridTemplateRows: "200px"}}>
+                                          <div style={{gridColumn: "1 / 2", gridRow: "1 /1 ", display: "grid", placeItems: "center"}}>
+                                 
+                                               <img src="./assets/images/about/tup.PNG" style={{height: "180px", width:"180px"}} />
+                              
+                                          </div>
+
+                                          <div style={{gridColumn: "2 / 3", gridRow: "1 /1 ",background:"green"}}>
+                                                gg
+                                          </div>
+                                         
+                                      </div>
                                   </DarkCard>
 
                                 </div>

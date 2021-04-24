@@ -117,4 +117,37 @@ div.AboutTitle span.AboutTitleDescription {
   font-weight: normal;
   font-size: 30pt;
 }
+
+@media (max-width: 1126px) and (min-width: 767px) {
+  #AboutIntro {
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: normal !important;
+        -ms-flex-direction: column !important;
+            flex-direction: column !important;
+  }
+}
+
+@media (max-width: 768px) and (min-width: 577px) {
+  #AboutIntro {
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: normal !important;
+        -ms-flex-direction: column !important;
+            flex-direction: column !important;
+  }
+}
+
+@media (max-width: 578px) {
+  #AboutIntro {
+    -webkit-box-orient: vertical !important;
+    -webkit-box-direction: normal !important;
+        -ms-flex-direction: column !important;
+            flex-direction: column !important;
+  }
+}
+
+@media (max-width: 1080px) {
+  .grid-col-6 {
+    grid-column: span 12 !important;
+  }
+}
 /*# sourceMappingURL=about.css.map */
