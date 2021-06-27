@@ -73,8 +73,8 @@
                 },
           ])
           const [activePage,setActivePage] = React.useState({
-            title: "About",
-            component: <AboutMe/>,
+            title: "Experience",
+            component: <Experience/>,
           })
 
           return (
@@ -515,8 +515,11 @@
                                              <img src="./assets/images/about/tup.PNG" style={{height: "180px", width:"180px"}} />
                                           </div>
 
-                                          <div style={{flexGrow: 1, height: "200px", background:"green"}}>
-
+                                          <div style={{flexGrow: 1, height: "200px",flexDirection:"column",display:"flex",justifyContent:"center"}}>
+                                                <span style={{fontSize: 24, fontWeight:"bold"}}>Diploma in Computer Engineering Technology</span>
+                                                <span style={{fontSize: 18,marginTop: 2}}>Technician Course</span>
+                                                <span style={{fontSize: 18,marginTop: 2}}>2015</span>
+                                                <span style={{fontSize: 18,marginTop: 2}}>Technological University of the Philippines - Taguig Campus</span>
                                           </div>
                                       </div>
                                     </DarkCard>
@@ -533,8 +536,11 @@
                               
                                           </div>
 
-                                          <div style={{gridColumn: "2 / 3", gridRow: "1 /1 ",background:"green"}}>
-                                                gg
+                                          <div style={{gridColumn: "2 / 3", gridRow: "1 /1 ",flexDirection:"column",display:"flex",justifyContent:"center"}}>
+                                                <span style={{fontSize: 24, fontWeight:"bold"}}>Bachelor of Technology in Information Technology</span>
+                                                <span style={{fontSize: 18,marginTop: 2}}>Ladderized Degree Course</span>
+                                                <span style={{fontSize: 18,marginTop: 2}}>2017</span>
+                                                <span style={{fontSize: 18,marginTop: 2}}>Technological University of the Philippines - Taguig Campus</span>
                                           </div>
                                          
                                       </div>
@@ -567,6 +573,107 @@
           return (
             <div className="PageContent">
 
+              <AboutContent title="Work Experience" icon="fa fa-desktop">
+                <div className="works">
+                  <div className="content">
+                    <span className="dateLeft">October 2014 – March 2015</span>
+
+                    <GridComponent>
+                        <div className="grid-col-6" style={{marginTop: "20px" , textAlign:"center",alignItems:'center', justifyContent:"center",display:"flex",flexDirection:"column"}}>
+                                <img id="worksvg1" style={{height:"100%",width:"60%"}} src="assets/images/svg/support.svg"/>
+                                <hr/>
+                                <span style={{color:"dimgray",fontSize: "24pt",fontWeight:"bold"}}>Intern (POS Technical Support)</span>
+                          </div>
+
+                          <div className="grid-col-6" style={{marginTop: "20px", textAlign:"center",alignItems:'center', justifyContent:"center",display:"flex",flexDirection:"column"}}>
+                                <ul className="list">
+                                    <li><strong style={{color:"skyblue"}}>Company:</strong> Nexus Technologies Inc.</li>
+                                    <li><strong style={{color:"skyblue"}}>Department:</strong> Nexus Professional Services and Solutions (NPSS)</li>
+                                    <li><strong style={{color:"skyblue"}}>Address:</strong> G/F Don Pablo building, 114 Amorsolo Street, Legazpi Village, Makati City.</li>
+                                    <li><strong style={{color:"skyblue"}}>Duration:</strong> 5 months </li>
+                
+                                    <hr/>
+                                      <ul>
+                                        <li>Answer and solve issues over phone calls</li>
+                                        <li>Encode client's issue in Ticketing System</li>
+                                        <li>Setup Computer (Hardware and Software)</li>
+                                        <li>Fixing issue on site</li>
+                                      
+                                      </ul>
+                                    
+                                    </ul>
+                          </div>
+                      </GridComponent>
+                  </div>  
+
+                  <div className="content">
+                    <span className="dateRight">August 2017 – April 2020</span>
+
+                    <GridComponent>
+          
+                          <div className="grid-col-6" style={{marginTop: "20px", textAlign:"center",alignItems:'center', justifyContent:"center",display:"flex",flexDirection:"column"}}>
+                                <ul className="list">
+                                  <li><strong style={{color:"skyblue"}}>Company:</strong>E-CTK Solutions Inc. (ESI) / Armored Transport Plus, Inc. (ATPI)</li>
+                                <li><strong style={{color:"skyblue"}}>Department:</strong> ECTK Solutions Inc. (ESI)</li>
+                                <li><strong style={{color:"skyblue"}}>Address:</strong> No. 2 Avis Street, Bagong Ilog, Pasig City Philippines</li>
+                                <li><strong style={{color:"skyblue"}}>Duration:</strong> 2 yrs. & 8 months</li>                          
+                                <hr/>
+                                  <ul>
+                                    <li>In-house developer</li>
+                                    <li>Automate the manual process of company's operations</li>
+                                    <li>Enhance and modify existing system</li>
+                                    <li>Analyze program/system based on the required functionalities</li>
+                                    <li>Generate needed/requested reports</li>
+                                    <li>Documentation of program/system</li>
+                                  </ul>
+                                    
+                                    </ul>
+                          </div>
+
+                          <div className="grid-col-6" style={{marginTop: "20px" , textAlign:"center",alignItems:'center', justifyContent:"center",display:"flex",flexDirection:"column"}}>
+                                <img id="worksvg1" style={{height:"100%",width:"60%"}} src="assets/images/svg/webdev.svg"/>
+                                <hr/>
+                                <span style={{color:"dimgray",fontSize: "24pt",fontWeight:"bold"}}>PHP Web Developer</span>
+                          </div>
+                      </GridComponent>
+                  </div>  
+
+                  <div className="content">
+                    <span className="dateLeft">February 2021 – Present</span>
+
+                    <GridComponent>
+                        <div className="grid-col-6" style={{marginTop: "20px" , textAlign:"center",alignItems:'center', justifyContent:"center",display:"flex",flexDirection:"column"}}>
+                                <img id="worksvg1" style={{height:"100%",width:"60%"}} src="assets/images/svg/mobiledev.svg"/>
+                                <hr/>
+                                <span style={{color:"dimgray",fontSize: "24pt",fontWeight:"bold"}}>Fullstack React Native Developer</span>
+                          </div>
+
+                          <div className="grid-col-6" style={{marginTop: "20px", textAlign:"center",alignItems:'center', justifyContent:"center",display:"flex",flexDirection:"column"}}>
+                                <ul className="list">
+                                    <li><strong style={{color:"skyblue"}}>Company:</strong> Cloud Panda PH Inc.</li>
+                                    <li><strong style={{color:"skyblue"}}>Department:</strong> Development Deparment / toktok PH</li>
+                                    <li><strong style={{color:"skyblue"}}>Address:</strong>10F Inoza Tower, 40th Street, Bonifacio Global City, Taguig City, Metro Manila 1634, Philippines.</li>
+                                    <li><strong style={{color:"skyblue"}}>Duration:</strong> February 2021 – Present </li>
+                
+                                    <hr/>
+                                      <ul>
+                                        <li>assigned in toktok mobile app project</li>
+                                        <li>lead development for one of sub feature of the mobile app</li>
+                                        <li>involve in core module / delivery functionality of app</li>
+                                        <li>create graphql/rest api to consume by the mobile app</li>
+                                      
+                                      </ul>
+                                    
+                                    </ul>
+                          </div>
+                      </GridComponent>
+                  </div>  
+
+                  <div className="content" style={{height:"10%"}}/>
+
+                </div>
+             
+              </AboutContent>
             </div>
           )
          }
