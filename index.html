@@ -73,8 +73,8 @@
                 },
           ])
           const [activePage,setActivePage] = React.useState({
-            title: "Experience",
-            component: <Experience/>,
+            title: "Skills",
+            component: <Skills/>,
           })
 
           return (
@@ -342,10 +342,10 @@
           )
          }
 
-         const GridComponent = ({children})=> {
+         const GridComponent = ({children,style})=> {
 
            return (
-            <div className="gridContainer">
+            <div className="gridContainer" style={{...style}}>
                 {children}
             </div>
            )
@@ -559,11 +559,111 @@
           )
          }
 
+
+         const StackTechnology = ({image,style = {height:"100px",width:"100px"}})=> (
+            <div className="grid-col-2">
+                            <DarkCard>
+                              <div style={{display:"grid", placeItems:"center"}}>
+                                <img style={style} src={`assets/images/skills/${image}`}/>
+                              </div>
+                            </DarkCard>
+          </div>
+         )
+
          const Skills = ()=> {
           
           return (
             <div className="PageContent">
+              <AboutContent title="My Skills" icon="fa fa-cogs">
+                    <GridComponent style={{padding: "0px 50px 0px 50px"}}>
+                                <div className="grid-col-4">
+                                      <DarkCard>
+                                         <div style={{padding: "0px 50px 0px 50px", textAlign:"center"}}>
+                                          <div className="specialtygrid">
+                                                <span className="fa fa-code specialtyicon"></span>
+                                              </div>
+                                              <div className="specialtygrid">
+                                              <span className="specialtytitle">Web Development</span>
+                                              <hr/>
+                                              <span style={{color:"white"}}>Lorem Ipsum is simply dummy text</span>
+                          
+                                              </div>
+                                           
+                                         </div>
+                                      </DarkCard>
+                                </div>
+                                <div className="grid-col-4">
+                                  <DarkCard>
+                                         <div style={{padding: "0px 50px 0px 50px", textAlign:"center"}}>
+                                               <div className="specialtygrid">
+                                                <span className="fa fa-database specialtyicon"></span>
+                                              </div>
+                                              <div className="specialtygrid">
+                                              <span className="specialtytitle">Database</span>
+                                              <hr/>
+                                              <span style={{color:"white"}}>Lorem Ipsum is simply dummy text</span>
+                          
+                                              </div>
+                                           
+                                         </div>
+                                      </DarkCard>
+                                </div>
+                                <div className="grid-col-4">
+                                  <DarkCard>
+                                         <div style={{padding: "0px 50px 0px 50px", textAlign:"center"}}>
+                                              <div className="specialtygrid">
+                                                <span className="fa fa-mobile specialtyicon"></span>
+                                              </div>
+                                              <div className="specialtygrid">
+                                              <span className="specialtytitle">Mobile Development</span>
+                                              <hr/>
+                                              <span style={{color:"white"}}>Lorem Ipsum is simply dummy text</span>
+                          
+                                              </div>
+                                           
+                                         </div>
+                                      </DarkCard>
+                                </div>
+                    </GridComponent>
+                </AboutContent>
+                <br/> 
+                <AboutContent title="Current Technology Stacks" icon="fa fa-desktop">
+                    <GridComponent style={{padding: "0px 50px 0px 50px"}}>
+                        <StackTechnology image="node.PNG"/>
+                        <StackTechnology image="express.PNG"/>
+                        <StackTechnology image="rest.PNG"/>
+                        <StackTechnology image="graphql.PNG"/>
+                        <StackTechnology image="apollo.PNG" style={{height:"100px",width:"150px"}}/>
+                        <StackTechnology image="mysql.PNG"/>
+                        <StackTechnology image="knex.PNG" style={{height:"100px",width:"150px"}}/>
+                        <StackTechnology image="react.PNG"/>
+                        <StackTechnology image="reactnative.PNG"/>
+                        <StackTechnology image="html.PNG"/>
+                        <StackTechnology image="css.PNG"/>
+                        <StackTechnology image="bs.PNG"/>
+                        <StackTechnology image="js.PNG"/>
+                       
+                        <StackTechnology image="vscode.PNG"/>
+                        <StackTechnology image="git.PNG"/>
+                      </GridComponent>
+                </AboutContent>
 
+                <br/>
+                <AboutContent title="Have Experience/Previous Technology Stacks" icon="fa fa-desktop">
+                  <GridComponent style={{padding: "0px 50px 0px 50px"}}>
+                        <StackTechnology image="php.PNG"/>
+                        <StackTechnology image="laravel.PNG"/>
+                  </GridComponent>
+                </AboutContent>
+
+                <br/>
+                <AboutContent title="Interested To Learn" icon="fa fa-desktop">
+                  <GridComponent style={{padding: "0px 50px 0px 50px"}}>
+                        <StackTechnology image="nosql.PNG"/>
+                        <StackTechnology image="mongo.PNG"/>
+                        <StackTechnology image="dynamo.PNG"/>
+                  </GridComponent>
+                </AboutContent>
             </div>
           )
          }
@@ -652,7 +752,7 @@
                                 <ul className="list">
                                     <li><strong style={{color:"skyblue"}}>Company:</strong> Cloud Panda PH Inc.</li>
                                     <li><strong style={{color:"skyblue"}}>Department:</strong> Development Deparment / toktok PH</li>
-                                    <li><strong style={{color:"skyblue"}}>Address:</strong>10F Inoza Tower, 40th Street, Bonifacio Global City, Taguig City, Metro Manila 1634, Philippines.</li>
+                                    <li><strong style={{color:"skyblue"}}>Address:</strong> 10F Inoza Tower, 40th Street, Bonifacio Global City, Taguig City, Metro Manila 1634, Philippines.</li>
                                     <li><strong style={{color:"skyblue"}}>Duration:</strong> February 2021 – Present </li>
                 
                                     <hr/>

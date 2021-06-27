@@ -1,1 +1,10 @@
-/* No CSS *//*# sourceMappingURL=skills.css.map */
+.specialtytitle {
+  font-size: 16pt !important;
+}
+
+.specialtyicon {
+  font-size: 46pt !important;
+  margin: "10px 0px";
+  margin-bottom: 20px;
+}
+/*# sourceMappingURL=skills.css.map */
