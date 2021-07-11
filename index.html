@@ -73,8 +73,8 @@
                 },
           ])
           const [activePage,setActivePage] = React.useState({
-            title: "Skills",
-            component: <Skills/>,
+            title: "Welcome",
+            component: <WelcomeMessage/>,
           })
 
           return (
@@ -482,7 +482,7 @@
                   <div id="AboutIntro">
                     <div id="AboutImage">
                       <div style={{position:"absolute",height:"80%",bottom: 0, background:"#EBEBEB",zIndex: 0,width: "100%", borderBottomLeftRadius: "20px",borderTopLeftRadius:"20px"}} />
-                      <img style={{height: "800px", width:"500px", placeSelf:"center",zIndex: 1}} src="./assets/images/about.png"/>
+                      <img style={{height: "600px", width:"400px", placeSelf:"center",zIndex: 1}} src="./assets/images/about.png"/>
                     </div>
                     <div id="Aboutdescription">
                         <div id="AboutName">
@@ -497,8 +497,8 @@
                             <div style={{marginTop:"20px",flexGrow: 1}}>
                             <span style={{fontSize:"20pt"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;An Experienced Web and Mobile App Developer who focus more on back end development side, but can also do some front end stuff. I am very passionate in learning new things that will make me competent. I am a good listener and able to grasp new concepts quickly and efficiently. Although I am not good at web designing, I can still manage to create a responsive Layout.</span>
                             </div>
-                            <div style={{height:"400px",width:"100%",position:"relative"}}>
-                              <img style={{position:"absolute",height:"100%",bottom: -60 ,right: 0 , width:"80%"}} src="./assets/images/site/aboutdev.svg"/>
+                            <div style={{height:"250px",width:"100%",position:"relative"}}>
+                              <img style={{position:"absolute",height:"100%",bottom: -60 ,right: 0 , width:"100%"}} src="./assets/images/site/aboutdev.svg"/>
                             </div>
                         </div>
                     </div>
@@ -561,7 +561,7 @@
 
 
          const StackTechnology = ({image,style = {height:"100px",width:"100px"}})=> (
-            <div className="grid-col-2">
+            <div className="grid-col-3 stackTechnology">
                             <DarkCard>
                               <div style={{display:"grid", placeItems:"center"}}>
                                 <img style={style} src={`assets/images/skills/${image}`}/>
@@ -642,7 +642,6 @@
                         <StackTechnology image="css.PNG"/>
                         <StackTechnology image="bs.PNG"/>
                         <StackTechnology image="js.PNG"/>
-                       
                         <StackTechnology image="vscode.PNG"/>
                         <StackTechnology image="git.PNG"/>
                       </GridComponent>
@@ -761,7 +760,6 @@
                                         <li>lead development for one of sub feature of the mobile app</li>
                                         <li>involve in core module / delivery functionality of app</li>
                                         <li>create graphql/rest api to consume by the mobile app</li>
-                                      
                                       </ul>
                                     
                                     </ul>
