@@ -20,20 +20,21 @@
   display: -ms-flexbox;
   display: flex;
   padding: 20px;
+  margin-top: 20px;
 }
 
 .projectGrid .mainDiv .images {
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
-  background: green;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .projectGrid .mainDiv .info {
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
-  background: yellow;
+  width: 100%;
 }
 
 .projectGrid .listDiv {

@@ -13,15 +13,17 @@
         background-color:#F6F8FA;
         display: flex;
         padding: 20px;
+        margin-top: 20px;
+      
 
         .images {
-            flex-grow: 1;
-            background: green;
+            width: 100%;
+            display: flex;
+           justify-content: center;
         }
 
         .info {
-            flex-grow: 1;
-            background: yellow;
+            width: 100%;
         }
 
     }

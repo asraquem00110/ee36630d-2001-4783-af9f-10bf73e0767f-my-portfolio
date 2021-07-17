@@ -851,22 +851,20 @@
          
         ])
         const [activeProject,setActiveProject] = React.useState(projects[0])
+        const [activeImage,setActiveImage] = React.useState(0)
 
           return (
             <div className="PageContent">
                   <div className="projectGrid">
                     <div className="mainDiv">
                           <div  className="images">
-                                {
-                                  // activeProject.images.map((image)=> (
-                                  //   <img src={image} style={{position:'absolute',height:"70%",width:"100%"}}/>
-                                  // ))
-                                }
+                             <img style={{height:"75%",width:"100%"}} src={activeProject.images[activeImage]}/>
+                              
                             </div>
 
                             <div  className="info">
-
-                          </div>
+                                
+                          </div>  
                     </div>
                     <div className="listDiv">
                       {
