@@ -1,4 +1,49 @@
 
+.projectGrid {
+    display: grid;
+    margin-top: 30px;
+    grid-template-columns: 1fr;
+    // grid-template-rows: minmax(200px,1fr) 150px;
+    grid-template-rows:1fr 200px;
+    height: 85vh;
+
+    .mainDiv {
+        grid-column: 1/1;
+        grid-row: 1/3;
+        background-color:#F6F8FA;
+        display: flex;
+        padding: 20px;
+
+        .images {
+            flex-grow: 1;
+            background: green;
+        }
+
+        .info {
+            flex-grow: 1;
+            background: yellow;
+        }
+
+    }
+
+    .listDiv {
+        grid-column: 1/1;
+        grid-row: 2/3;
+        background-color: white;
+        overflow-x: auto !important;
+        display: flex;
+        .projects {
+            height: "100%";
+            cursor: pointer;
+            background-color: white;
+            margin: 20px;
+            box-shadow: 2px 2px 5px 0px black;
+            display: grid;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+}
 
 
 // Super Large Screen

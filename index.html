@@ -10,6 +10,7 @@
     <link type="text/css" rel="stylesheet"  href="./assets/css/about.css" />
     <link type="text/css" rel="stylesheet"  href="./assets/css/skills.css" />
     <link type="text/css" rel="stylesheet"  href="./assets/css/experience.css" />
+    <link type="text/css" rel="stylesheet"  href="./assets/css/project.css" />
   </head>
   <body>
 
@@ -73,8 +74,8 @@
                 },
           ])
           const [activePage,setActivePage] = React.useState({
-            title: "Welcome",
-            component: <WelcomeMessage/>,
+            title: "Projects",
+            component: <SampleProjects/>,
           })
 
           return (
@@ -797,9 +798,111 @@
 
          const SampleProjects = ()=> {
 
+          const [projects , setProjects] = React.useState([
+            {
+              id: 1,
+              name: "Dental Clinic Management System (Freelance Project - Project Study)",
+              images: [
+                './assets/images/projects/dental/preview.PNG'
+              ]
+            },
+            {
+              id: 2,
+              name: "Cash In Transit v2 Using MEVN stack",
+              images: [
+                './assets/images/projects/cit/preview.PNG'
+              ]
+            },
+            {
+              id: 3,
+              name: "COVID-19 No. of Cases Tracker Mobile App",
+              images: [
+                './assets/images/projects/covidTracker/preview.PNG'
+              ]
+            },
+            {
+              id: 4,
+              name: "Home Quarantine Pass Management System",
+              images: [
+                './assets/images/projects/hqp/preview.PNG'
+              ]
+            },
+            {
+              id: 5,
+              name: "IHatid App",
+              images: [
+                './assets/images/projects/ihatid/preview.PNG'
+              ]
+            },
+            {
+              id: 6,
+              name: "Warehouse Inventory Management",
+              images: [
+                './assets/images/projects/inventory/preview.PNG'
+              ]
+            },
+            {
+              id: 7,
+              name: "Simple Online Shop ( React Js Frontend )",
+              images: [
+                './assets/images/projects/onlineShop/preview.PNG'
+              ]
+            },
+         
+        ])
+        const [activeProject,setActiveProject] = React.useState(projects[0])
+
           return (
             <div className="PageContent">
+                  <div className="projectGrid">
+                    <div className="mainDiv">
+                          <div  className="images">
+                                {
+                                  // activeProject.images.map((image)=> (
+                                  //   <img src={image} style={{position:'absolute',height:"70%",width:"100%"}}/>
+                                  // ))
+                                }
+                            </div>
 
+                            <div  className="info">
+
+                          </div>
+                    </div>
+                    <div className="listDiv">
+                      {
+                        projects.map((project,index)=>{
+
+                          if(project.id == activeProject.id){
+                            return (
+                              <div onClick={()=>setActiveProject(project)} key={`${project}-index`} className="projects" style={{border:"2px solid black",position:'relative'}}>
+                                    <div style={{position:'absolute',height: "30px",width:"30px",borderRadius:"100%",background:"#21222C",top: -10 ,right: -10,zIndex:999}}>
+
+                                    </div>
+                                    <div style={{width: "300px",display:"grid",placeItems:"center",position:"relative"}}>
+                                        
+                                      <img src={project.images[0]} style={{height: "120px",width:"250px"}}/>
+                                      <div style={{position:"absolute",height: "50px",width:"50px",background:"green",opacity:"0.2",borderRadius:"100%"}}>
+
+                                      </div>
+
+                                    </div>
+                                </div> 
+                            )
+                          }
+
+                          return (
+                            <div onClick={()=>setActiveProject(project)} key={`${project}-index`} className="projects">
+                                    <div style={{width: "300px",display:"grid",placeItems:"center"}}>
+                                          
+                                        <img src={project.images[0]} style={{height: "120px",width:"250px",opacity: 0.6}}/>
+
+                                      </div>
+                              </div> 
+                          )
+                        })
+                      }
+                    </div>
+                  </div>
             </div>
           )
 
