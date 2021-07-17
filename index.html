@@ -360,10 +360,19 @@
           )
          }
 
+         const WhiteCard = ({children})=> {
+
+          return (
+            <div style={{display: "column", padding: "10px", flexGrow: "1",background:"white",margin: "20px 0px", borderRadius: "5px", position:"relative"}}>
+                {children}
+            </div>  
+            )
+        }
+
          const CardContent = ({children,title, className})=> {
 
           return (
-            <div className={className}>
+            <div className={className} style={{zIndex: 1}}>
                       <span style={{fontSize: "14pt"}}>{title}</span>
                       <br/>
                       {children}      
@@ -379,6 +388,7 @@
 
           return (
             <div className="PageContent" id="WelcomeMessageMainDiv">
+              <img style={{position:"absolute",zIndex:0, bottom: -100,left: 20, height: 400, width:600}} src="./assets/images/site/mountain.svg"/>
               <div id="greetings">
                  <h1>Welcome to my Portfolio</h1>
                  <span>This theme or style is inspired by an editor that I personally used for writing codes. <span style={{color: "#37A2EA"}}> Visual Studio</span> Code Editor ...</span>
@@ -560,13 +570,22 @@
          }
 
 
-         const StackTechnology = ({image,style = {height:"100px",width:"100px"}})=> (
+         const StackTechnology = ({image,style = {height:"100px",width:"100px"}, theme = "dark"})=> (
             <div className="grid-col-3 stackTechnology">
-                            <DarkCard>
-                              <div style={{display:"grid", placeItems:"center"}}>
-                                <img style={style} src={`assets/images/skills/${image}`}/>
-                              </div>
-                            </DarkCard>
+              {
+                theme == "dark"
+                ? <DarkCard>
+                      <div style={{display:"grid", placeItems:"center"}}>
+                        <img style={style} src={`assets/images/skills/${image}`}/>
+                      </div>
+                  </DarkCard>
+                : <WhiteCard>
+                      <div style={{display:"grid", placeItems:"center"}}>
+                        <img style={style} src={`assets/images/skills/${image}`}/>
+                      </div>
+                  </WhiteCard>
+              }
+                         
           </div>
          )
 
@@ -578,14 +597,14 @@
                     <GridComponent style={{padding: "0px 50px 0px 50px"}}>
                                 <div className="grid-col-4">
                                       <DarkCard>
-                                         <div style={{padding: "0px 50px 0px 50px", textAlign:"center"}}>
+                                         <div style={{padding: "10px 50px", textAlign:"center"}}>
                                           <div className="specialtygrid">
                                                 <span className="fa fa-code specialtyicon"></span>
                                               </div>
                                               <div className="specialtygrid">
                                               <span className="specialtytitle">Web Development</span>
                                               <hr/>
-                                              <span style={{color:"white"}}>Lorem Ipsum is simply dummy text</span>
+                                              <span style={{color:"white"}}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sit amet risus rhoncus, ornare sapien in, sodales lectus. Mauris neque justo, dictum ac ante et, finibus commodo lorem. Cras laoreet gravida accumsan. Interdum et malesuada fames ac ante ipsum primis in faucibus.</span>
                           
                                               </div>
                                            
@@ -594,14 +613,14 @@
                                 </div>
                                 <div className="grid-col-4">
                                   <DarkCard>
-                                         <div style={{padding: "0px 50px 0px 50px", textAlign:"center"}}>
+                                         <div style={{padding: "10px 50px", textAlign:"center"}}>
                                                <div className="specialtygrid">
                                                 <span className="fa fa-database specialtyicon"></span>
                                               </div>
                                               <div className="specialtygrid">
                                               <span className="specialtytitle">Database</span>
                                               <hr/>
-                                              <span style={{color:"white"}}>Lorem Ipsum is simply dummy text</span>
+                                              <span style={{color:"white"}}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sit amet risus rhoncus, ornare sapien in, sodales lectus. Mauris neque justo, dictum ac ante et, finibus commodo lorem. Cras laoreet gravida accumsan. Interdum et malesuada fames ac ante ipsum primis in faucibus.</span>
                           
                                               </div>
                                            
@@ -610,14 +629,14 @@
                                 </div>
                                 <div className="grid-col-4">
                                   <DarkCard>
-                                         <div style={{padding: "0px 50px 0px 50px", textAlign:"center"}}>
+                                         <div style={{padding: "10px 50px", textAlign:"center"}}>
                                               <div className="specialtygrid">
                                                 <span className="fa fa-mobile specialtyicon"></span>
                                               </div>
                                               <div className="specialtygrid">
                                               <span className="specialtytitle">Mobile Development</span>
                                               <hr/>
-                                              <span style={{color:"white"}}>Lorem Ipsum is simply dummy text</span>
+                                              <span style={{color:"white"}}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sit amet risus rhoncus, ornare sapien in, sodales lectus. Mauris neque justo, dictum ac ante et, finibus commodo lorem. Cras laoreet gravida accumsan. Interdum et malesuada fames ac ante ipsum primis in faucibus.</span>
                           
                                               </div>
                                            
@@ -630,20 +649,20 @@
                 <AboutContent title="Current Technology Stacks" icon="fa fa-desktop">
                     <GridComponent style={{padding: "0px 50px 0px 50px"}}>
                         <StackTechnology image="node.PNG"/>
-                        <StackTechnology image="express.PNG"/>
+                        <StackTechnology theme="white" image="express.PNG"/>
                         <StackTechnology image="rest.PNG"/>
-                        <StackTechnology image="graphql.PNG"/>
-                        <StackTechnology image="apollo.PNG" style={{height:"100px",width:"150px"}}/>
+                        <StackTechnology theme="white" image="graphql.PNG"/>
+                        <StackTechnology theme="white" image="apollo.PNG" style={{height:"100px",width:"150px"}}/>
                         <StackTechnology image="mysql.PNG"/>
-                        <StackTechnology image="knex.PNG" style={{height:"100px",width:"150px"}}/>
+                        <StackTechnology theme="white" image="knex.PNG" style={{height:"100px",width:"150px"}}/>
                         <StackTechnology image="react.PNG"/>
                         <StackTechnology image="reactnative.PNG"/>
-                        <StackTechnology image="html.PNG"/>
+                        <StackTechnology theme="white" image="html.PNG"/>
                         <StackTechnology image="css.PNG"/>
-                        <StackTechnology image="bs.PNG"/>
-                        <StackTechnology image="js.PNG"/>
+                        <StackTechnology theme="white" image="bs.PNG"/>
+                        <StackTechnology theme="white" image="js.PNG"/>
                         <StackTechnology image="vscode.PNG"/>
-                        <StackTechnology image="git.PNG"/>
+                        <StackTechnology theme="white" image="git.PNG"/>
                       </GridComponent>
                 </AboutContent>
 
@@ -651,16 +670,16 @@
                 <AboutContent title="Have Experience/Previous Technology Stacks" icon="fa fa-desktop">
                   <GridComponent style={{padding: "0px 50px 0px 50px"}}>
                         <StackTechnology image="php.PNG"/>
-                        <StackTechnology image="laravel.PNG"/>
+                        <StackTechnology theme="white" image="laravel.PNG"/>
                   </GridComponent>
                 </AboutContent>
 
                 <br/>
                 <AboutContent title="Interested To Learn" icon="fa fa-desktop">
                   <GridComponent style={{padding: "0px 50px 0px 50px"}}>
-                        <StackTechnology image="nosql.PNG"/>
+                        <StackTechnology theme="white" image="nosql.PNG"/>
                         <StackTechnology image="mongo.PNG"/>
-                        <StackTechnology image="dynamo.PNG"/>
+                        <StackTechnology theme="white" image="dynamo.PNG"/>
                   </GridComponent>
                 </AboutContent>
             </div>
