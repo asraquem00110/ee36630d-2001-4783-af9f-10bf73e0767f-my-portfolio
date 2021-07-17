@@ -598,9 +598,10 @@
                     <GridComponent style={{padding: "0px 50px 0px 50px"}}>
                                 <div className="grid-col-4">
                                       <DarkCard>
-                                         <div style={{padding: "10px 50px", textAlign:"center"}}>
+                                         <div style={{padding: "10px 50px", textAlign:"center",position:'relative'}}>
+                                         
                                           <div className="specialtygrid">
-                                                <span className="fa fa-code specialtyicon"></span>
+                                            <img src="./assets/images/site/web.svg" style={{height: "120px",width:"120px"}}/>
                                               </div>
                                               <div className="specialtygrid">
                                               <span className="specialtytitle">Web Development</span>
@@ -614,9 +615,10 @@
                                 </div>
                                 <div className="grid-col-4">
                                   <DarkCard>
-                                         <div style={{padding: "10px 50px", textAlign:"center"}}>
+                                    <div style={{padding: "10px 50px", textAlign:"center",position:'relative'}}>
+                                  
                                                <div className="specialtygrid">
-                                                <span className="fa fa-database specialtyicon"></span>
+                                                <img src="./assets/images/site/db.svg" style={{height: "120px",width:"120px"}}/>
                                               </div>
                                               <div className="specialtygrid">
                                               <span className="specialtytitle">Database</span>
@@ -630,12 +632,12 @@
                                 </div>
                                 <div className="grid-col-4">
                                   <DarkCard>
-                                         <div style={{padding: "10px 50px", textAlign:"center"}}>
+                                    <div style={{padding: "10px 50px", textAlign:"center",position:'relative'}}>
                                               <div className="specialtygrid">
-                                                <span className="fa fa-mobile specialtyicon"></span>
+                                                <img src="./assets/images/site/react.svg" style={{height: "120px",width:"120px"}}/>
                                               </div>
                                               <div className="specialtygrid">
-                                              <span className="specialtytitle">Mobile Development</span>
+                                              <span className="specialtytitle">Mobile App Development</span>
                                               <hr/>
                                               <span style={{color:"white"}}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sit amet risus rhoncus, ornare sapien in, sodales lectus. Mauris neque justo, dictum ac ante et, finibus commodo lorem. Cras laoreet gravida accumsan. Interdum et malesuada fames ac ante ipsum primis in faucibus.</span>
                           
@@ -801,37 +803,37 @@
           const [projects , setProjects] = React.useState([
             {
               id: 1,
-              name: "Dental Clinic Management System (Freelance Project - Project Study)",
-              images: [
-                './assets/images/projects/dental/preview.PNG'
-              ]
-            },
-            {
-              id: 2,
               name: "Cash In Transit v2 Using MEVN stack",
               images: [
                 './assets/images/projects/cit/preview.PNG'
               ]
             },
             {
-              id: 3,
+              id: 2,
               name: "COVID-19 No. of Cases Tracker Mobile App",
               images: [
                 './assets/images/projects/covidTracker/preview.PNG'
               ]
             },
             {
-              id: 4,
+              id: 3,
               name: "Home Quarantine Pass Management System",
               images: [
                 './assets/images/projects/hqp/preview.PNG'
               ]
             },
             {
-              id: 5,
+              id: 4,
               name: "IHatid App",
               images: [
                 './assets/images/projects/ihatid/preview.PNG'
+              ]
+            },
+            {
+              id: 5,
+              name: "Dental Clinic Management System (Freelance Project - Project Study)",
+              images: [
+                './assets/images/projects/dental/preview.PNG'
               ]
             },
             {
@@ -873,8 +875,8 @@
                           if(project.id == activeProject.id){
                             return (
                               <div onClick={()=>setActiveProject(project)} key={`${project}-index`} className="projects" style={{border:"2px solid black",position:'relative'}}>
-                                    <div style={{position:'absolute',height: "30px",width:"30px",borderRadius:"100%",background:"#21222C",top: -10 ,right: -10,zIndex:999}}>
-
+                                    <div style={{display:"grid",placeItems:"center", position:'absolute',height: "30px",width:"30px",borderRadius:"100%",background:"#21222C",top: -10 ,right: -10,zIndex:999}}>
+                                        {project.id}
                                     </div>
                                     <div style={{width: "300px",display:"grid",placeItems:"center",position:"relative"}}>
                                         
@@ -889,7 +891,10 @@
                           }
 
                           return (
-                            <div onClick={()=>setActiveProject(project)} key={`${project}-index`} className="projects">
+                            <div onClick={()=>setActiveProject(project)} key={`${project}-index`} className="projects" style={{position:"relative"}}>
+                                     <div style={{display:"grid",placeItems:"center", position:'absolute',height: "25px",width:"25px",borderRadius:"100%",background:"silver",top: -10 ,right: -10,zIndex:999}}>
+                                        {project.id}
+                                    </div>
                                     <div style={{width: "300px",display:"grid",placeItems:"center"}}>
                                           
                                         <img src={project.images[0]} style={{height: "120px",width:"250px",opacity: 0.6}}/>
