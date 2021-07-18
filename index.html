@@ -74,8 +74,8 @@
                 },
           ])
           const [activePage,setActivePage] = React.useState({
-            title: "Projects",
-            component: <SampleProjects/>,
+            title: "Welcome",
+            component: <WelcomeMessage/>,
           })
 
           return (
@@ -834,6 +834,12 @@
                   label: "Mobile",
                   link: "https://github.com/asraquem00110/MEVN-sample-mobile"
                 }
+              ],
+              demos: [
+                {
+                  label: "DEMO",
+                  link:"https://cashintransit-00110-asr-mevn.herokuapp.com/",
+                }
               ]
             },
             {
@@ -860,6 +866,12 @@
                     label:"React Native",
                     link: "https://github.com/asraquem00110/Covid-Case-React-Native-App"
                   }
+              ],
+              demos: [
+                {
+                  label: "DEMO",
+                  link:"https://ncov-tracker-asr-00110.herokuapp.com/Globe",
+                }
               ]
             },
             {
@@ -898,6 +910,12 @@
                     label: "React Native",
                     link: "https://github.com/asraquem00110/HQP-Mobile-React-Native"
                   },
+              ],
+              demos: [
+                {
+                  label: "DEMO",
+                  link:"http://hqp-frontend-asr-00110.herokuapp.com/",
+                }
               ] 
             },
             {
@@ -958,6 +976,12 @@
                     label: "Mobile",
                     link: "https://github.com/asraquem00110/Dental-Clinic-Management-System-Mobile-Hybrid"
                   },
+              ],
+              demos: [
+                {
+                  label: "DEMO",
+                  link:"https://anza-yap-dental-clinic.herokuapp.com/",
+                }
               ]
             },
             {
@@ -980,6 +1004,12 @@
                     label: "Source",
                     link: "https://github.com/asraquem00110/Laravel-Simple-Inventory"
                   }
+              ],
+              demos: [
+                {
+                  label: "DEMO",
+                  link:"http://warehouse-inventory-management.herokuapp.com/",
+                }
               ]
             },
             {
@@ -1007,6 +1037,16 @@
                     label: "Shop Frontend",
                     link: "https://github.com/asraquem00110/Ashop-React-FrontEnd"
                   }
+              ],
+              demos: [
+                {
+                  label: "SHOP DEMO",
+                  link:"https://ashopping-react.herokuapp.com/",
+                },
+                {
+                  label: "ADMIN DEMO",
+                  link:"http://ashopping.herokuapp.com/admin",
+                }
               ]
             },
          
@@ -1061,6 +1101,31 @@
                                     </GridComponent>
                                   </DarkCard>
 
+                                  {
+                                    activeProject.demos &&
+                                    <GridComponent>
+                                    <div className="grid-col-6">
+                                      <WhiteCard>
+                                          <div style={{cursor:"pointer",display:"grid",placeItems:"center"}}>
+                                              <a target="_blank" href={activeProject.demos[0].link} style={{color:"dimgray",fontWeight:"bold",fontSize:"14pt"}}><span className="fa fa-search"></span> {activeProject.demos[0].label}</a>
+                                          </div>
+                                        </WhiteCard>
+                                      </div>
+                                      {
+                                        activeProject.demos[1] &&
+                                        <div className="grid-col-6">
+                                         <WhiteCard>
+                                          <div style={{cursor:"pointer",display:"grid",placeItems:"center"}}>
+                                              <a target="_blank" href={activeProject.demos[1].link} style={{color:"dimgray",fontWeight:"bold",fontSize:"14pt"}}><span className="fa fa-search"></span> {activeProject.demos[1].label}</a>
+                                          </div>
+                                        </WhiteCard>
+                                      </div>
+                                      }
+                                   
+                                </GridComponent>
+
+                                  }
+                             
                 
                                 </div>
                                   
