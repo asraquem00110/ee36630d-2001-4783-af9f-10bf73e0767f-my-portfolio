@@ -32,11 +32,46 @@
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  background: green;
 }
 
 .projectGrid .mainDiv .info {
   width: 100%;
+  margin-bottom: 200px;
+  margin-left: 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.projectGrid .mainDiv .info #title {
+  width: 100%;
+  padding: 20px;
+  background: #33accc;
+  display: -ms-grid;
+  display: grid;
+  place-items: center;
+}
+
+.projectGrid .mainDiv .info #title span {
+  font-size: 18pt;
+  font-weight: bold;
+}
+
+.projectGrid .mainDiv .info #content {
+  overflow-y: auto;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  height: 200px;
+}
+
+.projectGrid .mainDiv .info #content ul > li {
+  margin: 10px 0px;
+  font-size: 13pt;
 }
 
 .projectGrid .listDiv {

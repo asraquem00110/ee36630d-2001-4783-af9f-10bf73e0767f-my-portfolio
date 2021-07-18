@@ -21,11 +21,38 @@
            height: 74%;
            display: flex;
            justify-content: center;
-           background: green;
         }
 
         .info {
             width: 100%;
+            margin-bottom: 200px;
+            margin-left: 20px;
+            display: flex;
+            flex-direction: column;
+
+            #title {
+                width: 100%;
+                padding: 20px;
+                background: #33accc;
+                display: grid;
+                place-items: center;
+
+                span {
+                    font-size: 18pt;
+                    font-weight: bold;
+                }
+            }
+
+            #content {
+                overflow-y: auto;
+                flex-grow: 1;
+                height: 200px;
+
+                ul > li {
+                    margin: 10px 0px;
+                    font-size: 13pt;
+                }
+            }
         }
 
     }
