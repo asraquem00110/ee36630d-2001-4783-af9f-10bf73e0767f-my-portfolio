@@ -859,8 +859,12 @@
             <div className="PageContent">
                   <div className="projectGrid">
                     <div className="mainDiv">
-                          <div  className="images">
-                             <img style={{height:"75%",width:"100%"}} src={activeProject.images[activeImage]}/>
+                          <div style={{position:"relative"}} className="images">
+                             <div style={{position:"absolute",borderTop: "10px solid orange",borderRight: "10px solid orange",top: -10 , right: -10 , width: "100px",height:"100px",zIndex: 10}}/>
+                             <div style={{position:"absolute",borderTop: "10px solid orange",borderLeft: "10px solid orange",top: -10 , left: -10 , width: "100px",height:"100px",zIndex: 10}}/>
+                             <div style={{position:"absolute",borderBottom: "10px solid orange",borderRight: "10px solid orange",bottom: -10 , right: -10 , width: "100px",height:"100px",zIndex: 10}}/>
+                             <div style={{position:"absolute",borderBottom: "10px solid orange",borderLeft: "10px solid orange",bottom: -10 , left: -10 , width: "100px",height:"100px",zIndex: 10}}/>
+                             <img style={{height:"100%",width:"100%"}} src={activeProject.images[activeImage]}/>
                               
                             </div>
 
@@ -881,7 +885,7 @@
                                     <div style={{width: "300px",display:"grid",placeItems:"center",position:"relative"}}>
                                         
                                       <img src={project.images[0]} style={{height: "120px",width:"250px"}}/>
-                                      <div style={{position:"absolute",height: "50px",width:"50px",background:"green",opacity:"0.2",borderRadius:"100%"}}>
+                                      <div style={{position:"absolute",height: "50px",width:"50px",background:"orange",opacity:"0.2",borderRadius:"100%"}}>
 
                                       </div>
 
