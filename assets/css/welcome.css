@@ -1,23 +1,14 @@
 #WelcomeMessageMainDiv div#greetings {
   width: "100%";
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  align-items: center;
+  flex-direction: column;
   margin-top: 20px;
   margin-bottom: 100px;
 }
-
 #WelcomeMessageMainDiv div#greetings h1 {
   font-size: 45pt;
 }
-
 #WelcomeMessageMainDiv div#greetings span {
   font-size: 18pt;
 }
@@ -31,7 +22,6 @@
   cursor: pointer;
   margin: 10px 10px 0px 0px;
 }
-
 .recentItems .path {
   color: silver;
 }
@@ -47,7 +37,6 @@
     grid-column: span 6 !important;
   }
 }
-
 @media (max-width: 768px) and (min-width: 577px) {
   #greetings h1 {
     font-size: 30pt !important;
@@ -59,7 +48,6 @@
     grid-column: span 12 !important;
   }
 }
-
 @media (max-width: 578px) {
   #greetings h1 {
     font-size: 25pt !important;
@@ -70,5 +58,4 @@
   .grid-col-4 {
     grid-column: span 12 !important;
   }
-}
-/*# sourceMappingURL=welcome.css.map */
+}/*# sourceMappingURL=welcome.css.map */

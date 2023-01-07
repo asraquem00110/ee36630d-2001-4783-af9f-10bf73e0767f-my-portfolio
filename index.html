@@ -31,7 +31,8 @@
 
           const {Provider} = GlobalContext
 
-          const [showExplorer, setShowExplorer] = React.useState(false)
+          const [showExplorer, setShowExplorer] = React.useState(true)
+          const [showSearch, setShowSearch] = React.useState(false)
           const [completeListofPages, _] = React.useState([
               
                 {
@@ -88,6 +89,8 @@
                   activePage,
                   setActivePage,
                   completeListofPages,
+                  showSearch,
+                  setShowSearch
                 }}
             >
                 {children}
@@ -114,7 +117,7 @@
          // Header Component
          const HeaderComponent = ()=> {
 
-          const {pages,setPages,activePage,setActivePage,showExplorer,completeListofPages} = React.useContext(GlobalContext)
+          const {pages,setPages,activePage,setActivePage,showExplorer,completeListofPages,showSearch} = React.useContext(GlobalContext)
 
           const [showPages,setShowPages] = React.useState(true)
           const [showResume,setShowResume] = React.useState(false)
@@ -152,17 +155,29 @@
               <header>
                   <p style={{fontSize:"10pt"}}>Alvin Sison Raquem's Portfolio</p>
               </header>
+              {
+                showSearch &&
+                <div id="explorer">
+                    <div style={{display:"flex", flexGrow: 1, padding: "20px", alignItems:"center" ,flexDirection:"column"}}>
+                      <span>Sample Projects</span>
+                      <input placeholder="Search..." style={{outline:"none",borderRadius: 10,width:"100%",marginTop:10,fontSize: "12pt",padding: 5}} type="text"></input>
+                    </div>
+
+                    
+            
+                </div>
+              }
 
                {
                     showExplorer &&  
                     <div id="explorer">
                         <div style={{display:"flex", flexGrow: 1, padding: "20px", alignItems:"center" ,flexDirection:"column"}}>
-                           <img src="./assets/images/pic2.jpg" alt="Alvin Raquem" style={{borderRadius:"100%", height: "120px" , width: "120px"}}/>
+                           <img src="./assets/images/me.jpg" alt="Alvin Raquem" style={{borderRadius:"100%", height: "120px" , width: "120px"}}/>
                            <p style={{margin: "25px 0px 5px 0px",padding: 0}}>Hi i'm Alvin Sison Raquem </p>
                            <span style={{fontSize: "11pt"}}><span style={{color:"#D8A31A"}}>&#60;Web & Mobile</span> <span style={{color:"#7763A9"}}>App Developer/></span></span>
                         
                           <span style={{fontSize: "10pt",marginTop:"5px",color:"#A5ABBD"}}><i className="fa fa-envelope"/> raquem.alvin@gmail.com</span>
-                          <span style={{fontSize: "10pt",marginTop:"5px",color:"#A5ABBD"}}><i className="fa fa-phone"/> +639163006277</span>
+                          <span style={{fontSize: "10pt",marginTop:"5px",color:"#A5ABBD"}}><i className="fa fa-phone"/> +639270752905</span>
           
                         </div>
 
@@ -191,7 +206,7 @@
                                   <div style={{
                                     display: "flex",
                                     flexDirection:"column",
-                                    margin:"10px 0px"
+                                    margin:"10px 0px",
                                   }}>
 
                                   {
@@ -313,10 +328,28 @@
          const SideBarComponent = ()=> {
             const globalContext = React.useContext(GlobalContext)
 
+            const resetState = (type="explorer")=> {
+              if(type == "explorer"){
+                globalContext.setShowExplorer(!globalContext.showExplorer);
+                globalContext.setShowSearch(false);
+                return;
+              }
+
+              globalContext.setShowSearch(!globalContext.showSearch);
+              globalContext.setShowExplorer(false);
+              return
+          
+            }
+
             return (
               <nav>
                   <aside>
-                    <a onClick={()=>globalContext.setShowExplorer(!globalContext.showExplorer)} href="javascript:void(0)"><i style={{color: globalContext.showExplorer ? "white" : "#939599"}} className="fa fa-copy"></i></a>
+                    <a style={{position:'relative'}} onClick={()=>resetState()} href="javascript:void(0)">
+                      {
+                        globalContext.showExplorer && <div style={{position:"absolute",height:'100%',width:'13px',background:'white',left: -25}}></div>
+                      }
+                      <i style={globalContext.showExplorer ? {color: "white"} : {color: "#939599"}} className="fa fa-copy"></i>
+                    </a>
                     <div id="contactme">
                       <a href="https://www.facebook.com/raquem.alvin" target="_blank"><i className="fa fa-facebook-square"></i></a>
                       <a href="https://www.instagram.com/alvinraquem/" target="_blank"><i className="fa fa-instagram"></i></a>
@@ -400,7 +433,7 @@
 
                   <CardContent  className="grid-col-4" title="Start">
                       <div style={{marginTop: "20px"}}> 
-                        <span>This website contains relative information's about Alvin Sison Raquem as a Software Developer.
+                        <span>This website contains relative information's about Alvin Sison Raquem as a Software Engineer.
                             It includes Skills, Work Experience and Sample Projects.
                           </span>
                       </div>
@@ -450,7 +483,7 @@
 
                   </CardContent>
                  
-                  <CardContent className="grid-col-4" title="Need Software Developer?">
+                  <CardContent className="grid-col-4" title="Need Software Engineer?">
                     <DarkCard>
                         <span className="cardTitle">Download my resume</span>
                         <br/>
@@ -488,12 +521,12 @@
          const AboutMe = ()=> {
 
           return (
-            <div className="PageContent">
+            <div className="PageContent" >
               <div id="MainAbout">
                   <div id="AboutIntro">
                     <div id="AboutImage">
-                      <div style={{position:"absolute",height:"80%",bottom: 0, background:"#EBEBEB",zIndex: 0,width: "100%", borderBottomLeftRadius: "20px",borderTopLeftRadius:"20px"}} />
-                      <img style={{height: "600px", width:"400px", placeSelf:"center",zIndex: 1}} src="./assets/images/about.png"/>
+                      <div style={{position:"absolute",height:"85%",bottom: 0, background:"#EBEBEB",zIndex: 0,width: "100%", borderBottomLeftRadius: "20px",borderTopLeftRadius:"20px"}} />
+                      <img style={{marginTop: 50,height: "400px", width:"400px", placeSelf:"center",zIndex: 1}} src="./assets/images/me.png"/>
                     </div>
                     <div id="Aboutdescription">
                         <div id="AboutName">
@@ -502,10 +535,10 @@
 
                         <div id="AboutInfoExpertise">
                             <div>
-                              <span style={{fontSize:"24pt"}}><span>&#60;Web & Mobile</span> <span style={{color:"#FF896C"}}>App Developer/></span></span>
+                              <span style={{fontSize:"24pt"}}><span>&#60;Software</span> <span style={{color:"#FF896C"}}>Engineer/></span></span>
                             </div>
                             <hr/>
-                            <div style={{marginTop:"20px",flexGrow: 1}}>
+                            <div style={{marginTop:"16px",flexGrow: 1}}>
                             <span style={{fontSize:"20pt"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;An Experienced Web and Mobile App Developer who focus more on back end development side, but can also do some front end stuff. I am very passionate in learning new things that will make me competent. I am a good listener and able to grasp new concepts quickly and efficiently. Although I am not good at web designing, I can still manage to create a responsive Layout.</span>
                             </div>
                             <div style={{height:"250px",width:"100%",position:"relative"}}>
@@ -561,8 +594,24 @@
                             </GridComponent>
                         </AboutContent>
 
-                        <AboutContent title="Hobbies" icon="fa fa-gamepad">
-
+                        <AboutContent title="Get in touch" icon="fa fa-handshake-o">
+                          <div style={{
+                            display: "flex",
+                            flexDirection: "column",
+                            alignItems: "center",
+                            flex: 1,
+                          }}>
+                          <div style={{display:"flex",flexDirection:'row',width:"100%",justifyContent:'center',alignItems:'center'}}>
+                            <a style={{margin: 10,fontSize: 40,color:"#A5ABBD"}} href="https://www.facebook.com/raquem.alvin" target="_blank"><i className="fa fa-facebook-square"></i></a>
+                            <a style={{margin: 10,fontSize: 40,color:"#A5ABBD"}} href="https://www.instagram.com/alvinraquem/" target="_blank"><i className="fa fa-instagram"></i></a>
+                            <a style={{margin: 10,fontSize: 40,color:"#A5ABBD"}} href="https://www.linkedin.com/in/alvin-raquem-167799146/" target="_blank"><i className="fa fa-linkedin"></i></a>
+                            <a style={{margin: 10,fontSize: 40,color:"#A5ABBD"}} href="https://github.com/asraquem00110" target="_blank"><i className="fa fa-github"></i></a>
+                        </div>
+                          <span style={{fontSize: "14pt",marginTop:"5px",color:"#A5ABBD"}}><i className="fa fa-envelope"/> raquem.alvin@gmail.com</span>
+                          <span style={{fontSize: "14pt",marginTop:"10px",color:"#A5ABBD"}}><i className="fa fa-phone"/> +639270752905</span>
+          
+                          </div>
+                      
                         </AboutContent>
                   </div>
               </div>
@@ -651,20 +700,21 @@
                 <br/> 
                 <AboutContent title="Current Technology Stacks" icon="fa fa-desktop">
                     <GridComponent style={{padding: "0px 50px 0px 50px"}}>
-                        <StackTechnology image="node.png"/>
+                        <StackTechnology theme="white" image="node.png"/>
                         <StackTechnology theme="white" image="express.png"/>
-                        <StackTechnology image="rest.png"/>
+                        <StackTechnology theme="white" image="rest.png"/>
                         <StackTechnology theme="white" image="graphql.png"/>
                         <StackTechnology theme="white" image="apollo.png" style={{height:"100px",width:"150px"}}/>
-                        <StackTechnology image="mysql.png"/>
+                        <StackTechnology theme="white" image="react.png"/>
+                        <StackTechnology theme="white" image="redux.png"/>
+                        <StackTechnology theme="white" image="reactnative.png"/>
+                        <StackTechnology theme="white" image="mysql.png"/>
                         <StackTechnology theme="white" image="knex.png" style={{height:"100px",width:"150px"}}/>
-                        <StackTechnology image="react.png"/>
-                        <StackTechnology image="reactnative.png"/>
-                        <StackTechnology theme="white" image="html.png"/>
-                        <StackTechnology image="css.png"/>
                         <StackTechnology theme="white" image="bs.png"/>
+                        <StackTechnology theme="white" image="css.png"/>
+                        <StackTechnology theme="white" image="html.png"/>
                         <StackTechnology theme="white" image="js.png"/>
-                        <StackTechnology image="vscode.png"/>
+                        <StackTechnology theme="white" image="vscode.png"/>
                         <StackTechnology theme="white" image="git.png"/>
                       </GridComponent>
                 </AboutContent>
@@ -672,7 +722,7 @@
                 <br/>
                 <AboutContent title="Have Experience/Previous Technology Stacks" icon="fa fa-desktop">
                   <GridComponent style={{padding: "0px 50px 0px 50px"}}>
-                        <StackTechnology image="php.png"/>
+                        <StackTechnology theme="white" image="php.png"/>
                         <StackTechnology theme="white" image="laravel.png"/>
                   </GridComponent>
                 </AboutContent>
@@ -681,7 +731,7 @@
                 <AboutContent title="Interested To Learn" icon="fa fa-desktop">
                   <GridComponent style={{padding: "0px 50px 0px 50px"}}>
                         <StackTechnology theme="white" image="nosql.png"/>
-                        <StackTechnology image="mongo.png"/>
+                        <StackTechnology theme="white" image="mongo.png"/>
                         <StackTechnology theme="white" image="dynamo.png"/>
                   </GridComponent>
                 </AboutContent>
@@ -702,7 +752,7 @@
                     <GridComponent>
                         <div className="grid-col-6" style={{marginTop: "20px" , textAlign:"center",alignItems:'center', justifyContent:"center",display:"flex",flexDirection:"column"}}>
                                 <img id="worksvg1" style={{height:"100%",width:"60%"}} src="assets/images/svg/support.svg"/>
-                                <hr/>
+                                <br/>
                                 <span style={{color:"dimgray",fontSize: "24pt",fontWeight:"bold"}}>Intern (POS Technical Support)</span>
                           </div>
 
@@ -753,7 +803,7 @@
 
                           <div className="grid-col-6" style={{marginTop: "20px" , textAlign:"center",alignItems:'center', justifyContent:"center",display:"flex",flexDirection:"column"}}>
                                 <img id="worksvg1" style={{height:"100%",width:"60%"}} src="assets/images/svg/webdev.svg"/>
-                                <hr/>
+                                <br/>
                                 <span style={{color:"dimgray",fontSize: "24pt",fontWeight:"bold"}}>PHP Web Developer</span>
                           </div>
                       </GridComponent>
@@ -765,7 +815,7 @@
                     <GridComponent>
                         <div className="grid-col-6" style={{marginTop: "20px" , textAlign:"center",alignItems:'center', justifyContent:"center",display:"flex",flexDirection:"column"}}>
                                 <img id="worksvg1" style={{height:"100%",width:"60%"}} src="assets/images/svg/mobiledev.svg"/>
-                                <hr/>
+                                <br/>
                                 <span style={{color:"dimgray",fontSize: "24pt",fontWeight:"bold"}}>Fullstack React Native Developer</span>
                           </div>
 
@@ -779,7 +829,8 @@
                                     <hr/>
                                       <ul>
                                         <li>assigned in toktok mobile app project</li>
-                                        <li>lead development for one of sub feature of the mobile app</li>
+                                        <li>lead development for some services of the mobile app</li>
+                                        <li>develop FE ( React Native ) mobile app based on UI/UX provided.</li>
                                         <li>coordinate with other devs to accomplish app functionality</li>
                                         <li>create graphql/rest api to consume by the mobile app</li>
                                       </ul>

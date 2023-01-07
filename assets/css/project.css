@@ -1,106 +1,65 @@
 .projectGrid {
-  display: -ms-grid;
   display: grid;
   margin-top: 30px;
-  -ms-grid-columns: 1fr;
-      grid-template-columns: 1fr;
-  -ms-grid-rows: 1fr 200px;
-      grid-template-rows: 1fr 200px;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 200px;
   height: 85vh;
 }
-
 .projectGrid .mainDiv {
-  -ms-grid-column: 1;
   grid-column: 1/1;
-  -ms-grid-row: 1;
-  -ms-grid-row-span: 2;
   grid-row: 1/3;
   background-color: #343746;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   padding: 20px;
   margin-top: 20px;
 }
-
 .projectGrid .mainDiv .images {
   width: 100%;
   height: 74%;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  justify-content: center;
 }
-
 .projectGrid .mainDiv .info {
   width: 100%;
   margin-bottom: 200px;
   margin-left: 20px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
 }
-
 .projectGrid .mainDiv .info #title {
   width: 100%;
   padding: 20px;
   background: #33accc;
-  display: -ms-grid;
   display: grid;
   place-items: center;
 }
-
 .projectGrid .mainDiv .info #title span {
   font-size: 18pt;
   font-weight: bold;
 }
-
 .projectGrid .mainDiv .info #content {
   overflow-y: auto;
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
+  flex-grow: 1;
   height: 200px;
 }
-
 .projectGrid .mainDiv .info #content ul > li {
   margin: 10px 0px;
   font-size: 13pt;
 }
-
 .projectGrid .listDiv {
-  -ms-grid-column: 1;
   grid-column: 1/1;
-  -ms-grid-row: 2;
-  -ms-grid-row-span: 1;
   grid-row: 2/3;
   background-color: #f1f1f1;
   overflow-x: auto !important;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
 }
-
 .projectGrid .listDiv .projects {
   height: "100%";
   cursor: pointer;
   background-color: white;
   margin: 20px;
-  -webkit-box-shadow: 2px 2px 5px 0px black;
-          box-shadow: 2px 2px 5px 0px black;
-  display: -ms-grid;
+  box-shadow: 2px 2px 5px 0px black;
   display: grid;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-/*# sourceMappingURL=project.css.map */
+  justify-content: center;
+  align-items: center;
+}/*# sourceMappingURL=project.css.map */
