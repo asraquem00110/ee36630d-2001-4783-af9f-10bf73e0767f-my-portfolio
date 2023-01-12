@@ -19,9 +19,9 @@
 
     <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
     <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
-
     <!-- Load our React component. -->
     <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" crossorigin></script>
   
     <script type="text/babel">
 
@@ -30,8 +30,8 @@
         const GlobalContextProvider = ({children})=> {
 
           const {Provider} = GlobalContext
-
-          const [showExplorer, setShowExplorer] = React.useState(true)
+          const [showPromptModal,setShowPromptModal] = React.useState(true);
+          const [showExplorer, setShowExplorer] = React.useState(false)
           const [showSearch, setShowSearch] = React.useState(false)
           const [completeListofPages, _] = React.useState([
               
@@ -90,7 +90,9 @@
                   setActivePage,
                   completeListofPages,
                   showSearch,
-                  setShowSearch
+                  setShowSearch,
+                  showPromptModal,
+                  setShowPromptModal
                 }}
             >
                 {children}
@@ -98,6 +100,7 @@
           )
 
         }
+
 
         // Main Component Here
          const App = ()=> {
@@ -117,8 +120,7 @@
          // Header Component
          const HeaderComponent = ()=> {
 
-          const {pages,setPages,activePage,setActivePage,showExplorer,completeListofPages,showSearch} = React.useContext(GlobalContext)
-
+          const {pages,setPages,activePage,setActivePage,showExplorer,completeListofPages,showSearch,setShowExplorer} = React.useContext(GlobalContext)
           const [showPages,setShowPages] = React.useState(true)
           const [showResume,setShowResume] = React.useState(false)
 
@@ -149,6 +151,20 @@
             }
             setActivePage(completeListofPages[index])
           }
+
+          React.useEffect(()=>{
+            Swal.fire({
+              title: "Good Job!",
+              icon: "info",
+              text: "You cliked the button!",
+              confirmButtonText: 'Continue',
+            }).then((result)=>{
+              if(result.isConfirmed){
+                setShowExplorer(true)
+              }
+            })
+
+          },[])
 
           return (
             <div>
@@ -327,7 +343,6 @@
          // Sidebar Component
          const SideBarComponent = ()=> {
             const globalContext = React.useContext(GlobalContext)
-
             const resetState = (type="explorer")=> {
               if(type == "explorer"){
                 globalContext.setShowExplorer(!globalContext.showExplorer);
@@ -539,7 +554,7 @@
                             </div>
                             <hr/>
                             <div style={{marginTop:"16px",flexGrow: 1}}>
-                            <span style={{fontSize:"20pt"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;An Experienced Web and Mobile App Developer who focus more on back end development side, but can also do some front end stuff. I am very passionate in learning new things that will make me competent. I am a good listener and able to grasp new concepts quickly and efficiently. Although I am not good at web designing, I can still manage to create a responsive Layout.</span>
+                            <span style={{fontSize:"20pt"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;An Experienced Web and Mobile App Developer who focus more on back end development side, but can also do some front end stuff. I am very passionate in learning new things that will make me competent. I am a good listener and able to grasp new concepts quickly and efficiently.</span>
                             </div>
                             <div style={{height:"250px",width:"100%",position:"relative"}}>
                               <img style={{position:"absolute",height:"100%",bottom: -60 ,right: 0 , width:"100%"}} src="./assets/images/site/aboutdev.svg"/>
@@ -791,7 +806,7 @@
                                 <hr/>
                                   <ul>
                                     <li>In-house developer</li>
-                                    <li>Automate the manual process of company's operations</li>
+                                    <li>Create web system for the manual process of company’s operation</li>
                                     <li>Enhance and modify existing system</li>
                                     <li>Analyze program/system based on the required functionalities</li>
                                     <li>Generate needed/requested reports</li>
@@ -850,6 +865,25 @@
          }
 
          const SampleProjects = ()=> {
+
+          const [mainProjects, setMainProjects] = React.useState([
+            {
+              id: 1,
+              name: "",
+              contents: [
+
+              ],
+              techs: [
+
+              ],
+              codes: [
+
+              ],
+              demos: [
+
+              ]
+            }
+          ])
 
           const [projects , setProjects] = React.useState([
             {
@@ -1188,6 +1222,36 @@
           }
         
         }
+
+        return(
+          <div className="PageContent">
+            <div className="projectGrid">
+              <AboutContent title="Projects/Task Accomplished" icon="fa fa-code">
+                  <div className="mainProjectDiv">
+                      <div className="projectSecondDiv">
+                          <div className="projectFirstContent">
+                            <img style={{height:"100%",width: "50%"}} src= './assets/images/projects/wallet/onboard-send-money.png'/>
+                          </div>
+                          <div  className="projectSecondContent">
+b
+                          </div>
+                          
+                      </div>
+
+                      <div className="projectSecondDiv">
+                          <div className="projectFirstContent">
+                            <img style={{height:"100%",width: "50%"}} src= './assets/images/projects/bills/home.png'/>
+                          </div>
+                          <div  className="projectSecondContent">
+b
+                          </div>
+                          
+                      </div>
+                   </div>
+                </AboutContent>
+            </div>
+          </div>
+        )
 
 
           return (

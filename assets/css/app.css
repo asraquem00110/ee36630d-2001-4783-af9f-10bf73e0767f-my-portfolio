@@ -20,6 +20,14 @@ html *, body * {
   outline: none;
 }
 
+.promptModal {
+  display: flex;
+  flex: 1;
+  position: absolute;
+  z-index: 10000000000000000;
+  background-color: blue;
+}
+
 .gridContainer {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
