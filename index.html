@@ -156,12 +156,10 @@
             Swal.fire({
               title: "Welcome :)",
               icon: "info",
-              text: "This page is not yet fully responsive. For better experience you should view this on your computer.",
+              text: "This page is not yet fully responsive. For better experience you should view this on your computer or larger device.",
               confirmButtonText: 'Continue',
             }).then((result)=>{
-              if(result.isConfirmed){
-                setShowExplorer(true)
-              }
+              setShowExplorer(true)
             })
 
           },[])
@@ -766,7 +764,7 @@
 
                     <GridComponent>
                         <div className="grid-col-6" style={{marginTop: "20px" , textAlign:"center",alignItems:'center', justifyContent:"center",display:"flex",flexDirection:"column"}}>
-                                <img id="worksvg1" style={{height:"100%",width:"60%"}} src="assets/images/svg/support.svg"/>
+                                <img id="worksvg1" style={{height:"60%",width:"60%"}} src="assets/images/svg/support.svg"/>
                                 <br/>
                                 <span style={{color:"dimgray",fontSize: "24pt",fontWeight:"bold"}}>Intern (POS Technical Support)</span>
                           </div>
@@ -817,7 +815,7 @@
                           </div>
 
                           <div className="grid-col-6" style={{marginTop: "20px" , textAlign:"center",alignItems:'center', justifyContent:"center",display:"flex",flexDirection:"column"}}>
-                                <img id="worksvg1" style={{height:"100%",width:"60%"}} src="assets/images/svg/webdev.svg"/>
+                                <img id="worksvg1" style={{height:"60%",width:"60%"}} src="assets/images/svg/webdev.svg"/>
                                 <br/>
                                 <span style={{color:"dimgray",fontSize: "24pt",fontWeight:"bold"}}>PHP Web Developer</span>
                           </div>
@@ -829,7 +827,7 @@
 
                     <GridComponent>
                         <div className="grid-col-6" style={{marginTop: "20px" , textAlign:"center",alignItems:'center', justifyContent:"center",display:"flex",flexDirection:"column"}}>
-                                <img id="worksvg1" style={{height:"100%",width:"60%"}} src="assets/images/svg/mobiledev.svg"/>
+                                <img id="worksvg1" style={{height:"60%",width:"60%"}} src="assets/images/svg/mobiledev.svg"/>
                                 <br/>
                                 <span style={{color:"dimgray",fontSize: "24pt",fontWeight:"bold"}}>Fullstack React Native Developer</span>
                           </div>
@@ -869,17 +867,44 @@
           const [mainProjects, setMainProjects] = React.useState([
             {
               id: 1,
-              name: "",
+              name: "toktokwallet",
+              activeImageIndex: 0,
+              images: [
+                './assets/images/projects/wallet/home1.png',
+                './assets/images/projects/wallet/home.png',
+                './assets/images/projects/wallet/onboard-send-money.png',
+                './assets/images/projects/wallet/onboard-cash-in.png',
+                './assets/images/projects/wallet/kyc.png',
+                './assets/images/projects/wallet/userlevel.png',
+                './assets/images/projects/wallet/sendMoney.png',
+                './assets/images/projects/wallet/tpin.png',
+                './assets/images/projects/wallet/cashIn.png',
+                './assets/images/projects/wallet/qr.png',
+                './assets/images/projects/wallet/qr2.png',
+                './assets/images/projects/wallet/qr3.png',
+                './assets/images/projects/wallet/qr4.png',
+                './assets/images/projects/wallet/bt1.png',
+                './assets/images/projects/wallet/bt2.png',
+                './assets/images/projects/wallet/bt3.png',
+              ],
               contents: [
 
               ],
               techs: [
 
+              ]
+            },
+            {
+              id: 2,
+              name: "toktokbills",
+              activeImageIndex: 0,
+              images: [
+                './assets/images/projects/bills/home.png',
               ],
-              codes: [
+              contents: [
 
               ],
-              demos: [
+              techs: [
 
               ]
             }
@@ -1223,27 +1248,51 @@
         
         }
 
+        const changeDisplayImage = (action = "next", project, index)=> {
+          const currentIndex = project.activeImageIndex
+
+          if(action === "prev" && currentIndex == 0) return;
+          if(action === "next" && currentIndex + 1 >= project.images.length) return;
+
+          project = {
+            ...project,
+            activeImageIndex: action === "next" ? currentIndex + 1 : currentIndex - 1
+          }
+          setMainProjects(oldProjects => {
+            oldProjects[index] = project;
+
+            return [
+              ...oldProjects
+            ]
+          })
+
+          console.log(mainProjects)
+        }
+
         return(
           <div className="PageContent">
             <div className="projectGrid">
               <AboutContent title="Projects/Task Accomplished" icon="fa fa-code">
                   <div className="mainProjectDiv">
-                      <div className="projectSecondDiv">
+                    <div className="projectSecondDiv">
                           <div className="projectFirstContent">
-                            <img style={{height:"100%",width: "50%"}} src= './assets/images/projects/wallet/onboard-send-money.png'/>
+                              <div className="cellphoneBG" style={{height:"700px",width:"300px",marginTop: "-40px"}}>
+                                <img style={{marginLeft: "18px",marginTop: "102px", height:"485px",width: "265px",position:"absolute"}} src={mainProjects[0].images[mainProjects[0].activeImageIndex]}/>
+                                <span onClick={()=> changeDisplayImage("prev",mainProjects[0],0)} className="cellphoneBck"><i className="fa fa-caret-left"/></span>
+                                <span onClick={()=> changeDisplayImage("next",mainProjects[0],0)} className="cellphoneFor"><i className="fa fa-caret-right"/></span>
+                              </div>
                           </div>
                           <div  className="projectSecondContent">
-b
-                          </div>
-                          
-                      </div>
-
-                      <div className="projectSecondDiv">
-                          <div className="projectFirstContent">
-                            <img style={{height:"100%",width: "50%"}} src= './assets/images/projects/bills/home.png'/>
-                          </div>
-                          <div  className="projectSecondContent">
-b
+                                <span className="projectName">{mainProjects[0].name}</span>
+                                <span className="projectDesc">
+                                  toktokwallet is an e wallet service inside toktok mobile application. It offers a convenient way of transacting payables. It provides an easy way to transfer funds from your bank accounts to toktokwallet account and vice versa. It is the main payment option of other services in toktok like toktokbills, toktokload, toktokdelivery etc.
+                                </span>
+                                <span style={{marginTop: "20px",fontWeight:"bold",fontSize:"20pt"}}>Features</span>
+                                <span style={{marginTop: "10px",fontSize:"20pt"}}>KYC Registration, Cash In, Send Money, Cash Out (Over the Counter), Bank Transfer, Payment Service</span>
+                                <span style={{marginTop: "20px",fontWeight:"bold",fontSize:"20pt"}}>Backend</span>
+                                <span style={{marginTop: "10px",fontSize:"20pt"}}>#NodeJS #ExpressJS #Apollo Server #GraphQL #MySQL #ObjectionJS/Knex</span>
+                                <span style={{marginTop: "20px",fontWeight:"bold",fontSize:"20pt"}}>Frontend</span>
+                                <span style={{marginTop: "10px",fontSize:"20pt"}}>#React Native #Apollo Client #Redux #Context API</span>
                           </div>
                           
                       </div>

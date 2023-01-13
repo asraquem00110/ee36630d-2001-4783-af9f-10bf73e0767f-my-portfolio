@@ -73,7 +73,7 @@
 }
 .mainProjectDiv .projectSecondDiv {
   display: flex;
-  margin-bottom: 100px;
+  margin-bottom: 70px;
 }
 .mainProjectDiv .projectSecondDiv .projectFirstContent {
   flex: 0.75;
@@ -82,4 +82,15 @@
 }
 .mainProjectDiv .projectSecondDiv .projectSecondContent {
   flex: 1.25;
+  display: flex;
+  flex-direction: column;
+}
+.mainProjectDiv .projectSecondDiv .projectSecondContent .projectName {
+  font-size: 30pt;
+  font-weight: bold;
+}
+.mainProjectDiv .projectSecondDiv .projectSecondContent .projectDesc {
+  font-size: 20pt;
+  text-align: justify;
+  margin-top: 10px;
 }/*# sourceMappingURL=project.css.map */

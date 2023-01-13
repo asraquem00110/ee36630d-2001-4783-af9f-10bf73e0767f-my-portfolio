@@ -28,6 +28,30 @@ html *, body * {
   background-color: blue;
 }
 
+.cellphoneBG {
+  background-image: url("../images/projects/phone-template.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: relative;
+}
+.cellphoneBG .cellphoneBck {
+  position: absolute;
+  bottom: 60px;
+  left: 40px;
+  color: white;
+  cursor: pointer;
+  font-size: 30pt;
+}
+.cellphoneBG .cellphoneFor {
+  position: absolute;
+  bottom: 60px;
+  right: 40px;
+  color: white;
+  cursor: pointer;
+  font-size: 30pt;
+}
+
 .gridContainer {
   display: grid;
   grid-template-columns: repeat(12, 1fr);

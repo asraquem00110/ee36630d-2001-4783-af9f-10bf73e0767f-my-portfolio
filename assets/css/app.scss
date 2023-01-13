@@ -45,6 +45,32 @@ html , body {
     background-color: blue;
 }
 
+.cellphoneBG {
+    background-image: url("../images/projects/phone-template.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+
+    .cellphoneBck {
+        position: absolute;
+        bottom: 60px;
+        left: 40px;
+        color: white;
+        cursor: pointer;
+        font-size: 30pt;
+    }
+
+    .cellphoneFor {
+        position: absolute;
+        bottom: 60px;
+        right: 40px;
+        color: white;
+        cursor: pointer;
+        font-size: 30pt;
+    }
+}
+
 // basic grid 12 span system
 .gridContainer {
     display: grid;
