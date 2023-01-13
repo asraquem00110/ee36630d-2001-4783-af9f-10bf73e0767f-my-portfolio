@@ -868,7 +868,11 @@
             {
               id: 1,
               name: "toktokwallet",
+              desc: " toktokwallet is an e wallet service inside toktok mobile application. It offers a convenient way of transacting payables. It provides an easy way to transfer funds from your bank accounts to toktokwallet account and vice versa. It is the main payment option of other services in toktok like toktokbills, toktokload, toktokdelivery etc.",
               activeImageIndex: 0,
+              features: "KYC Registration, Cash In, Send Money, Cash Out (Over the Counter), Bank Transfer, Payment Service",
+              backend: "#NodeJS #ExpressJS #Apollo Server #GraphQL #MySQL #ObjectionJS/Knex",
+              frontend: "#React Native #Apollo Client #Redux #Context API",
               images: [
                 './assets/images/projects/wallet/home1.png',
                 './assets/images/projects/wallet/home.png',
@@ -887,26 +891,31 @@
                 './assets/images/projects/wallet/bt2.png',
                 './assets/images/projects/wallet/bt3.png',
               ],
-              contents: [
-
-              ],
-              techs: [
-
-              ]
             },
             {
               id: 2,
-              name: "toktokbills",
+              name: "toktokload",
+              desc: "toktokload is one of the services of toktok super app. This application provides a feature which toktok user can avail mobile credits using their toktokwallet.",
               activeImageIndex: 0,
+              features: "Loading Service",
+              backend: "#NodeJS #ExpressJS #Apollo Server #GraphQL #MySQL #ObjectionJS/Knex",
+              frontend: "#React Native #Apollo Client #Redux #Context API",
+              images: [
+                './assets/images/projects/load/home.png',
+                './assets/images/projects/load/home1.png',
+              ],
+            },
+            {
+              id: 3,
+              name: "toktokbills",
+              desc: "toktokbills is a service of toktok super app which let the toktok user to pay their bills (Electric, Water, Utility, Government etc.) using their toktokwallet.",
+              activeImageIndex: 0,
+              features: "Bill Payment Service",
+              backend: "#NodeJS #ExpressJS #Apollo Server #GraphQL #MySQL #ObjectionJS/Knex",
+              frontend: "#React Native #Apollo Client #Redux #Context API",
               images: [
                 './assets/images/projects/bills/home.png',
               ],
-              contents: [
-
-              ],
-              techs: [
-
-              ]
             }
           ])
 
@@ -1274,28 +1283,48 @@
             <div className="projectGrid">
               <AboutContent title="Projects/Task Accomplished" icon="fa fa-code">
                   <div className="mainProjectDiv">
-                    <div className="projectSecondDiv">
+                      {
+                        mainProjects.map((item,index)=> (
+                          <div className="projectSecondDiv">
                           <div className="projectFirstContent">
                               <div className="cellphoneBG" style={{height:"700px",width:"300px",marginTop: "-40px"}}>
-                                <img style={{marginLeft: "18px",marginTop: "102px", height:"485px",width: "265px",position:"absolute"}} src={mainProjects[0].images[mainProjects[0].activeImageIndex]}/>
-                                <span onClick={()=> changeDisplayImage("prev",mainProjects[0],0)} className="cellphoneBck"><i className="fa fa-caret-left"/></span>
-                                <span onClick={()=> changeDisplayImage("next",mainProjects[0],0)} className="cellphoneFor"><i className="fa fa-caret-right"/></span>
+                                <img style={{marginLeft: "16px",marginTop: "102px", height:"485px",width: "265px",position:"absolute"}} src={item.images[item.activeImageIndex]}/>
+                                <span onClick={()=> changeDisplayImage("prev",item,index)} className="cellphoneBck"><i className="fa fa-caret-left"/></span>
+                                <span onClick={()=> changeDisplayImage("next",item,index)} className="cellphoneFor"><i className="fa fa-caret-right"/></span>
                               </div>
                           </div>
                           <div  className="projectSecondContent">
-                                <span className="projectName">{mainProjects[0].name}</span>
+                                <span className="projectName">{item.name}</span>
                                 <span className="projectDesc">
-                                  toktokwallet is an e wallet service inside toktok mobile application. It offers a convenient way of transacting payables. It provides an easy way to transfer funds from your bank accounts to toktokwallet account and vice versa. It is the main payment option of other services in toktok like toktokbills, toktokload, toktokdelivery etc.
+                                  {item.desc}
                                 </span>
                                 <span style={{marginTop: "20px",fontWeight:"bold",fontSize:"20pt"}}>Features</span>
-                                <span style={{marginTop: "10px",fontSize:"18pt"}}>KYC Registration, Cash In, Send Money, Cash Out (Over the Counter), Bank Transfer, Payment Service</span>
-                                <span style={{marginTop: "20px",fontWeight:"bold",fontSize:"20pt"}}>Backend</span>
-                                <span style={{marginTop: "10px",fontSize:"18pt"}}>#NodeJS #ExpressJS #Apollo Server #GraphQL #MySQL #ObjectionJS/Knex</span>
-                                <span style={{marginTop: "20px",fontWeight:"bold",fontSize:"20pt"}}>Frontend</span>
-                                <span style={{marginTop: "10px",fontSize:"18pt"}}>#React Native #Apollo Client #Redux #Context API</span>
+                                <span style={{marginTop: "10px",fontSize:"18pt"}}>{item.features}</span>
+                                {
+                                  item.backend && item.backend != "" && (
+                                    <div style={{marginTop: "20px"}}>
+                                    <span style={{marginTop: "20px",fontWeight:"bold",fontSize:"20pt"}}>Backend</span>
+                                    <br/>
+                                    <span style={{marginTop: "10px",fontSize:"18pt"}}>{item.backend}</span>
+                                    </div>
+                                  )
+                                }
+
+                                {
+                                  item.frontend && item.frontend != "" && (
+                                    <div style={{marginTop: "20px"}}>
+                                    <span style={{marginTop: "20px",fontWeight:"bold",fontSize:"20pt"}}>Frontend</span>
+                                    <br/>
+                                    <span style={{marginTop: "10px",fontSize:"18pt"}}>{item.frontend}</span>
+                                    </div>
+                                  )
+                                }
                           </div>
                           
                       </div>
+                        ))
+                      }
+
                    </div>
                 </AboutContent>
             </div>
