@@ -93,4 +93,23 @@
   font-size: 18pt;
   text-align: justify;
   margin-top: 10px;
+}
+.mainProjectDiv .projectSecondDiv .projectThirdContent {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+.mainProjectDiv .projectSecondDiv .projectFourthContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.mainProjectDiv .projectSecondDiv .projectFourthContent .projectName {
+  font-size: 30pt;
+  font-weight: bold;
+}
+.mainProjectDiv .projectSecondDiv .projectFourthContent .projectDesc {
+  font-size: 18pt;
+  text-align: justify;
+  margin-top: 10px;
 }/*# sourceMappingURL=project.css.map */
