@@ -936,6 +936,7 @@
             {
               id: 1,
               name: "Cash In Transit v2 Using MEVN stack",
+              activeImageIndex: 0,
               images: [
                 './assets/images/projects/cit/preview.png',
                 './assets/images/projects/cit/create_request.png',
@@ -992,6 +993,7 @@
             {
               id: 2,
               name: "COVID-19 No. of Cases Tracker Mobile App",
+              activeImageIndex: 0,
               images: [
                 './assets/images/projects/covidTracker/preview.png',
                 './assets/images/projects/covidTracker/picture1.jpg',
@@ -1033,6 +1035,7 @@
             {
               id: 3,
               name: "Home Quarantine Pass Management System",
+              activeImageIndex: 0,
               images: [
                 './assets/images/projects/hqp/preview.png',
                 './assets/images/projects/hqp/barangay.png',
@@ -1088,6 +1091,7 @@
             {
               id: 4,
               name: "IHatid App",
+              activeImageIndex: 0,
               images: [
                 './assets/images/projects/ihatid/preview.PNG',
                 './assets/images/projects/ihatid/login.png',
@@ -1125,6 +1129,7 @@
             {
               id: 5,
               name: "Dental Clinic Management System (Freelance Project - Project Study)",
+              activeImageIndex: 0,
               images: [
                 './assets/images/projects/dental/preview.png',
                 './assets/images/projects/dental/appointment.PNG',
@@ -1174,6 +1179,7 @@
             {
               id: 6,
               name: "Warehouse Inventory Management",
+              activeImageIndex: 0,
               images: [
                 './assets/images/projects/inventory/preview.PNG',
                 './assets/images/projects/inventory/index.PNG',
@@ -1211,6 +1217,7 @@
             {
               id: 7,
               name: "Simple Online Shop ( React Js Frontend )",
+              activeImageIndex: 0,
               images: [
                 './assets/images/projects/onlineShop/preview.PNG',
                 './assets/images/projects/onlineShop/adminlogin.PNG',
@@ -1270,7 +1277,7 @@
         
         }
 
-        const changeDisplayImage = (action = "next", project, index)=> {
+        const changeDisplayImage = (action = "next", project, index , type = "mobile")=> {
           const currentIndex = project.activeImageIndex
 
           if(action === "prev" && currentIndex == 0) return;
@@ -1280,15 +1287,28 @@
             ...project,
             activeImageIndex: action === "next" ? currentIndex + 1 : currentIndex - 1
           }
-          setMainProjects(oldProjects => {
-            oldProjects[index] = project;
+          
+          if(type==="mobile"){
+            setMainProjects(oldProjects => {
+              oldProjects[index] = project;
 
-            return [
-              ...oldProjects
-            ]
+              return [
+                ...oldProjects
+              ]
+            })
+          }
+
+          if(type === "web"){
+            setProjects(oldProjects => {
+              oldProjects[index] = project;
+
+              return [
+                ...oldProjects
+              ]
           })
+          }
 
-          console.log(mainProjects)
+          return;
         }
 
         return(
@@ -1348,7 +1368,16 @@
                         return (
                           <div className="projectSecondDiv">
                             <div className="projectThirdContent">
-
+                              <div style={{height:"500px",width:"100%",position:"relative"}}>
+                                <img style={{
+                                  height:"485px",
+                                  width: item.images[item.activeImageIndex].split(".")[2] == "jpg" ? "50%" : "90%" ,
+                                  marginTop: "10px",}} src={item.images[item.activeImageIndex]}/>
+                                <span onClick={()=> changeDisplayImage("prev",item,index,"web")} className="webBck"><i className="fa fa-caret-left"/></span>
+                                <span onClick={()=> changeDisplayImage("next",item,index,"web")} className="webNxt"><i className="fa fa-caret-right"/></span>
+                              
+                                </div>
+                           
                             </div>
 
                             <div  className="projectFourthContent">

@@ -6,6 +6,7 @@
     // grid-template-rows: minmax(200px,1fr) 150px;
     grid-template-rows:1fr 200px;
     height: 85vh;
+    
 
     .mainDiv {
         grid-column: 1/1;
@@ -138,6 +139,24 @@
             }
         }
     }
+}
+
+.webBck {
+    position: absolute;
+    bottom: 220px;
+    left: -32px;
+    color: white;
+    cursor: pointer;
+    font-size: 50pt;
+}
+
+.webNxt {
+    position: absolute;
+    bottom: 220px;
+    right: 35px;
+    color: white;
+    cursor: pointer;
+    font-size: 50pt;
 }
 
 
