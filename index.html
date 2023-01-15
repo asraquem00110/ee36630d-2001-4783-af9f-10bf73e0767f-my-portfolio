@@ -868,7 +868,7 @@
             {
               id: 1,
               name: "toktokwallet",
-              desc: " toktokwallet is an e wallet service inside toktok mobile application. It offers a convenient way of transacting payables. It provides an easy way to transfer funds from your bank accounts to toktokwallet account and vice versa. It is the main payment option of other services in toktok like toktokbills, toktokload, toktokdelivery etc.",
+              desc: " toktokwallet is an e wallet service inside toktok super app mobile application. It offers a convenient way of transacting payables. It provides an easy way to transfer funds from your bank accounts to toktokwallet account and vice versa. It is the main payment option of other services in toktok like toktokbills, toktokload, toktokdelivery etc.",
               activeImageIndex: 0,
               features: "KYC Registration, Cash In, Send Money, Cash Out (Over the Counter), Bank Transfer, Payment Service",
               backend: "#NodeJS #ExpressJS #Apollo Server #GraphQL #MySQL #ObjectionJS/Knex",
@@ -963,10 +963,10 @@
                 "Generate reports and dashboard monitoring.",
               ],
               techs: [
-                "Backend: NodeJs Express MongoDB NoSQL",
-                "Frontend: HTML CSS Bootstrap Javascript VueJs",
-                "Mobile: Ionic Capacitor VueJs",
-                "Others: Websockets Socket.io Leafletjs"
+                "Backend: #NodeJs #Express #MongoDB #NoSQL",
+                "Frontend: #HTML #CSS #Bootstrap #Javascript #VueJs",
+                "Mobile: #Ionic Capacitor #VueJs",
+                "Others: #Websockets #Socket.io #Leafletjs"
               ],
               codes: [
                 {
@@ -1010,8 +1010,8 @@
                 "API source: https://corona.lmao.ninja/docs"
               ],
               techs: [
-                "Mobile: Ionic Capacitor VueJs",
-                "Mobile 2: React Native ReactJs"
+                "Mobile: #Ionic Capacitor #VueJs",
+                "Mobile 2: #React Native #ReactJs"
               ],
               codes: [
                   {
@@ -1055,10 +1055,10 @@
                 "It checks the list of authorized person who can use the pass."
               ],
               techs: [
-                "Backend: NodeJs Express MySQL Sequelize",
-                "Frontend: HTML CSS Bootstrap Javascript VueJs",
-                "Mobile: Ionic Capacitor VueJs",
-                "Mobile 2: React Native ReactJs"
+                "Backend: #NodeJs #Express #MySQL #Sequelize",
+                "Frontend: #HTML #CSS #Bootstrap #Javascript #VueJs",
+                "Mobile: #Ionic Capacitor #VueJs",
+                "Mobile 2: #React Native #ReactJs"
               ],
               codes: [
                   {
@@ -1106,10 +1106,10 @@
                   "A simple passenger transport application just like angkas app where users can book a rider."
               ],
               techs: [
-                "Backend: NodeJs Express MongoDB Mongoose",
-                "Frontend: ReactJs",
-                "Mobile: React Native",
-                "Others: Websockets Socket.io Googlemap API Facebook Login"
+                "Backend: #NodeJs #Express #MongoDB #Mongoose",
+                "Frontend: #ReactJs",
+                "Mobile: #React Native",
+                "Others: #Websockets #Socket.io #Googlemap API #Facebook Login"
               ],
               codes: [
                   {
@@ -1146,9 +1146,9 @@
                 "Help patients make reservation online and get notified if approved or not approved and be aware of the clinic’s information and schedule.",
               ],
               techs: [
-                "Backend: NodeJs Express MySQL Sequelize",
-                "Frontend: HTML CSS Bootstrap Javascript VueJs",
-                "Mobile: Ionic Capacitor VueJs"
+                "Backend: #NodeJs #Express #MySQL #Sequelize",
+                "Frontend: #HTML #CSS #Bootstrap #Javascript #VueJs",
+                "Mobile: #Ionic Capacitor #VueJs"
               ],
               codes: [
                   {
@@ -1192,8 +1192,8 @@
                   "This system will help employee to produce report about the inventory or stock availability in their warehouse."
               ],
               techs: [
-                "Laravel Framework / PHP(OOP) MySQL",
-                "HTML CSS Bootstrap Javascript Jquery Ajax"
+                "#Laravel Framework / #PHP(OOP) #MySQL",
+                "#HTML #CSS #Bootstrap #Javascript #Jquery #Ajax"
               ],
               codes: [
                   {
@@ -1228,9 +1228,9 @@
                 "Vue JS for admin frontend"
               ],
               techs: [
-                "Backend: Laravel Framework / PHP(OOP) MySQL",
-                "Shop Frontend: HTML CSS Bootstrap Javascript ReactJs",
-                "Admin Frontend: HTML CSS Bootstrap Javascript Vuejs"
+                "Backend: #Laravel Framework / #PHP(OOP) #MySQL",
+                "Shop Frontend: #HTML #CSS #Bootstrap #Javascript #ReactJs",
+                "Admin Frontend: #HTML #CSS #Bootstrap #Javascript #Vuejs"
               ],
               codes: [
                   {
@@ -1341,50 +1341,52 @@
                    </div>
                 </AboutContent>
 
-                <AboutContent title="Previous works" icon="fa fa-code">
+                <AboutContent title="Others/Personal Projects" icon="fa fa-code">
                   <div className="mainProjectDiv">
-                      <div className="projectSecondDiv">
-                          <div className="projectThirdContent">
+                    {
+                      projects.map((item,index)=> {
+                        return (
+                          <div className="projectSecondDiv">
+                            <div className="projectThirdContent">
 
-                          </div>
+                            </div>
 
-                          <div  className="projectFourthContent">
-                            <span className="projectName">SAMPLE TITLE</span>
-                                <span className="projectDesc">
-                                  sample description
-                                </span>
-                          </div>
-                      </div>
+                            <div  className="projectFourthContent">
+                              <span className="projectName">{item.name}</span>
+                                  {
+                                    item.contents.map((content,index)=> (
+                                      <span className="projectDesc">
+                                          {content}
+                                      </span>
+                                    ))
+                                  }
+                                
+                                <span style={{marginTop: "20px",fontWeight:"bold",fontSize:"20pt"}}>Technologies</span>
+                                 {
+                                  item.techs.map((tech,index)=> (
+                                    <span style={{marginTop: "10px",fontSize:"18pt"}}>{tech}</span>
+                                  ))
+                                 }
+                                 <span style={{marginTop: "20px",fontWeight:"bold",fontSize:"20pt"}}>Code repo <i className="fa fa-github"/></span>
+                                 <div style={{display:"flex",flex: 1,flexWrap: "wrap"}}>
+                                 {
+                                    item.codes.map((code)=> {
+                                      return <div>
+                                        <span style={{padding:"10px 0px",fontSize: "18pt"}}>{code.label}: </span> <a style={{color:"#33accc",marginRight: "10px", }} href={code.link} target="_blank">View Code</a>
+                                        </div>
+                                    })
+                                 }
+                                 </div>
+                            </div>
+                        </div>
 
-                      <div className="projectSecondDiv">
-                          <div className="projectThirdContent">
+                        )
+                      })
+                    }
 
-                          </div>
-
-                          <div  className="projectFourthContent">
-                            <span className="projectName">SAMPLE TITLE</span>
-                                <span className="projectDesc">
-                                  sample description
-                                </span>
-                          </div>
-                      </div>
-
-
-                      <div className="projectSecondDiv">
-                          <div className="projectThirdContent">
-
-                          </div>
-
-                          <div  className="projectFourthContent">
-                            <span className="projectName">SAMPLE TITLE</span>
-                                <span className="projectDesc">
-                                  sample description
-                                </span>
-                          </div>
-                      </div>
                   </div>
-                </AboutContent>
 
+                </AboutContent>
 
             </div>
           </div>
