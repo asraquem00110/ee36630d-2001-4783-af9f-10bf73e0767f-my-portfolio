@@ -153,15 +153,16 @@
           }
 
           React.useEffect(()=>{
-            Swal.fire({
-              title: "Welcome :)",
-              icon: "info",
-              text: "This page is not yet fully responsive. For better experience you should view this on your computer or larger device.",
-              confirmButtonText: 'Continue',
-            }).then((result)=>{
-              setShowExplorer(true)
-            })
-
+            if(Swal){
+              Swal.fire({
+                title: "Welcome :)",
+                icon: "info",
+                text: "This page is not yet fully responsive. For better experience you should view this on your computer or larger device.",
+                confirmButtonText: 'Continue',
+              }).then((result)=>{
+                setShowExplorer(true)
+              })
+            }
           },[])
 
           return (
