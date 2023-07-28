@@ -1,1566 +1,2509 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta charset="UTF-8" />
     <title>Alvin Sison Raquem</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link type="text/css" rel="stylesheet"  href="./assets/css/app.css" />
-    <link type="text/css" rel="stylesheet"  href="./assets/css/welcome.css" />
-    <link type="text/css" rel="stylesheet"  href="./assets/css/about.css" />
-    <link type="text/css" rel="stylesheet"  href="./assets/css/skills.css" />
-    <link type="text/css" rel="stylesheet"  href="./assets/css/experience.css" />
-    <link type="text/css" rel="stylesheet"  href="./assets/css/project.css" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link type="text/css" rel="stylesheet" href="./assets/css/app.css" />
+    <link type="text/css" rel="stylesheet" href="./assets/css/welcome.css" />
+    <link type="text/css" rel="stylesheet" href="./assets/css/about.css" />
+    <link type="text/css" rel="stylesheet" href="./assets/css/skills.css" />
+    <link type="text/css" rel="stylesheet" href="./assets/css/experience.css" />
+    <link type="text/css" rel="stylesheet" href="./assets/css/project.css" />
   </head>
   <body>
-
     <div id="app"></div>
 
-
-    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
-    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script
+      src="https://unpkg.com/react@17/umd/react.development.js"
+      crossorigin
+    ></script>
+    <script
+      src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"
+      crossorigin
+    ></script>
     <!-- Load our React component. -->
     <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" crossorigin></script>
-  
+    <script
+      src="https://cdn.jsdelivr.net/npm/sweetalert2@11"
+      crossorigin
+    ></script>
+
     <script type="text/babel">
+      const GlobalContext = React.createContext();
 
-        const GlobalContext = React.createContext()
-
-        const GlobalContextProvider = ({children})=> {
-
-          const {Provider} = GlobalContext
-          const [showPromptModal,setShowPromptModal] = React.useState(true);
-          const [showExplorer, setShowExplorer] = React.useState(false)
-          const [showSearch, setShowSearch] = React.useState(false)
-          const [completeListofPages, _] = React.useState([
-              
-                {
-                  title: "About",
-                  component: <AboutMe/>,
-                },
-                {
-                  title: "Skills",
-                  component: <Skills/>,
-                },
-                {
-                  title: "Experience",
-                  component: <Experience/>,
-                },
-                {
-                  title: "Projects",
-                  component: <SampleProjects/>,
-                },
-          ])
-          const [pages,setPages] = React.useState([
-                {
-                  title:"Welcome",
-                  component: <WelcomeMessage/>,
-                },
-                {
-                  title: "About",
-                  component: <AboutMe/>,
-                },
-                {
-                  title: "Skills",
-                  component: <Skills/>,
-                },
-                {
-                  title: "Experience",
-                  component: <Experience/>,
-                },
-                {
-                  title: "Projects",
-                  component: <SampleProjects/>,
-                },
-          ])
-          const [activePage,setActivePage] = React.useState({
+      const GlobalContextProvider = ({ children }) => {
+        const { Provider } = GlobalContext;
+        const [showPromptModal, setShowPromptModal] = React.useState(true);
+        const [showExplorer, setShowExplorer] = React.useState(false);
+        const [showSearch, setShowSearch] = React.useState(false);
+        const [completeListofPages, _] = React.useState([
+          {
+            title: "About",
+            component: <AboutMe />,
+          },
+          {
+            title: "Skills",
+            component: <Skills />,
+          },
+          {
+            title: "Experience",
+            component: <Experience />,
+          },
+          {
+            title: "Projects",
+            component: <SampleProjects />,
+          },
+        ]);
+        const [pages, setPages] = React.useState([
+          {
             title: "Welcome",
-            component: <WelcomeMessage/>,
-          })
+            component: <WelcomeMessage />,
+          },
+          {
+            title: "About",
+            component: <AboutMe />,
+          },
+          {
+            title: "Skills",
+            component: <Skills />,
+          },
+          {
+            title: "Experience",
+            component: <Experience />,
+          },
+          {
+            title: "Projects",
+            component: <SampleProjects />,
+          },
+        ]);
+        const [activePage, setActivePage] = React.useState({
+          title: "Welcome",
+          component: <WelcomeMessage />,
+        });
 
-          return (
-            <Provider
-                value={{
-                  showExplorer,
-                  setShowExplorer,
-                  pages,
-                  setPages,
-                  activePage,
-                  setActivePage,
-                  completeListofPages,
-                  showSearch,
-                  setShowSearch,
-                  showPromptModal,
-                  setShowPromptModal
-                }}
-            >
-                {children}
-            </Provider>
-          )
+        return (
+          <Provider
+            value={{
+              showExplorer,
+              setShowExplorer,
+              pages,
+              setPages,
+              activePage,
+              setActivePage,
+              completeListofPages,
+              showSearch,
+              setShowSearch,
+              showPromptModal,
+              setShowPromptModal,
+            }}
+          >
+            {children}
+          </Provider>
+        );
+      };
 
-        }
-
-
-        // Main Component Here
-         const App = ()=> {
-              
-              return (
-                <div>
-                  <GlobalContextProvider>
-                    <div id="mainApp">
-                      <HeaderComponent />
-                      <SideBarComponent />  
-                      <MainContentComponent />       
-                    </div>    
-                  </GlobalContextProvider>
-                </div>
-              )
-         }
-         // Header Component
-         const HeaderComponent = ()=> {
-
-          const {pages,setPages,activePage,setActivePage,showExplorer,completeListofPages,showSearch,setShowExplorer} = React.useContext(GlobalContext)
-          const [showPages,setShowPages] = React.useState(true)
-          const [showResume,setShowResume] = React.useState(false)
-
-          const ClosePage = (index)=> {
-            let pageinfo = pages[index]
-            pages.splice(index,1)
-            setPages([...pages])
-            if(pages.length > 0){
-              if(pageinfo.title === activePage.title) setActivePage(pages[0])
-            }else {
-              setActivePage({
-                title: "Welcome",
-                component: <WelcomeMessage/>,
-              })
-            }
-         
-          }
-
-          const changePage = (index) => {
-            setActivePage(pages[index])
-          }
-
-          const addtoPage = (index) => {
-            let check = pages.filter((page)=> completeListofPages[index].title === page.title)
-
-            if(check.length ==0){
-              setPages(oldstate => [...oldstate, completeListofPages[index]])
-            }
-            setActivePage(completeListofPages[index])
-          }
-
-          React.useEffect(()=>{
-            if(Swal){
-              Swal.fire({
-                title: "Welcome :)",
-                icon: "info",
-                text: "This page is not yet fully responsive. For better experience you should view this on your computer or larger device.",
-                confirmButtonText: 'Continue',
-              }).then((result)=>{
-                setShowExplorer(true)
-              })
-            }
-          },[])
-
-          return (
-            <div>
-              <header>
-                  <p style={{fontSize:"10pt"}}>Alvin Sison Raquem's Portfolio</p>
-              </header>
-              {
-                showSearch &&
-                <div id="explorer">
-                    <div style={{display:"flex", flexGrow: 1, padding: "20px", alignItems:"center" ,flexDirection:"column"}}>
-                      <span>Sample Projects</span>
-                      <input placeholder="Search..." style={{outline:"none",borderRadius: 10,width:"100%",marginTop:10,fontSize: "12pt",padding: 5}} type="text"></input>
-                    </div>
-
-                    
-            
-                </div>
-              }
-
-               {
-                    showExplorer &&  
-                    <div id="explorer">
-                        <div style={{display:"flex", flexGrow: 1, padding: "20px", alignItems:"center" ,flexDirection:"column"}}>
-                           <img src="./assets/images/me.jpg" alt="Alvin Raquem" style={{borderRadius:"100%", height: "120px" , width: "120px"}}/>
-                           <p style={{margin: "25px 0px 5px 0px",padding: 0}}>Hi i'm Alvin Sison Raquem </p>
-                           <span style={{fontSize: "11pt"}}><span style={{color:"#D8A31A"}}>&#60;Web & Mobile</span> <span style={{color:"#7763A9"}}>App Developer/></span></span>
-                        
-                          <span style={{fontSize: "10pt",marginTop:"5px",color:"#A5ABBD"}}><i className="fa fa-envelope"/> raquem.alvin@gmail.com</span>
-                          <span style={{fontSize: "10pt",marginTop:"5px",color:"#A5ABBD"}}><i className="fa fa-phone"/> +639270752905</span>
-          
-                        </div>
-
-                        <div style={{
-                          borderTop:"1px solid gray",
-                          flexGrow: 1,
-                          width: "100%",
-                          paddingTop: "10px"
-                        }}>
-
-                        <span style={{fontSize:"10pt",fontWeight:"200",margin: "20px 10px"}}>EXPLORER</span>
-
-                        <div onClick={()=>setShowPages(!showPages)} style={{
-                          display: "flex",
-                          flexDirection:"row",
-                          margin:"10px",
-                          cursor:"pointer"
-                        }}>
-
-                          <i className={showPages ? "fa fa-caret-down" : "fa fa-caret-right"} style={{flexBasis: "10px"}}/>
-                          <span style={{fontSize: "10pt",marginLeft: "10px"}}>ALVIN RAQUEM'S PORTFOLIO</span>
-                        </div>
-
-                        {
-                          showPages && 
-                                  <div style={{
-                                    display: "flex",
-                                    flexDirection:"column",
-                                    margin:"10px 0px",
-                                  }}>
-
-                                  {
-                                    completeListofPages.map((page,index)=> {
-
-                                        return ( <div 
-                                      onClick={()=>addtoPage(index)}  
-                                      style={{
-                                        background: page.title == activePage.title ? "#35383D" : "transparent",
-                                        padding: "5px 10px",
-                                        width: "100%",
-                                        display: "flex",
-                                        flexDirection:"row",
-                                        cursor:"pointer"
-                                      }}>
-                                          <span style={{fontSize: "8pt",color:"yellow",marginLeft: "20px"}}>JS</span>
-                                          <span style={{margin: "0px 10px",fontSize: "10pt"}}>{page.title}.js</span>
-                                      </div>
-                                        )
-                                      })
-
-                                  }
-
-                                  </div>
-                        }
-
-
-                        <div onClick={()=>setShowResume(!showResume)} 
-                        style={{
-                          display: "flex",
-                          flexDirection:"row",
-                          margin:"10px",
-                          cursor:"pointer"
-                        }}>
-
-                          <i className={showResume ? "fa fa-caret-down" : "fa fa-caret-right"} style={{flexBasis: "10px"}}/>
-                          <span style={{fontSize: "10pt",marginLeft: "10px"}}>RESUME</span>
-                        </div>
-
-                            {
-                              showResume && 
-                              <div style={{
-                                display: "flex",
-                                flexDirection:"column",
-                                margin:"10px 0px"
-                              }}>
-
-                                <a 
-                                  href="./assets/files/RAQUEM_ALVIN.pdf"
-                                  target="_blank"
-                                  style={{
-                                    textDecoration:"none",
-                                    padding: "5px 10px",
-                                    width: "100%",
-                                    display: "flex",
-                                    flexDirection:"row",
-                                    cursor:"pointer",
-                                    color:"white"
-                                  }}>
-                                      <span style={{fontSize: "8pt",color:"#e75c4a",marginLeft: "20px"}}>PDF</span>
-                                      <span style={{margin: "0px 10px",fontSize: "10pt"}}>RAQUEM.pdf</span>
-                                  </a>
-
-                              </div>
-                            }
-
-                        </div>
-                    </div>  
-               }
-
-
-              {
-                pages.length > 0 &&
-                <div id="contentNavigation">
-                    <div id="activeRowPage">
-                      {
-                        pages.map((page,index)=> {
-
-                          let background = page.title === activePage.title ? "#1F2227" : "#35383D"
-
-                          return (
-                            <div className="pagenavtitle" style={{ height: "100%", flexBasis:"100px",background,padding: "0px 10px",cursor:"pointer",borderRight: "0.5px solid #1F2227"}}>
-                              <div onClick={()=>changePage(index)}>
-                                <span style={{fontSize: "8pt",color:"yellow"}}>{page.title != "Welcome" && "JS"}</span>
-                                <span style={{margin: "0px 25px",fontSize: "10pt"}}>{page.title}{page.title != "Welcome" && ".js"}</span>
-                              </div>
-                              {
-                                page.title != "Welcome" &&
-                                <div onClick={()=>ClosePage(index)} style={{width:"20px",height:"100%",display:"grid",justifyContent:"center",alignItems:"center"}}>
-                                {
-                                  page.title === activePage.title 
-                                  ?  <span style={{fontSize: "10pt",color:"gray",}}>x</span>
-                                  :  <span className="closePage" style={{fontSize: "10pt",color:"gray",opacity: 0,}}>x</span>
-                                }
-                                </div> 
-                              }
-                            
-                            </div>
-                          )
-                        })
-                      }
-                     
-                           
-            
-                    </div>
-
-                    <div id="activeRowTitle">
-                      <div style={{marginLeft: "10px",display:"flex",paddingTop: "5px"}}>
-                        <span style={{color:"white",fontSize: "8pt"}}>Alvin Sison Raquem's Portfolio > {activePage.title}.js</span>
-                      </div>
-                    </div>
-                </div>
-              }
-             
-            </div>
-          )
-         }
-         // Sidebar Component
-         const SideBarComponent = ()=> {
-            const globalContext = React.useContext(GlobalContext)
-            const resetState = (type="explorer")=> {
-              if(type == "explorer"){
-                globalContext.setShowExplorer(!globalContext.showExplorer);
-                globalContext.setShowSearch(false);
-                return;
-              }
-
-              globalContext.setShowSearch(!globalContext.showSearch);
-              globalContext.setShowExplorer(false);
-              return
-          
-            }
-
-            return (
-              <nav>
-                  <aside>
-                    <a style={{position:'relative'}} onClick={()=>resetState()} href="javascript:void(0)">
-                      {
-                        globalContext.showExplorer && <div style={{position:"absolute",height:'100%',width:'13px',background:'white',left: -25}}></div>
-                      }
-                      <i style={globalContext.showExplorer ? {color: "white"} : {color: "#939599"}} className="fa fa-copy"></i>
-                    </a>
-                    <div id="contactme">
-                      <a href="https://www.facebook.com/raquem.alvin" target="_blank"><i className="fa fa-facebook-square"></i></a>
-                      <a href="https://www.instagram.com/alvinraquem/" target="_blank"><i className="fa fa-instagram"></i></a>
-                      <a href="https://www.linkedin.com/in/alvin-raquem-167799146/" target="_blank"><i className="fa fa-linkedin"></i></a>
-                      <a href="https://github.com/asraquem00110" target="_blank"><i className="fa fa-github"></i></a>
-                    </div>
-                  </aside>
-                 
-              </nav>
-            )
-         }
-
-
-         // Main Content Component
-
-         const MainContentComponent = ()=> {
-
-          const {activePage,pages} = React.useContext(GlobalContext)
-
-          return (
-            <div id="MainContent">
-                  {pages.length > 0 && activePage.component}
-            </div>
-          )
-         }
-
-         const GridComponent = ({children,style})=> {
-
-           return (
-            <div className="gridContainer" style={{...style}}>
-                {children}
-            </div>
-           )
-         }
-
-         const DarkCard = ({children})=> {
-
-          return (
-            <div style={{display: "column", padding: "10px", flexGrow: "1",background:"#35383D",margin: "20px 0px", borderRadius: "5px", position:"relative"}}>
-                {children}
-            </div>  
-          )
-         }
-
-         const WhiteCard = ({children})=> {
-
-          return (
-            <div style={{display: "column", padding: "10px", flexGrow: "1",background:"white",margin: "20px 0px", borderRadius: "5px", position:"relative"}}>
-                {children}
-            </div>  
-            )
-        }
-
-         const CardContent = ({children,title, className})=> {
-
-          return (
-            <div className={className} style={{zIndex: 1}}>
-                      <span style={{fontSize: "14pt"}}>{title}</span>
-                      <br/>
-                      {children}      
-            </div>
-          )
-         }  
-         
-
-
-         const WelcomeMessage = ()=> {
-
-          const {setActivePage,pages} = React.useContext(GlobalContext)
-
-          return (
-            <div className="PageContent" id="WelcomeMessageMainDiv">
-
-              <div id="greetings">
-                 <h1>Welcome to my Portfolio</h1>
-                 <span>This theme or style is inspired by an editor that I personally used for writing codes. <span style={{color: "#37A2EA"}}> Visual Studio</span> Code Editor ...</span>
-              
+      // Main Component Here
+      const App = () => {
+        return (
+          <div>
+            <GlobalContextProvider>
+              <div id="mainApp">
+                <HeaderComponent />
+                <SideBarComponent />
+                <MainContentComponent />
               </div>
-              
-              <GridComponent>
-
-                  <CardContent  className="grid-col-4" title="Start">
-                      <div style={{marginTop: "20px"}}> 
-                        <span>This website contains relative information's about Alvin Sison Raquem as a Software Engineer.
-                            It includes Skills, Work Experience and Sample Projects.
-                          </span>
-                      </div>
-                      
-
-                      <div style={{marginTop: "30px"}}> 
-                        <span style={{fontSize: "14pt"}}>Recent</span>
-                        <div style={{marginTop: "10px", display:"flex", flexDirection:"column"}}>
-
-                          {
-                            pages.map((page,index)=> {
-                              return (
-                                <span onClick={()=>setActivePage(page)} className="recentItems">{page.title} <span className="path">C:\Users\Alvin\Portfolio\{page.title}{page.title != "Welcome" && ".js"}</span></span>
-                              )
-                            })
-                          }
-                          
-                        </div>
-                      </div>
-
-
-
-                  </CardContent>
-
-                  <CardContent  className="grid-col-4" title="Learn how to explore">
-  
-                    <DarkCard>
-                        <span className="cardTitle">First Step</span>
-                        <br/>
-                        <span style={{color:"silver"}}>To navigate to other content of this portfolio, click the &nbsp; <i className="fa fa-copy" /> &nbsp; icon to show/hide sidebar navigation.</span>
-                    </DarkCard>
-
-                    <DarkCard>
-                      <span className="cardTitle">Second Step</span>
-                        <br/>
-                        <span style={{color:"silver"}}>Select or click a file to open the page that you want to explore.</span>
-                    </DarkCard>
-
-                    <DarkCard>
-                      <span className="cardTitle">Third Step</span>
-                        <br/>
-                        <span style={{color:"silver"}}>Switch pages in the top navigation.</span>
-                        <div style={{marginTop:"20px"}}>
-                        <img src="./assets/images/site/topnav.PNG"  style={{height:"100%",width:"100%"}}/>
-                        </div>
-                    </DarkCard>
-
-                  </CardContent>
-                 
-                  <CardContent className="grid-col-4" title="Need Software Engineer?">
-                    <DarkCard>
-                        <span className="cardTitle">Download my resume</span>
-                        <br/>
-                        <div style={{margin: "20px 0px"}}>
-                        <a href="./assets/files/RAQUEM_ALVIN.pdf" target="_blank"><button className="btn btn-default">RAQUEM.pdf <i className="fa fa-download"/></button></a>
-                        </div>
-                    </DarkCard>
-
-                    <DarkCard>
-                        <h2 style={{fontStyle: "italic", color: "white"}}>"Let's Turn Your Idea's Into <span style={{color:"#37A2EA"}}>Reality</span>"</h2>
-                        <h2 style={{fontStyle: "italic", color: "white"}}>While (!Succeed) <span style={{color:"#37A2EA"}}>TryAgain</span>()</h2>
-                    </DarkCard>        
-                    
-                  </CardContent>
-              </GridComponent>
-               
-            </div>
-          )
-         }
-
-         const AboutContent = ({title , icon , children})=> {
-           return (
-            <div className="AboutContent">
-              <div className="AboutTitle">
-                      <span className="AboutTitleLogo"><i className={icon}/></span>
-                      <span className="AboutTitleDescription">{title}</span>
-                      <hr style={{background: "#4F4180",height:"10px",width:"20%",border: "none"}} />
-              </div>
-
-              {children}
-            </div>
-           )
-         }
-
-         const AboutMe = ()=> {
-
-          return (
-            <div className="PageContent" >
-              <div id="MainAbout">
-                  <div id="AboutIntro">
-                    <div id="AboutImage">
-                      <div style={{position:"absolute",height:"85%",bottom: 0, background:"#EBEBEB",zIndex: 0,width: "100%", borderBottomLeftRadius: "20px",borderTopLeftRadius:"20px"}} />
-                      <img style={{marginTop: 50,height: "400px", width:"400px", placeSelf:"center",zIndex: 1}} src="./assets/images/me.png"/>
-                    </div>
-                    <div id="Aboutdescription">
-                        <div id="AboutName">
-                              <h1>Hi I'm Alvin Sison Raquem</h1>
-                        </div>
-
-                        <div id="AboutInfoExpertise">
-                            <div>
-                              <span style={{fontSize:"24pt"}}><span>&#60;Software</span> <span style={{color:"#FF896C"}}>Engineer/></span></span>
-                            </div>
-                            <hr/>
-                            <div style={{marginTop:"16px",flexGrow: 1}}>
-                            <span style={{fontSize:"20pt"}}>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;An Experienced Web and Mobile App Developer who focus more on back end development side, but can also do some front end stuff. I am very passionate in learning new things that will make me competent. I am a good listener and able to grasp new concepts quickly and efficiently.</span>
-                            </div>
-                            <div style={{height:"250px",width:"100%",position:"relative"}}>
-                              <img style={{position:"absolute",height:"100%",bottom: -60 ,right: 0 , width:"100%"}} src="./assets/images/site/aboutdev.svg"/>
-                            </div>
-                        </div>
-                    </div>
-                  </div>
-                  <div id="AboutOthers">
-    
-                         <AboutContent title="Education" icon="fa fa-graduation-cap">
-                            <GridComponent>
-                                <div className="grid-col-6">
-                                  
-                                    <DarkCard>
-                                      <div style={{display:"flex", flexDirection:"row"}}>
-                                          <div style={{flexBasis: "200px",height:"200px", justifyContent:"center",alignItems:"center",display:"flex"}}>
-                                             <img src="./assets/images/about/tup.png" style={{height: "180px", width:"180px"}} />
-                                          </div>
-
-                                          <div style={{flexGrow: 1, height: "200px",flexDirection:"column",display:"flex",justifyContent:"center"}}>
-                                                <span style={{fontSize: 24, fontWeight:"bold"}}>Diploma in Computer Engineering Technology</span>
-                                                <span style={{fontSize: 18,marginTop: 2}}>Technician Course</span>
-                                                <span style={{fontSize: 18,marginTop: 2}}>2015</span>
-                                                <span style={{fontSize: 18,marginTop: 2}}>Technological University of the Philippines - Taguig Campus</span>
-                                          </div>
-                                      </div>
-                                    </DarkCard>
-
-                                  </div>
-
-                                  <div className="grid-col-6">
-                                  
-                                  <DarkCard>
-                                    <div style={{display:"grid", gridTemplateColumns: "200px 1fr", gridTemplateRows: "200px"}}>
-                                          <div style={{gridColumn: "1 / 2", gridRow: "1 /1 ", display: "grid", placeItems: "center"}}>
-                                 
-                                               <img src="./assets/images/about/tup.png" style={{height: "180px", width:"180px"}} />
-                              
-                                          </div>
-
-                                          <div style={{gridColumn: "2 / 3", gridRow: "1 /1 ",flexDirection:"column",display:"flex",justifyContent:"center"}}>
-                                                <span style={{fontSize: 24, fontWeight:"bold"}}>Bachelor of Technology in Information Technology</span>
-                                                <span style={{fontSize: 18,marginTop: 2}}>Ladderized Degree Course</span>
-                                                <span style={{fontSize: 18,marginTop: 2}}>2017</span>
-                                                <span style={{fontSize: 18,marginTop: 2}}>Technological University of the Philippines - Taguig Campus</span>
-                                          </div>
-                                         
-                                      </div>
-                                  </DarkCard>
-
-                                </div>
-                            </GridComponent>
-                        </AboutContent>
-
-                        <AboutContent title="Get in touch" icon="fa fa-handshake-o">
-                          <div style={{
-                            display: "flex",
-                            flexDirection: "column",
-                            alignItems: "center",
-                            flex: 1,
-                          }}>
-                          <div style={{display:"flex",flexDirection:'row',width:"100%",justifyContent:'center',alignItems:'center'}}>
-                            <a style={{margin: 10,fontSize: 40,color:"#A5ABBD"}} href="https://www.facebook.com/raquem.alvin" target="_blank"><i className="fa fa-facebook-square"></i></a>
-                            <a style={{margin: 10,fontSize: 40,color:"#A5ABBD"}} href="https://www.instagram.com/alvinraquem/" target="_blank"><i className="fa fa-instagram"></i></a>
-                            <a style={{margin: 10,fontSize: 40,color:"#A5ABBD"}} href="https://www.linkedin.com/in/alvin-raquem-167799146/" target="_blank"><i className="fa fa-linkedin"></i></a>
-                            <a style={{margin: 10,fontSize: 40,color:"#A5ABBD"}} href="https://github.com/asraquem00110" target="_blank"><i className="fa fa-github"></i></a>
-                        </div>
-                          <span style={{fontSize: "14pt",marginTop:"5px",color:"#A5ABBD"}}><i className="fa fa-envelope"/> raquem.alvin@gmail.com</span>
-                          <span style={{fontSize: "14pt",marginTop:"10px",color:"#A5ABBD"}}><i className="fa fa-phone"/> +639270752905</span>
-          
-                          </div>
-                      
-                        </AboutContent>
-                  </div>
-              </div>
-            </div>
-          )
-         }
-
-
-         const StackTechnology = ({image,style = {height:"100px",width:"100px"}, theme = "dark"})=> (
-            <div className="grid-col-3 stackTechnology">
-              {
-                theme == "dark"
-                ? <DarkCard>
-                      <div style={{display:"grid", placeItems:"center"}}>
-                        <img style={style} src={`assets/images/skills/${image}`}/>
-                      </div>
-                  </DarkCard>
-                : <WhiteCard>
-                      <div style={{display:"grid", placeItems:"center"}}>
-                        <img style={style} src={`assets/images/skills/${image}`}/>
-                      </div>
-                  </WhiteCard>
-              }
-                         
+            </GlobalContextProvider>
           </div>
-         )
+        );
+      };
+      // Header Component
+      const HeaderComponent = () => {
+        const {
+          pages,
+          setPages,
+          activePage,
+          setActivePage,
+          showExplorer,
+          completeListofPages,
+          showSearch,
+          setShowExplorer,
+        } = React.useContext(GlobalContext);
+        const [showPages, setShowPages] = React.useState(true);
+        const [showResume, setShowResume] = React.useState(false);
 
-         const Skills = ()=> {
-          
-          return (
-            <div className="PageContent">
-              <AboutContent title="My Skills" icon="fa fa-cogs">
-                    <GridComponent style={{padding: "0px 50px 0px 50px"}}>
-                                <div className="grid-col-4">
-                                      <DarkCard>
-                                         <div style={{padding: "10px 50px", textAlign:"center",position:'relative'}}>
-                                         
-                                          <div className="specialtygrid">
-                                            <img src="./assets/images/site/web.svg" style={{height: "120px",width:"120px"}}/>
-                                              </div>
-                                              <div className="specialtygrid">
-                                              <span className="specialtytitle">Web Development</span>
-                                              <hr/>
-                                              <span style={{color:"white"}}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sit amet risus rhoncus, ornare sapien in, sodales lectus. Mauris neque justo, dictum ac ante et, finibus commodo lorem. Cras laoreet gravida accumsan. Interdum et malesuada fames ac ante ipsum primis in faucibus.</span>
-                          
-                                              </div>
-                                           
-                                         </div>
-                                      </DarkCard>
-                                </div>
-                                <div className="grid-col-4">
-                                  <DarkCard>
-                                    <div style={{padding: "10px 50px", textAlign:"center",position:'relative'}}>
-                                  
-                                               <div className="specialtygrid">
-                                                <img src="./assets/images/site/db.svg" style={{height: "120px",width:"120px"}}/>
-                                              </div>
-                                              <div className="specialtygrid">
-                                              <span className="specialtytitle">Database</span>
-                                              <hr/>
-                                              <span style={{color:"white"}}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sit amet risus rhoncus, ornare sapien in, sodales lectus. Mauris neque justo, dictum ac ante et, finibus commodo lorem. Cras laoreet gravida accumsan. Interdum et malesuada fames ac ante ipsum primis in faucibus.</span>
-                          
-                                              </div>
-                                           
-                                         </div>
-                                      </DarkCard>
-                                </div>
-                                <div className="grid-col-4">
-                                  <DarkCard>
-                                    <div style={{padding: "10px 50px", textAlign:"center",position:'relative'}}>
-                                              <div className="specialtygrid">
-                                                <img src="./assets/images/site/react.svg" style={{height: "120px",width:"120px"}}/>
-                                              </div>
-                                              <div className="specialtygrid">
-                                              <span className="specialtytitle">Mobile App Development</span>
-                                              <hr/>
-                                              <span style={{color:"white"}}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sit amet risus rhoncus, ornare sapien in, sodales lectus. Mauris neque justo, dictum ac ante et, finibus commodo lorem. Cras laoreet gravida accumsan. Interdum et malesuada fames ac ante ipsum primis in faucibus.</span>
-                          
-                                              </div>
-                                           
-                                         </div>
-                                      </DarkCard>
-                                </div>
-                    </GridComponent>
-                </AboutContent>
-                <br/> 
-                <AboutContent title="Current Technology Stacks" icon="fa fa-desktop">
-                    <GridComponent style={{padding: "0px 50px 0px 50px"}}>
-                        <StackTechnology theme="white" image="node.png"/>
-                        <StackTechnology theme="white" image="express.png"/>
-                        <StackTechnology theme="white" image="rest.png"/>
-                        <StackTechnology theme="white" image="graphql.png"/>
-                        <StackTechnology theme="white" image="apollo.png" style={{height:"100px",width:"150px"}}/>
-                        <StackTechnology theme="white" image="react.png"/>
-                        <StackTechnology theme="white" image="redux.png"/>
-                        <StackTechnology theme="white" image="reactnative.png"/>
-                        <StackTechnology theme="white" image="mysql.png"/>
-                        <StackTechnology theme="white" image="knex.png" style={{height:"100px",width:"150px"}}/>
-                        <StackTechnology theme="white" image="bs.png"/>
-                        <StackTechnology theme="white" image="css.png"/>
-                        <StackTechnology theme="white" image="html.png"/>
-                        <StackTechnology theme="white" image="js.png"/>
-                        <StackTechnology theme="white" image="vscode.png"/>
-                        <StackTechnology theme="white" image="git.png"/>
-                      </GridComponent>
-                </AboutContent>
+        const ClosePage = (index) => {
+          let pageinfo = pages[index];
+          pages.splice(index, 1);
+          setPages([...pages]);
+          if (pages.length > 0) {
+            if (pageinfo.title === activePage.title) setActivePage(pages[0]);
+          } else {
+            setActivePage({
+              title: "Welcome",
+              component: <WelcomeMessage />,
+            });
+          }
+        };
 
-                <br/>
-                <AboutContent title="Have Experience/Previous Technology Stacks" icon="fa fa-desktop">
-                  <GridComponent style={{padding: "0px 50px 0px 50px"}}>
-                        <StackTechnology theme="white" image="php.png"/>
-                        <StackTechnology theme="white" image="laravel.png"/>
-                  </GridComponent>
-                </AboutContent>
+        const changePage = (index) => {
+          setActivePage(pages[index]);
+        };
 
-                <br/>
-                <AboutContent title="Interested To Learn" icon="fa fa-desktop">
-                  <GridComponent style={{padding: "0px 50px 0px 50px"}}>
-                        <StackTechnology theme="white" image="nosql.png"/>
-                        <StackTechnology theme="white" image="mongo.png"/>
-                        <StackTechnology theme="white" image="dynamo.png"/>
-                  </GridComponent>
-                </AboutContent>
-            </div>
-          )
-         }
+        const addtoPage = (index) => {
+          let check = pages.filter(
+            (page) => completeListofPages[index].title === page.title
+          );
 
-         const Experience = ()=> {
+          if (check.length == 0) {
+            setPages((oldstate) => [...oldstate, completeListofPages[index]]);
+          }
+          setActivePage(completeListofPages[index]);
+        };
 
-          return (
-            <div className="PageContent">
+        React.useEffect(() => {
+          if (Swal) {
+            Swal.fire({
+              title: "Welcome :)",
+              icon: "info",
+              text: "This page is not yet fully responsive. For better experience you should view this on your computer or larger device.",
+              confirmButtonText: "Continue",
+            }).then((result) => {
+              setShowExplorer(true);
+            });
+          }
+        }, []);
 
-              <AboutContent title="Work Experience" icon="fa fa-desktop">
-                <div className="works">
-                  <div className="content">
-                    <span className="dateLeft">October 2014 – March 2015</span>
-
-                    <GridComponent>
-                        <div className="grid-col-6" style={{marginTop: "20px" , textAlign:"center",alignItems:'center', justifyContent:"center",display:"flex",flexDirection:"column"}}>
-                                <img id="worksvg1" style={{height:"60%",width:"60%"}} src="assets/images/svg/support.svg"/>
-                                <br/>
-                                <span style={{color:"dimgray",fontSize: "24pt",fontWeight:"bold"}}>Intern (POS Technical Support)</span>
-                          </div>
-
-                          <div className="grid-col-6" style={{marginTop: "20px", textAlign:"center",alignItems:'center', justifyContent:"center",display:"flex",flexDirection:"column"}}>
-                                <ul className="list">
-                                    <li><strong style={{color:"skyblue"}}>Company:</strong> Nexus Technologies Inc.</li>
-                                    <li><strong style={{color:"skyblue"}}>Department:</strong> Nexus Professional Services and Solutions (NPSS)</li>
-                                    <li><strong style={{color:"skyblue"}}>Website:</strong> <a target="_blank" style={{color: "white"}} href="https://nexustech.com.ph">https://nexustech.com.ph</a></li>
-                                    <li><strong style={{color:"skyblue"}}>Address:</strong> G/F Don Pablo building, 114 Amorsolo Street, Legazpi Village, Makati City.</li>
-                                    <li><strong style={{color:"skyblue"}}>Duration:</strong> October 2014 - March 2015 5 months </li>
-                
-                                    <hr/>
-                                      <ul>
-                                        <li>Answer and solve issues over phone calls</li>
-                                        <li>Encode client's issue in Ticketing System</li>
-                                        <li>Setup Computer (Hardware and Software)</li>
-                                        <li>Fixing issue on site</li>
-                                      
-                                      </ul>
-                                    
-                                    </ul>
-                          </div>
-                      </GridComponent>
-                  </div>  
-
-                  <div className="content">
-                    <span className="dateRight">August 2017 – April 2020</span>
-
-                    <GridComponent>
-          
-                          <div className="grid-col-6" style={{marginTop: "20px", textAlign:"center",alignItems:'center', justifyContent:"center",display:"flex",flexDirection:"column"}}>
-                                <ul className="list">
-                                  <li><strong style={{color:"skyblue"}}>Company:</strong>E-CTK Solutions Inc. (ESI) / Armored Transport Plus, Inc. (ATPI)</li>
-                                <li><strong style={{color:"skyblue"}}>Department:</strong> ECTK Solutions Inc. (ESI)</li>
-                                <li><strong style={{color:"skyblue"}}>Website:</strong> <a target="_blank" style={{color: "white"}} href="https://www.atpi.com.ph">https://www.atpi.com.ph</a></li>
-                                <li><strong style={{color:"skyblue"}}>Address:</strong> No. 2 Avis Street, Bagong Ilog, Pasig City Philippines</li>
-                                <li><strong style={{color:"skyblue"}}>Duration:</strong> August 2017 - April 2020 2 yrs. & 8 months</li>                          
-                                <hr/>
-                                  <ul>
-                                    <li>In-house developer</li>
-                                    <li>Create web system for the manual process of company’s operation</li>
-                                    <li>Enhance and modify existing system</li>
-                                    <li>Analyze program/system based on the required functionalities</li>
-                                    <li>Generate needed/requested reports</li>
-                                    <li>Documentation of program/system</li>
-                                  </ul>
-                                    
-                                    </ul>
-                          </div>
-
-                          <div className="grid-col-6" style={{marginTop: "20px" , textAlign:"center",alignItems:'center', justifyContent:"center",display:"flex",flexDirection:"column"}}>
-                                <img id="worksvg1" style={{height:"60%",width:"60%"}} src="assets/images/svg/webdev.svg"/>
-                                <br/>
-                                <span style={{color:"dimgray",fontSize: "24pt",fontWeight:"bold"}}>PHP Web Developer</span>
-                          </div>
-                      </GridComponent>
-                  </div>  
-
-                  <div className="content">
-                    <span className="dateLeft">February 2021 – Present</span>
-
-                    <GridComponent>
-                        <div className="grid-col-6" style={{marginTop: "20px" , textAlign:"center",alignItems:'center', justifyContent:"center",display:"flex",flexDirection:"column"}}>
-                                <img id="worksvg1" style={{height:"60%",width:"60%"}} src="assets/images/svg/mobiledev.svg"/>
-                                <br/>
-                                <span style={{color:"dimgray",fontSize: "24pt",fontWeight:"bold"}}>Sr. Software Engineer</span>
-                          </div>
-
-                          <div className="grid-col-6" style={{marginTop: "20px", textAlign:"center",alignItems:'center', justifyContent:"center",display:"flex",flexDirection:"column"}}>
-                                <ul className="list">
-                                    <li><strong style={{color:"skyblue"}}>Company:</strong> Cloud Panda PH Inc.</li>
-                                    <li><strong style={{color:"skyblue"}}>Department:</strong> Development Deparment / toktok PH</li>
-                                    <li><strong style={{color:"skyblue"}}>Website:</strong> <a target="_blank" style={{color: "white"}} href="https://cloudpanda.ph">https://cloudpanda.ph</a></li>
-                                    <li><strong style={{color:"skyblue"}}>Address:</strong> 10F Inoza Tower, 40th Street, Bonifacio Global City, Taguig City, Metro Manila 1634, Philippines.</li>
-                                    <li><strong style={{color:"skyblue"}}>Duration:</strong> February 2021 – Present </li>
-                
-                                    <hr/>
-                                      <ul>
-                                        <li>assigned in toktok mobile app project</li>
-                                        <li>sub lead for some services of the mobile app ( toktokwallet , toktokload , toktokbills )</li>
-                                        <li>develop FE ( React Native ) mobile app based on UI/UX provided</li>
-                                        <li>coordinate with other devs to accomplish app functionality</li>
-                                        <li>create BE graphql service/api to be consume by the mobile app</li>
-                                      </ul>
-                                    
-                                    </ul>
-                          </div>
-                      </GridComponent>
-                  </div>  
-
-                  <div className="content" style={{height:"10%"}}/>
-
+        return (
+          <div>
+            <header>
+              <p style={{ fontSize: "10pt" }}>Alvin Sison Raquem's Portfolio</p>
+            </header>
+            {showSearch && (
+              <div id="explorer">
+                <div
+                  style={{
+                    display: "flex",
+                    flexGrow: 1,
+                    padding: "20px",
+                    alignItems: "center",
+                    flexDirection: "column",
+                  }}
+                >
+                  <span>Sample Projects</span>
+                  <input
+                    placeholder="Search..."
+                    style={{
+                      outline: "none",
+                      borderRadius: 10,
+                      width: "100%",
+                      marginTop: 10,
+                      fontSize: "12pt",
+                      padding: 5,
+                    }}
+                    type="text"
+                  ></input>
                 </div>
-             
-              </AboutContent>
+              </div>
+            )}
+
+            {showExplorer && (
+              <div id="explorer">
+                <div
+                  style={{
+                    display: "flex",
+                    flexGrow: 1,
+                    padding: "20px",
+                    alignItems: "center",
+                    flexDirection: "column",
+                  }}
+                >
+                  <img
+                    src="./assets/images/me.jpg"
+                    alt="Alvin Raquem"
+                    style={{
+                      borderRadius: "100%",
+                      height: "120px",
+                      width: "120px",
+                    }}
+                  />
+                  <p style={{ margin: "25px 0px 5px 0px", padding: 0 }}>
+                    Hi i'm Alvin Sison Raquem{" "}
+                  </p>
+                  <span style={{ fontSize: "11pt" }}>
+                    <span style={{ color: "#D8A31A" }}>&#60;Web & Mobile</span>{" "}
+                    <span style={{ color: "#7763A9" }}>App Developer/></span>
+                  </span>
+
+                  <span
+                    style={{
+                      fontSize: "10pt",
+                      marginTop: "5px",
+                      color: "#A5ABBD",
+                    }}
+                  >
+                    <i className="fa fa-envelope" /> raquem.alvin@gmail.com
+                  </span>
+                  <span
+                    style={{
+                      fontSize: "10pt",
+                      marginTop: "5px",
+                      color: "#A5ABBD",
+                    }}
+                  >
+                    <i className="fa fa-phone" /> +639270752905
+                  </span>
+                </div>
+
+                <div
+                  style={{
+                    borderTop: "1px solid gray",
+                    flexGrow: 1,
+                    width: "100%",
+                    paddingTop: "10px",
+                  }}
+                >
+                  <span
+                    style={{
+                      fontSize: "10pt",
+                      fontWeight: "200",
+                      margin: "20px 10px",
+                    }}
+                  >
+                    EXPLORER
+                  </span>
+
+                  <div
+                    onClick={() => setShowPages(!showPages)}
+                    style={{
+                      display: "flex",
+                      flexDirection: "row",
+                      margin: "10px",
+                      cursor: "pointer",
+                    }}
+                  >
+                    <i
+                      className={
+                        showPages ? "fa fa-caret-down" : "fa fa-caret-right"
+                      }
+                      style={{ flexBasis: "10px" }}
+                    />
+                    <span style={{ fontSize: "10pt", marginLeft: "10px" }}>
+                      ALVIN RAQUEM'S PORTFOLIO
+                    </span>
+                  </div>
+
+                  {showPages && (
+                    <div
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        margin: "10px 0px",
+                      }}
+                    >
+                      {completeListofPages.map((page, index) => {
+                        return (
+                          <div
+                            onClick={() => addtoPage(index)}
+                            style={{
+                              background:
+                                page.title == activePage.title
+                                  ? "#35383D"
+                                  : "transparent",
+                              padding: "5px 10px",
+                              width: "100%",
+                              display: "flex",
+                              flexDirection: "row",
+                              cursor: "pointer",
+                            }}
+                          >
+                            <span
+                              style={{
+                                fontSize: "8pt",
+                                color: "yellow",
+                                marginLeft: "20px",
+                              }}
+                            >
+                              JS
+                            </span>
+                            <span
+                              style={{ margin: "0px 10px", fontSize: "10pt" }}
+                            >
+                              {page.title}.js
+                            </span>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  )}
+
+                  <div
+                    onClick={() => setShowResume(!showResume)}
+                    style={{
+                      display: "flex",
+                      flexDirection: "row",
+                      margin: "10px",
+                      cursor: "pointer",
+                    }}
+                  >
+                    <i
+                      className={
+                        showResume ? "fa fa-caret-down" : "fa fa-caret-right"
+                      }
+                      style={{ flexBasis: "10px" }}
+                    />
+                    <span style={{ fontSize: "10pt", marginLeft: "10px" }}>
+                      RESUME
+                    </span>
+                  </div>
+
+                  {showResume && (
+                    <div
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        margin: "10px 0px",
+                      }}
+                    >
+                      <a
+                        href="./assets/files/RAQUEM_ALVIN.pdf"
+                        target="_blank"
+                        style={{
+                          textDecoration: "none",
+                          padding: "5px 10px",
+                          width: "100%",
+                          display: "flex",
+                          flexDirection: "row",
+                          cursor: "pointer",
+                          color: "white",
+                        }}
+                      >
+                        <span
+                          style={{
+                            fontSize: "8pt",
+                            color: "#e75c4a",
+                            marginLeft: "20px",
+                          }}
+                        >
+                          PDF
+                        </span>
+                        <span style={{ margin: "0px 10px", fontSize: "10pt" }}>
+                          RAQUEM.pdf
+                        </span>
+                      </a>
+                    </div>
+                  )}
+                </div>
+              </div>
+            )}
+
+            {pages.length > 0 && (
+              <div id="contentNavigation">
+                <div id="activeRowPage">
+                  {pages.map((page, index) => {
+                    let background =
+                      page.title === activePage.title ? "#1F2227" : "#35383D";
+
+                    return (
+                      <div
+                        className="pagenavtitle"
+                        style={{
+                          height: "100%",
+                          flexBasis: "100px",
+                          background,
+                          padding: "0px 10px",
+                          cursor: "pointer",
+                          borderRight: "0.5px solid #1F2227",
+                        }}
+                      >
+                        <div onClick={() => changePage(index)}>
+                          <span style={{ fontSize: "8pt", color: "yellow" }}>
+                            {page.title != "Welcome" && "JS"}
+                          </span>
+                          <span
+                            style={{ margin: "0px 25px", fontSize: "10pt" }}
+                          >
+                            {page.title}
+                            {page.title != "Welcome" && ".js"}
+                          </span>
+                        </div>
+                        {page.title != "Welcome" && (
+                          <div
+                            onClick={() => ClosePage(index)}
+                            style={{
+                              width: "20px",
+                              height: "100%",
+                              display: "grid",
+                              justifyContent: "center",
+                              alignItems: "center",
+                            }}
+                          >
+                            {page.title === activePage.title ? (
+                              <span style={{ fontSize: "10pt", color: "gray" }}>
+                                x
+                              </span>
+                            ) : (
+                              <span
+                                className="closePage"
+                                style={{
+                                  fontSize: "10pt",
+                                  color: "gray",
+                                  opacity: 0,
+                                }}
+                              >
+                                x
+                              </span>
+                            )}
+                          </div>
+                        )}
+                      </div>
+                    );
+                  })}
+                </div>
+
+                <div id="activeRowTitle">
+                  <div
+                    style={{
+                      marginLeft: "10px",
+                      display: "flex",
+                      paddingTop: "5px",
+                    }}
+                  >
+                    <span style={{ color: "white", fontSize: "8pt" }}>
+                      Alvin Sison Raquem's Portfolio > {activePage.title}.js
+                    </span>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+        );
+      };
+      // Sidebar Component
+      const SideBarComponent = () => {
+        const globalContext = React.useContext(GlobalContext);
+        const resetState = (type = "explorer") => {
+          if (type == "explorer") {
+            globalContext.setShowExplorer(!globalContext.showExplorer);
+            globalContext.setShowSearch(false);
+            return;
+          }
+
+          globalContext.setShowSearch(!globalContext.showSearch);
+          globalContext.setShowExplorer(false);
+          return;
+        };
+
+        return (
+          <nav>
+            <aside>
+              <a
+                style={{ position: "relative" }}
+                onClick={() => resetState()}
+                href="javascript:void(0)"
+              >
+                {globalContext.showExplorer && (
+                  <div
+                    style={{
+                      position: "absolute",
+                      height: "100%",
+                      width: "13px",
+                      background: "white",
+                      left: -25,
+                    }}
+                  ></div>
+                )}
+                <i
+                  style={
+                    globalContext.showExplorer
+                      ? { color: "white" }
+                      : { color: "#939599" }
+                  }
+                  className="fa fa-copy"
+                ></i>
+              </a>
+              <div id="contactme">
+                <a href="https://www.facebook.com/raquem.alvin" target="_blank">
+                  <i className="fa fa-facebook-square"></i>
+                </a>
+                <a
+                  href="https://www.instagram.com/alvinraquem/"
+                  target="_blank"
+                >
+                  <i className="fa fa-instagram"></i>
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/alvin-raquem-167799146/"
+                  target="_blank"
+                >
+                  <i className="fa fa-linkedin"></i>
+                </a>
+                <a href="https://github.com/asraquem00110" target="_blank">
+                  <i className="fa fa-github"></i>
+                </a>
+              </div>
+            </aside>
+          </nav>
+        );
+      };
+
+      // Main Content Component
+
+      const MainContentComponent = () => {
+        const { activePage, pages } = React.useContext(GlobalContext);
+
+        return (
+          <div id="MainContent">{pages.length > 0 && activePage.component}</div>
+        );
+      };
+
+      const GridComponent = ({ children, style }) => {
+        return (
+          <div className="gridContainer" style={{ ...style }}>
+            {children}
+          </div>
+        );
+      };
+
+      const DarkCard = ({ children }) => {
+        return (
+          <div
+            style={{
+              display: "column",
+              padding: "10px",
+              flexGrow: "1",
+              background: "#35383D",
+              margin: "20px 0px",
+              borderRadius: "5px",
+              position: "relative",
+            }}
+          >
+            {children}
+          </div>
+        );
+      };
+
+      const WhiteCard = ({ children }) => {
+        return (
+          <div
+            style={{
+              display: "column",
+              padding: "10px",
+              flexGrow: "1",
+              background: "white",
+              margin: "20px 0px",
+              borderRadius: "5px",
+              position: "relative",
+            }}
+          >
+            {children}
+          </div>
+        );
+      };
+
+      const CardContent = ({ children, title, className }) => {
+        return (
+          <div className={className} style={{ zIndex: 1 }}>
+            <span style={{ fontSize: "14pt" }}>{title}</span>
+            <br />
+            {children}
+          </div>
+        );
+      };
+
+      const WelcomeMessage = () => {
+        const { setActivePage, pages } = React.useContext(GlobalContext);
+
+        return (
+          <div className="PageContent" id="WelcomeMessageMainDiv">
+            <div id="greetings">
+              <h1>Welcome to my Portfolio</h1>
+              <span>
+                This theme or style is inspired by an editor that I personally
+                used for writing codes.{" "}
+                <span style={{ color: "#37A2EA" }}> Visual Studio</span> Code
+                Editor ...
+              </span>
             </div>
-          )
-         }
 
-         const SampleProjects = ()=> {
+            <GridComponent>
+              <CardContent className="grid-col-4" title="Start">
+                <div style={{ marginTop: "20px" }}>
+                  <span>
+                    This website contains relative information's about Alvin
+                    Sison Raquem as a Software Engineer. It includes Skills,
+                    Work Experience and Sample Projects.
+                  </span>
+                </div>
 
-          const [mainProjects, setMainProjects] = React.useState([
-            {
-              id: 1,
-              name: "toktokwallet",
-              desc: " toktokwallet is an e wallet service inside toktok super app mobile application. It offers a convenient way of transacting payables. It provides an easy way to transfer funds from your bank accounts to toktokwallet account and vice versa. It is the main payment option of other services in toktok like toktokbills, toktokload, toktokdelivery etc.",
-              activeImageIndex: 0,
-              features: "KYC Registration, Cash In, Send Money, Cash Out (Over the Counter), Bank Transfer, Payment Service",
-              backend: "#NodeJS #ExpressJS #Apollo Server #GraphQL #MySQL #ObjectionJS/Knex",
-              frontend: "#React Native #Apollo Client #Redux #Context API",
-              images: [
-                './assets/images/projects/wallet/Home1.png',
-                './assets/images/projects/wallet/Home.png',
-                './assets/images/projects/wallet/onboard-send-money.png',
-                './assets/images/projects/wallet/onboard-cash-in.png',
-                './assets/images/projects/wallet/kyc.png',
-                './assets/images/projects/wallet/userlevel.png',
-                './assets/images/projects/wallet/sendMoney.png',
-                './assets/images/projects/wallet/tpin.png',
-                './assets/images/projects/wallet/cashIn.png',
-                './assets/images/projects/wallet/qr.png',
-                './assets/images/projects/wallet/qr2.png',
-                './assets/images/projects/wallet/qr3.png',
-                './assets/images/projects/wallet/qr4.png',
-                './assets/images/projects/wallet/bt1.png',
-                './assets/images/projects/wallet/bt2.png',
-                './assets/images/projects/wallet/bt3.png',
-              ],
-            },
-            {
-              id: 2,
-              name: "toktokload",
-              desc: "toktokload is one of the services of toktok super app. This application provides a feature which toktok user can avail mobile credits using their toktokwallet.",
-              activeImageIndex: 0,
-              features: "Loading Service",
-              backend: "#NodeJS #ExpressJS #Apollo Server #GraphQL #MySQL #ObjectionJS/Knex",
-              frontend: "#React Native #Apollo Client #Redux #Context API",
-              images: [
-                './assets/images/projects/load/home.png',
-                './assets/images/projects/load/home1.png',
-                './assets/images/projects/load/home3.png',
-                './assets/images/projects/load/select.png',
-                './assets/images/projects/load/summary.png',
-                './assets/images/projects/wallet/tpin.png',
-                './assets/images/projects/load/receipt.png',
-                './assets/images/projects/load/notif.png',
-              ],
-            },
-            {
-              id: 3,
-              name: "toktokbills",
-              desc: "toktokbills is a service of toktok super app which let the toktok user to pay their bills (Electric, Water, Utility, Government etc.) using their toktokwallet.",
-              activeImageIndex: 0,
-              features: "Bill Payment Service",
-              backend: "#NodeJS #ExpressJS #Apollo Server #GraphQL #MySQL #ObjectionJS/Knex",
-              frontend: "#React Native #Apollo Client #Redux #Context API",
-              images: [
-                './assets/images/projects/bills/home.png',
-                './assets/images/projects/bills/onboard.png',
-                './assets/images/projects/bills/biller.png',
-                './assets/images/projects/bills/form.png',
-                './assets/images/projects/bills/summary.png',
-                './assets/images/projects/wallet/tpin.png',
-                './assets/images/projects/bills/receipt.png',
-                './assets/images/projects/bills/notif.png',
-              ],
-            }
-          ])
+                <div style={{ marginTop: "30px" }}>
+                  <span style={{ fontSize: "14pt" }}>Recent</span>
+                  <div
+                    style={{
+                      marginTop: "10px",
+                      display: "flex",
+                      flexDirection: "column",
+                    }}
+                  >
+                    {pages.map((page, index) => {
+                      return (
+                        <span
+                          onClick={() => setActivePage(page)}
+                          className="recentItems"
+                        >
+                          {page.title}{" "}
+                          <span className="path">
+                            C:\Users\Alvin\Portfolio\{page.title}
+                            {page.title != "Welcome" && ".js"}
+                          </span>
+                        </span>
+                      );
+                    })}
+                  </div>
+                </div>
+              </CardContent>
 
-          const [projects , setProjects] = React.useState([
-            {
-              id: 1,
-              name: "Cash In Transit v2 Using MEVN stack",
-              activeImageIndex: 0,
-              images: [
-                './assets/images/projects/cit/preview.png',
-                './assets/images/projects/cit/create_request.PNG',
-                './assets/images/projects/cit/clusterring.PNG',
-                './assets/images/projects/cit/clusterring2.PNG',
-                './assets/images/projects/cit/route_planning.PNG',
-                './assets/images/projects/cit/print_dispatch.PNG',
-                './assets/images/projects/cit/reportMap.PNG',
-                './assets/images/projects/cit/settings.PNG',
-                './assets/images/projects/cit/login.jpg',
-                './assets/images/projects/cit/dolist.jpg',
-                './assets/images/projects/cit/viewdo.jpg',
-                './assets/images/projects/cit/siteinfo.jpg',
-                './assets/images/projects/cit/cashsign.jpg',
-                './assets/images/projects/cit/allowlocation.jpg',
-                './assets/images/projects/cit/map.jpg',
-                './assets/images/projects/cit/notif.jpg',
-              ],
-              contents: [
-                "Cash-in-transit (CIT) is the physical transfer of banknotes or coins from one location to another.",
-                "A system that helps cit department to monitor the status of acu trip.",
-                "Prepare Cash Request.",
-                "Clustering of sites for the preparation of Dispatch Order.",
-                "Assigning Dispatch Order to specific Personnel.",
-                "Generate reports and dashboard monitoring.",
-              ],
-              techs: [
-                "Backend: #NodeJs #Express #MongoDB #NoSQL",
-                "Frontend: #HTML #CSS #Bootstrap #Javascript #VueJs",
-                "Mobile: #Ionic Capacitor #VueJs",
-                "Others: #Websockets #Socket.io #Leafletjs"
-              ],
-              codes: [
-                {
-                  label: "Backend",
-                  link: "https://github.com/asraquem00110/MEVN-sample-backend",
-                },
-                {
-                  label: "Frontend",
-                  link: "https://github.com/asraquem00110/MEVN-sample-frontend"
-                },
-                {
-                  label: "Mobile",
-                  link: "https://github.com/asraquem00110/MEVN-sample-mobile"
-                }
-              ],
-              demos: [
-                {
-                  label: "DEMO",
-                  link:"https://cashintransit-00110-asr-mevn.herokuapp.com/",
-                }
-              ]
-            },
-            {
-              id: 2,
-              name: "COVID-19 No. of Cases Tracker Mobile App",
-              activeImageIndex: 0,
-              images: [
-                './assets/images/projects/covidTracker/preview.png',
-                './assets/images/projects/covidTracker/picture1.jpg',
-                './assets/images/projects/covidTracker/picture2.jpg',
-                './assets/images/projects/covidTracker/picture3.jpg',
-                './assets/images/projects/covidTracker/picture4.jpg',
-                './assets/images/projects/covidTracker/splashscreen.jpg',
-                './assets/images/projects/covidTracker/world.jpg',
-                './assets/images/projects/covidTracker/php.jpg',
-                './assets/images/projects/covidTracker/countries.jpg',
-                './assets/images/projects/covidTracker/map.jpg',
-              ],
-              contents: [
-                "A simple mobile app for tracking No. of Covid Cases around the world.",
-                "Hybrid App using Ionic + Vuejs and React Native",
-                "API source: https://corona.lmao.ninja/docs"
-              ],
-              techs: [
-                "Mobile: #Ionic Capacitor #VueJs",
-                "Mobile 2: #React Native #ReactJs"
-              ],
-              codes: [
-                  {
-                    label: "Ionic Mobile",
-                    link: "https://github.com/asraquem00110/Ncov-Updates-Tracker"
-                  },
-                  {
-                    label:"React Native",
-                    link: "https://github.com/asraquem00110/Covid-Case-React-Native-App"
-                  }
-              ],
-              demos: [
-                {
-                  label: "DEMO",
-                  link:"https://ncov-tracker-asr-00110.herokuapp.com/Globe",
-                }
-              ]
-            },
-            {
-              id: 3,
-              name: "Home Quarantine Pass Management System",
-              activeImageIndex: 0,
-              images: [
-                './assets/images/projects/hqp/preview.png',
-                './assets/images/projects/hqp/barangay.png',
-                './assets/images/projects/hqp/generateAll.png',
-                './assets/images/projects/hqp/img1.jpg',
-                './assets/images/projects/hqp/img2.jpg',
-                './assets/images/projects/hqp/img3.jpg',
-                './assets/images/projects/hqp/img4.jpg',
-                './assets/images/projects/hqp/Capture.png',
-                './assets/images/projects/hqp/pic1.jpg',
-                './assets/images/projects/hqp/pic2.jpg',
-                './assets/images/projects/hqp/pic3.jpg',
-                './assets/images/projects/hqp/pic4.jpg',
-              ],
-              contents: [
-                "A Single Page Application using Vuejs.",
-                "A Project Idea during enchanced community quarantine because of corona virus.",
-                "This system manage the generation of Home Quarantine Pass for each family.",
-                "It checks the validity of that pass through scanning its qrcode.",
-                "It checks the list of authorized person who can use the pass."
-              ],
-              techs: [
-                "Backend: #NodeJs #Express #MySQL #Sequelize",
-                "Frontend: #HTML #CSS #Bootstrap #Javascript #VueJs",
-                "Mobile: #Ionic Capacitor #VueJs",
-                "Mobile 2: #React Native #ReactJs"
-              ],
-              codes: [
-                  {
-                    label: "Backend",
-                    link: "https://github.com/asraquem00110/hqp-backend"
-                  },
-                  {
-                    label: "Frontend",
-                    link: "https://github.com/asraquem00110/hqp-frontend"
-                  },
-                  {
-                    label: "Ionic Mobile",
-                    link: "https://github.com/asraquem00110/hqp-mobile-app"
-                  },
-                  {
-                    label: "React Native",
-                    link: "https://github.com/asraquem00110/HQP-Mobile-React-Native"
-                  },
-              ],
-              demos: [
-                {
-                  label: "DEMO",
-                  link:"http://hqp-frontend-asr-00110.herokuapp.com/",
-                }
-              ] 
-            },
-            {
-              id: 4,
-              name: "IHatid App",
-              activeImageIndex: 0,
-              images: [
-                './assets/images/projects/ihatid/preview.PNG',
-                './assets/images/projects/ihatid/login.png',
-                './assets/images/projects/ihatid/login2.png',
-                './assets/images/projects/ihatid/booking.png',
-                './assets/images/projects/ihatid/destination.png',
-                './assets/images/projects/ihatid/rider_book.png',
-                './assets/images/projects/ihatid/waitingforPassenger.png',
-                './assets/images/projects/ihatid/waiting.png',
-                './assets/images/projects/ihatid/chat.PNG',
-                './assets/images/projects/ihatid/passenger_profile.png',
-              ],
-              contents: [
-                  "Status: Incomplete / Ongoing Development",
-                  "A mini project to practice and enhance my react native skills.",
-                  "A simple passenger transport application just like angkas app where users can book a rider."
-              ],
-              techs: [
-                "Backend: #NodeJs #Express #MongoDB #Mongoose",
-                "Frontend: #ReactJs",
-                "Mobile: #React Native",
-                "Others: #Websockets #Socket.io #Googlemap API #Facebook Login"
-              ],
-              codes: [
-                  {
-                    label: "Backend",
-                    link: "https://github.com/asraquem00110/IHatid-Backend-API"
-                  },
-                  {
-                    label: "Mobile",
-                    link: "https://github.com/asraquem00110/IHatid-Mobile-React-Native"
-                  },
-              ]
-            },
-            {
-              id: 5,
-              name: "Dental Clinic Management System (Freelance Project - Project Study)",
-              activeImageIndex: 0,
-              images: [
-                './assets/images/projects/dental/preview.png',
-                './assets/images/projects/dental/appointment.PNG',
-                './assets/images/projects/dental/dashboard.PNG',
-                './assets/images/projects/dental/records.PNG',
-                './assets/images/projects/dental/schedule.PNG',
-                './assets/images/projects/dental/reports.PNG',
-                './assets/images/projects/dental/pharmacy.PNG',
-                './assets/images/projects/dental/pic1.jpg',
-                './assets/images/projects/dental/pic2.jpg',
-                './assets/images/projects/dental/pic3.jpg',
-                './assets/images/projects/dental/pic4.jpg',
-                './assets/images/projects/dental/pic5.jpg',
-              ],
-              contents: [
-                "An Online Dental Management System to save patient’s record.",
-                "To lessen the time-consuming checking of each paper-based patient’s record.",
-                "To monitor and view the available schedule of the Dental Clinic.",
-                "Help patients make reservation online and get notified if approved or not approved and be aware of the clinic’s information and schedule.",
-              ],
-              techs: [
-                "Backend: #NodeJs #Express #MySQL #Sequelize",
-                "Frontend: #HTML #CSS #Bootstrap #Javascript #VueJs",
-                "Mobile: #Ionic Capacitor #VueJs"
-              ],
-              codes: [
-                  {
-                    label: "Backend",
-                    link: "https://github.com/asraquem00110/Dental-Clinic-Management-System-Backend"
-                  },
-                  {
-                    label: "Frontend",
-                    link: "https://github.com/asraquem00110/Dental-Clinic-Management-System-Frontend"
-                  },
-                  {
-                    label: "Mobile",
-                    link: "https://github.com/asraquem00110/Dental-Clinic-Management-System-Mobile-Hybrid"
-                  },
-              ],
-              demos: [
-                {
-                  label: "DEMO",
-                  link:"https://anza-yap-dental-clinic.herokuapp.com/",
-                }
-              ]
-            },
-            {
-              id: 6,
-              name: "Warehouse Inventory Management",
-              activeImageIndex: 0,
-              images: [
-                './assets/images/projects/inventory/preview.PNG',
-                './assets/images/projects/inventory/index.PNG',
-                './assets/images/projects/inventory/iteminfo.PNG',
-                './assets/images/projects/inventory/itemlist.PNG',
-                './assets/images/projects/inventory/reports.PNG',
-                './assets/images/projects/inventory/settings.PNG',
-                './assets/images/projects/inventory/createinbound.PNG',
-                './assets/images/projects/inventory/detailed.PNG',
-                './assets/images/projects/inventory/inboundlist.PNG',
-                './assets/images/projects/inventory/pdf.PNG',
-              ],
-              contents: [
-                  "A Simple Inventory system that can keep and save their records.",
-                  "The system will be using barcode Stickers to act as a unique identifier for their items.",
-                  "This system will help employee to produce report about the inventory or stock availability in their warehouse."
-              ],
-              techs: [
-                "#Laravel Framework / #PHP(OOP) #MySQL",
-                "#HTML #CSS #Bootstrap #Javascript #Jquery #Ajax"
-              ],
-              codes: [
-                  {
-                    label: "Source",
-                    link: "https://github.com/asraquem00110/Laravel-Simple-Inventory"
-                  }
-              ],
-              demos: [
-                {
-                  label: "DEMO",
-                  link:"http://warehouse-inventory-management.herokuapp.com/",
-                }
-              ]
-            },
-            {
-              id: 7,
-              name: "Simple Online Shop ( React Js Frontend )",
-              activeImageIndex: 0,
-              images: [
-                './assets/images/projects/onlineShop/preview.PNG',
-                './assets/images/projects/onlineShop/adminlogin.PNG',
-                './assets/images/projects/onlineShop/admindashboard.PNG',
-                './assets/images/projects/onlineShop/adminreports.PNG',
-                './assets/images/projects/onlineShop/cart.PNG',
-                './assets/images/projects/onlineShop/checkout.PNG',
-                './assets/images/projects/onlineShop/order.PNG',
-                './assets/images/projects/onlineShop/paypal.PNG',
-                './assets/images/projects/onlineShop/wish.PNG',
-              ],
-              contents: [
-                "This is a simple Online Shopping Web Application using php (Laravel) as backend.",
-                "React JS for shop frontend",
-                "Vue JS for admin frontend"
-              ],
-              techs: [
-                "Backend: #Laravel Framework / #PHP(OOP) #MySQL",
-                "Shop Frontend: #HTML #CSS #Bootstrap #Javascript #ReactJs",
-                "Admin Frontend: #HTML #CSS #Bootstrap #Javascript #Vuejs"
-              ],
-              codes: [
-                  {
-                    label: "Source",
-                    link: "https://github.com/asraquem00110/Simple-Online-Shopping-Laravel-VueJS"
-                  },
-                  {
-                    label: "Shop Frontend",
-                    link: "https://github.com/asraquem00110/Ashop-React-FrontEnd"
-                  }
-              ],
-              demos: [
-                {
-                  label: "SHOP DEMO",
-                  link:"https://ashopping-react.herokuapp.com/",
-                },
-                {
-                  label: "ADMIN DEMO",
-                  link:"http://ashopping.herokuapp.com/admin",
-                }
-              ]
-            },
-         
-        ])
-        const [activeProject,setActiveProject] = React.useState(projects[0])
-        const [activeImage,setActiveImage] = React.useState(0)
+              <CardContent className="grid-col-4" title="Learn how to explore">
+                <DarkCard>
+                  <span className="cardTitle">First Step</span>
+                  <br />
+                  <span style={{ color: "silver" }}>
+                    To navigate to other content of this portfolio, click the
+                    &nbsp; <i className="fa fa-copy" /> &nbsp; icon to show/hide
+                    sidebar navigation.
+                  </span>
+                </DarkCard>
 
-        const changeImage = (direction)=> {
-          
-          if(direction == "prev" && activeImage != 0){
-             setActiveImage(state=>state-1);
+                <DarkCard>
+                  <span className="cardTitle">Second Step</span>
+                  <br />
+                  <span style={{ color: "silver" }}>
+                    Select or click a file to open the page that you want to
+                    explore.
+                  </span>
+                </DarkCard>
+
+                <DarkCard>
+                  <span className="cardTitle">Third Step</span>
+                  <br />
+                  <span style={{ color: "silver" }}>
+                    Switch pages in the top navigation.
+                  </span>
+                  <div style={{ marginTop: "20px" }}>
+                    <img
+                      src="./assets/images/site/topnav.PNG"
+                      style={{ height: "100%", width: "100%" }}
+                    />
+                  </div>
+                </DarkCard>
+              </CardContent>
+
+              <CardContent
+                className="grid-col-4"
+                title="Need Software Engineer?"
+              >
+                <DarkCard>
+                  <span className="cardTitle">Download my resume</span>
+                  <br />
+                  <div style={{ margin: "20px 0px" }}>
+                    <a href="./assets/files/RAQUEM_ALVIN.pdf" target="_blank">
+                      <button className="btn btn-default">
+                        RAQUEM.pdf <i className="fa fa-download" />
+                      </button>
+                    </a>
+                  </div>
+                </DarkCard>
+
+                <DarkCard>
+                  <h2 style={{ fontStyle: "italic", color: "white" }}>
+                    "Let's Turn Your Idea's Into{" "}
+                    <span style={{ color: "#37A2EA" }}>Reality</span>"
+                  </h2>
+                  <h2 style={{ fontStyle: "italic", color: "white" }}>
+                    While (!Succeed){" "}
+                    <span style={{ color: "#37A2EA" }}>TryAgain</span>()
+                  </h2>
+                </DarkCard>
+              </CardContent>
+            </GridComponent>
+          </div>
+        );
+      };
+
+      const AboutContent = ({ title, icon, children }) => {
+        return (
+          <div className="AboutContent">
+            <div className="AboutTitle">
+              <span className="AboutTitleLogo">
+                <i className={icon} />
+              </span>
+              <span className="AboutTitleDescription">{title}</span>
+              <hr
+                style={{
+                  background: "#4F4180",
+                  height: "10px",
+                  width: "20%",
+                  border: "none",
+                }}
+              />
+            </div>
+
+            {children}
+          </div>
+        );
+      };
+
+      const AboutMe = () => {
+        return (
+          <div className="PageContent">
+            <div id="MainAbout">
+              <div id="AboutIntro">
+                <div id="AboutImage">
+                  <div
+                    style={{
+                      position: "absolute",
+                      height: "84%",
+                      bottom: 0,
+                      background: "#EBEBEB",
+                      zIndex: 0,
+                      width: "100%",
+                      borderBottomLeftRadius: "20px",
+                      borderTopLeftRadius: "20px",
+                    }}
+                  />
+                  <img
+                    style={{
+                      marginTop: 100,
+                      height: "350px",
+                      width: "350px",
+                      placeSelf: "center",
+                      zIndex: 1,
+                    }}
+                    src="./assets/images/me2.png"
+                  />
+                </div>
+                <div id="Aboutdescription">
+                  <div id="AboutName">
+                    <h1>Hi I'm Alvin Sison Raquem</h1>
+                  </div>
+
+                  <div id="AboutInfoExpertise">
+                    <div>
+                      <span style={{ fontSize: "24pt" }}>
+                        <span>&#60;Software</span>{" "}
+                        <span style={{ color: "#FF896C" }}>Engineer/></span>
+                      </span>
+                    </div>
+                    <hr />
+                    <div style={{ marginTop: "16px", flexGrow: 1 }}>
+                      <span style={{ fontSize: "20pt" }}>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;An
+                        Experienced Web and Mobile App Developer who focus more
+                        on back end development side, but can also do some front
+                        end stuff. I am very passionate in learning new things
+                        that will make me competent. I am a good listener and
+                        able to grasp new concepts quickly and efficiently.
+                      </span>
+                    </div>
+                    <div
+                      style={{
+                        height: "250px",
+                        width: "100%",
+                        position: "relative",
+                      }}
+                    >
+                      <img
+                        style={{
+                          position: "absolute",
+                          height: "100%",
+                          bottom: -60,
+                          right: 0,
+                          width: "100%",
+                        }}
+                        src="./assets/images/site/aboutdev.svg"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div id="AboutOthers">
+                <AboutContent title="Education" icon="fa fa-graduation-cap">
+                  <GridComponent>
+                    <div className="grid-col-6">
+                      <DarkCard>
+                        <div style={{ display: "flex", flexDirection: "row" }}>
+                          <div
+                            style={{
+                              flexBasis: "200px",
+                              height: "200px",
+                              justifyContent: "center",
+                              alignItems: "center",
+                              display: "flex",
+                            }}
+                          >
+                            <img
+                              src="./assets/images/about/tup.png"
+                              style={{ height: "180px", width: "180px" }}
+                            />
+                          </div>
+
+                          <div
+                            style={{
+                              flexGrow: 1,
+                              height: "200px",
+                              flexDirection: "column",
+                              display: "flex",
+                              justifyContent: "center",
+                            }}
+                          >
+                            <span style={{ fontSize: 24, fontWeight: "bold" }}>
+                              Diploma in Computer Engineering Technology
+                            </span>
+                            <span style={{ fontSize: 18, marginTop: 2 }}>
+                              Technician Course
+                            </span>
+                            <span style={{ fontSize: 18, marginTop: 2 }}>
+                              2015
+                            </span>
+                            <span style={{ fontSize: 18, marginTop: 2 }}>
+                              Technological University of the Philippines -
+                              Taguig Campus
+                            </span>
+                          </div>
+                        </div>
+                      </DarkCard>
+                    </div>
+
+                    <div className="grid-col-6">
+                      <DarkCard>
+                        <div
+                          style={{
+                            display: "grid",
+                            gridTemplateColumns: "200px 1fr",
+                            gridTemplateRows: "200px",
+                          }}
+                        >
+                          <div
+                            style={{
+                              gridColumn: "1 / 2",
+                              gridRow: "1 /1 ",
+                              display: "grid",
+                              placeItems: "center",
+                            }}
+                          >
+                            <img
+                              src="./assets/images/about/tup.png"
+                              style={{ height: "180px", width: "180px" }}
+                            />
+                          </div>
+
+                          <div
+                            style={{
+                              gridColumn: "2 / 3",
+                              gridRow: "1 /1 ",
+                              flexDirection: "column",
+                              display: "flex",
+                              justifyContent: "center",
+                            }}
+                          >
+                            <span style={{ fontSize: 24, fontWeight: "bold" }}>
+                              Bachelor of Technology in Information Technology
+                            </span>
+                            <span style={{ fontSize: 18, marginTop: 2 }}>
+                              Ladderized Degree Course
+                            </span>
+                            <span style={{ fontSize: 18, marginTop: 2 }}>
+                              2017
+                            </span>
+                            <span style={{ fontSize: 18, marginTop: 2 }}>
+                              Technological University of the Philippines -
+                              Taguig Campus
+                            </span>
+                          </div>
+                        </div>
+                      </DarkCard>
+                    </div>
+                  </GridComponent>
+                </AboutContent>
+
+                <AboutContent title="Get in touch" icon="fa fa-handshake-o">
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "center",
+                      flex: 1,
+                    }}
+                  >
+                    <div
+                      style={{
+                        display: "flex",
+                        flexDirection: "row",
+                        width: "100%",
+                        justifyContent: "center",
+                        alignItems: "center",
+                      }}
+                    >
+                      <a
+                        style={{ margin: 10, fontSize: 40, color: "#A5ABBD" }}
+                        href="https://www.facebook.com/raquem.alvin"
+                        target="_blank"
+                      >
+                        <i className="fa fa-facebook-square"></i>
+                      </a>
+                      <a
+                        style={{ margin: 10, fontSize: 40, color: "#A5ABBD" }}
+                        href="https://www.instagram.com/alvinraquem/"
+                        target="_blank"
+                      >
+                        <i className="fa fa-instagram"></i>
+                      </a>
+                      <a
+                        style={{ margin: 10, fontSize: 40, color: "#A5ABBD" }}
+                        href="https://www.linkedin.com/in/alvin-raquem-167799146/"
+                        target="_blank"
+                      >
+                        <i className="fa fa-linkedin"></i>
+                      </a>
+                      <a
+                        style={{ margin: 10, fontSize: 40, color: "#A5ABBD" }}
+                        href="https://github.com/asraquem00110"
+                        target="_blank"
+                      >
+                        <i className="fa fa-github"></i>
+                      </a>
+                    </div>
+                    <span
+                      style={{
+                        fontSize: "14pt",
+                        marginTop: "5px",
+                        color: "#A5ABBD",
+                      }}
+                    >
+                      <i className="fa fa-envelope" /> raquem.alvin@gmail.com
+                    </span>
+                    <span
+                      style={{
+                        fontSize: "14pt",
+                        marginTop: "10px",
+                        color: "#A5ABBD",
+                      }}
+                    >
+                      <i className="fa fa-phone" /> +639270752905
+                    </span>
+                  </div>
+                </AboutContent>
+              </div>
+            </div>
+          </div>
+        );
+      };
+
+      const StackTechnology = ({
+        image,
+        style = { height: "100px", width: "100px" },
+        theme = "dark",
+      }) => (
+        <div className="grid-col-3 stackTechnology">
+          {theme == "dark" ? (
+            <DarkCard>
+              <div style={{ display: "grid", placeItems: "center" }}>
+                <img style={style} src={`assets/images/skills/${image}`} />
+              </div>
+            </DarkCard>
+          ) : (
+            <WhiteCard>
+              <div style={{ display: "grid", placeItems: "center" }}>
+                <img style={style} src={`assets/images/skills/${image}`} />
+              </div>
+            </WhiteCard>
+          )}
+        </div>
+      );
+
+      const Skills = () => {
+        return (
+          <div className="PageContent">
+            <AboutContent title="My Skills" icon="fa fa-cogs">
+              <GridComponent style={{ padding: "0px 50px 0px 50px" }}>
+                <div className="grid-col-4">
+                  <DarkCard>
+                    <div
+                      style={{
+                        padding: "10px 50px",
+                        textAlign: "center",
+                        position: "relative",
+                      }}
+                    >
+                      <div className="specialtygrid">
+                        <img
+                          src="./assets/images/site/web.svg"
+                          style={{ height: "120px", width: "120px" }}
+                        />
+                      </div>
+                      <div className="specialtygrid">
+                        <span className="specialtytitle">Web Development</span>
+                        <hr />
+                        <span style={{ color: "white" }}>
+                          Lorem ipsum dolor sit amet, consectetur adipiscing
+                          elit. Fusce sit amet risus rhoncus, ornare sapien in,
+                          sodales lectus. Mauris neque justo, dictum ac ante et,
+                          finibus commodo lorem. Cras laoreet gravida accumsan.
+                          Interdum et malesuada fames ac ante ipsum primis in
+                          faucibus.
+                        </span>
+                      </div>
+                    </div>
+                  </DarkCard>
+                </div>
+                <div className="grid-col-4">
+                  <DarkCard>
+                    <div
+                      style={{
+                        padding: "10px 50px",
+                        textAlign: "center",
+                        position: "relative",
+                      }}
+                    >
+                      <div className="specialtygrid">
+                        <img
+                          src="./assets/images/site/db.svg"
+                          style={{ height: "120px", width: "120px" }}
+                        />
+                      </div>
+                      <div className="specialtygrid">
+                        <span className="specialtytitle">Database</span>
+                        <hr />
+                        <span style={{ color: "white" }}>
+                          Lorem ipsum dolor sit amet, consectetur adipiscing
+                          elit. Fusce sit amet risus rhoncus, ornare sapien in,
+                          sodales lectus. Mauris neque justo, dictum ac ante et,
+                          finibus commodo lorem. Cras laoreet gravida accumsan.
+                          Interdum et malesuada fames ac ante ipsum primis in
+                          faucibus.
+                        </span>
+                      </div>
+                    </div>
+                  </DarkCard>
+                </div>
+                <div className="grid-col-4">
+                  <DarkCard>
+                    <div
+                      style={{
+                        padding: "10px 50px",
+                        textAlign: "center",
+                        position: "relative",
+                      }}
+                    >
+                      <div className="specialtygrid">
+                        <img
+                          src="./assets/images/site/react.svg"
+                          style={{ height: "120px", width: "120px" }}
+                        />
+                      </div>
+                      <div className="specialtygrid">
+                        <span className="specialtytitle">
+                          Mobile App Development
+                        </span>
+                        <hr />
+                        <span style={{ color: "white" }}>
+                          Lorem ipsum dolor sit amet, consectetur adipiscing
+                          elit. Fusce sit amet risus rhoncus, ornare sapien in,
+                          sodales lectus. Mauris neque justo, dictum ac ante et,
+                          finibus commodo lorem. Cras laoreet gravida accumsan.
+                          Interdum et malesuada fames ac ante ipsum primis in
+                          faucibus.
+                        </span>
+                      </div>
+                    </div>
+                  </DarkCard>
+                </div>
+              </GridComponent>
+            </AboutContent>
+            <br />
+            <AboutContent
+              title="Current Technology Stacks"
+              icon="fa fa-desktop"
+            >
+              <GridComponent style={{ padding: "0px 50px 0px 50px" }}>
+                <StackTechnology theme="white" image="node.png" />
+                <StackTechnology theme="white" image="express.png" />
+                <StackTechnology theme="white" image="rest.png" />
+                <StackTechnology theme="white" image="graphql.png" />
+                <StackTechnology
+                  theme="white"
+                  image="apollo.png"
+                  style={{ height: "100px", width: "150px" }}
+                />
+                <StackTechnology theme="white" image="react.png" />
+                <StackTechnology theme="white" image="redux.png" />
+                <StackTechnology theme="white" image="reactnative.png" />
+                <StackTechnology theme="white" image="mysql.png" />
+                <StackTechnology
+                  theme="white"
+                  image="knex.png"
+                  style={{ height: "100px", width: "150px" }}
+                />
+                <StackTechnology theme="white" image="bs.png" />
+                <StackTechnology theme="white" image="css.png" />
+                <StackTechnology theme="white" image="html.png" />
+                <StackTechnology theme="white" image="js.png" />
+                <StackTechnology theme="white" image="vscode.png" />
+                <StackTechnology theme="white" image="git.png" />
+              </GridComponent>
+            </AboutContent>
+
+            <br />
+            <AboutContent
+              title="Have Experience/Previous Technology Stacks"
+              icon="fa fa-desktop"
+            >
+              <GridComponent style={{ padding: "0px 50px 0px 50px" }}>
+                <StackTechnology theme="white" image="php.png" />
+                <StackTechnology theme="white" image="laravel.png" />
+              </GridComponent>
+            </AboutContent>
+
+            <br />
+            <AboutContent title="Interested To Learn" icon="fa fa-desktop">
+              <GridComponent style={{ padding: "0px 50px 0px 50px" }}>
+                <StackTechnology theme="white" image="nosql.png" />
+                <StackTechnology theme="white" image="mongo.png" />
+                <StackTechnology theme="white" image="dynamo.png" />
+              </GridComponent>
+            </AboutContent>
+          </div>
+        );
+      };
+
+      const Experience = () => {
+        return (
+          <div className="PageContent">
+            <AboutContent title="Work Experience" icon="fa fa-desktop">
+              <div className="works">
+                <div className="content">
+                  <span className="dateLeft">October 2014 – March 2015</span>
+
+                  <GridComponent>
+                    <div
+                      className="grid-col-6"
+                      style={{
+                        marginTop: "20px",
+                        textAlign: "center",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        display: "flex",
+                        flexDirection: "column",
+                      }}
+                    >
+                      <img
+                        id="worksvg1"
+                        style={{ height: "60%", width: "60%" }}
+                        src="assets/images/svg/support.svg"
+                      />
+                      <br />
+                      <span
+                        style={{
+                          color: "dimgray",
+                          fontSize: "24pt",
+                          fontWeight: "bold",
+                        }}
+                      >
+                        Intern (POS Technical Support)
+                      </span>
+                    </div>
+
+                    <div
+                      className="grid-col-6"
+                      style={{
+                        marginTop: "20px",
+                        textAlign: "center",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        display: "flex",
+                        flexDirection: "column",
+                      }}
+                    >
+                      <ul className="list">
+                        <li>
+                          <strong style={{ color: "skyblue" }}>Company:</strong>{" "}
+                          Nexus Technologies Inc.
+                        </li>
+                        <li>
+                          <strong style={{ color: "skyblue" }}>
+                            Department:
+                          </strong>{" "}
+                          Nexus Professional Services and Solutions (NPSS)
+                        </li>
+                        <li>
+                          <strong style={{ color: "skyblue" }}>Website:</strong>{" "}
+                          <a
+                            target="_blank"
+                            style={{ color: "white" }}
+                            href="https://nexustech.com.ph"
+                          >
+                            https://nexustech.com.ph
+                          </a>
+                        </li>
+                        <li>
+                          <strong style={{ color: "skyblue" }}>Address:</strong>{" "}
+                          G/F Don Pablo building, 114 Amorsolo Street, Legazpi
+                          Village, Makati City.
+                        </li>
+                        <li>
+                          <strong style={{ color: "skyblue" }}>
+                            Duration:
+                          </strong>{" "}
+                          October 2014 - March 2015 5 months{" "}
+                        </li>
+
+                        <hr />
+                        <ul>
+                          <li>Answer and solve issues over phone calls</li>
+                          <li>Encode client's issue in Ticketing System</li>
+                          <li>Setup Computer (Hardware and Software)</li>
+                          <li>Fixing issue on site</li>
+                        </ul>
+                      </ul>
+                    </div>
+                  </GridComponent>
+                </div>
+
+                <div className="content">
+                  <span className="dateRight">August 2017 – April 2020</span>
+
+                  <GridComponent>
+                    <div
+                      className="grid-col-6"
+                      style={{
+                        marginTop: "20px",
+                        textAlign: "center",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        display: "flex",
+                        flexDirection: "column",
+                      }}
+                    >
+                      <ul className="list">
+                        <li>
+                          <strong style={{ color: "skyblue" }}>Company:</strong>
+                          E-CTK Solutions Inc. (ESI) / Armored Transport Plus,
+                          Inc. (ATPI)
+                        </li>
+                        <li>
+                          <strong style={{ color: "skyblue" }}>
+                            Department:
+                          </strong>{" "}
+                          ECTK Solutions Inc. (ESI)
+                        </li>
+                        <li>
+                          <strong style={{ color: "skyblue" }}>Website:</strong>{" "}
+                          <a
+                            target="_blank"
+                            style={{ color: "white" }}
+                            href="https://www.atpi.com.ph"
+                          >
+                            https://www.atpi.com.ph
+                          </a>
+                        </li>
+                        <li>
+                          <strong style={{ color: "skyblue" }}>Address:</strong>{" "}
+                          No. 2 Avis Street, Bagong Ilog, Pasig City Philippines
+                        </li>
+                        <li>
+                          <strong style={{ color: "skyblue" }}>
+                            Duration:
+                          </strong>{" "}
+                          August 2017 - April 2020 2 yrs. & 8 months
+                        </li>
+                        <hr />
+                        <ul>
+                          <li>In-house developer</li>
+                          <li>
+                            Create web system for the manual process of
+                            company’s operation
+                          </li>
+                          <li>Enhance and modify existing system</li>
+                          <li>
+                            Analyze program/system based on the required
+                            functionalities
+                          </li>
+                          <li>Generate needed/requested reports</li>
+                          <li>Documentation of program/system</li>
+                        </ul>
+                      </ul>
+                    </div>
+
+                    <div
+                      className="grid-col-6"
+                      style={{
+                        marginTop: "20px",
+                        textAlign: "center",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        display: "flex",
+                        flexDirection: "column",
+                      }}
+                    >
+                      <img
+                        id="worksvg1"
+                        style={{ height: "60%", width: "60%" }}
+                        src="assets/images/svg/webdev.svg"
+                      />
+                      <br />
+                      <span
+                        style={{
+                          color: "dimgray",
+                          fontSize: "24pt",
+                          fontWeight: "bold",
+                        }}
+                      >
+                        PHP Web Developer
+                      </span>
+                    </div>
+                  </GridComponent>
+                </div>
+
+                <div className="content">
+                  <span className="dateLeft">February 2021 – Present</span>
+
+                  <GridComponent>
+                    <div
+                      className="grid-col-6"
+                      style={{
+                        marginTop: "20px",
+                        textAlign: "center",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        display: "flex",
+                        flexDirection: "column",
+                      }}
+                    >
+                      <img
+                        id="worksvg1"
+                        style={{ height: "60%", width: "60%" }}
+                        src="assets/images/svg/mobiledev.svg"
+                      />
+                      <br />
+                      <span
+                        style={{
+                          color: "dimgray",
+                          fontSize: "24pt",
+                          fontWeight: "bold",
+                        }}
+                      >
+                        Sr. Software Engineer
+                      </span>
+                    </div>
+
+                    <div
+                      className="grid-col-6"
+                      style={{
+                        marginTop: "20px",
+                        textAlign: "center",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        display: "flex",
+                        flexDirection: "column",
+                      }}
+                    >
+                      <ul className="list">
+                        <li>
+                          <strong style={{ color: "skyblue" }}>Company:</strong>{" "}
+                          Cloud Panda PH Inc.
+                        </li>
+                        <li>
+                          <strong style={{ color: "skyblue" }}>
+                            Department:
+                          </strong>{" "}
+                          Development Deparment / toktok PH
+                        </li>
+                        <li>
+                          <strong style={{ color: "skyblue" }}>Website:</strong>{" "}
+                          <a
+                            target="_blank"
+                            style={{ color: "white" }}
+                            href="https://cloudpanda.ph"
+                          >
+                            https://cloudpanda.ph
+                          </a>
+                        </li>
+                        <li>
+                          <strong style={{ color: "skyblue" }}>Address:</strong>{" "}
+                          10F Inoza Tower, 40th Street, Bonifacio Global City,
+                          Taguig City, Metro Manila 1634, Philippines.
+                        </li>
+                        <li>
+                          <strong style={{ color: "skyblue" }}>
+                            Duration:
+                          </strong>{" "}
+                          February 2021 – Present{" "}
+                        </li>
+
+                        <hr />
+                        <ul>
+                          <li>assigned in toktok mobile app project</li>
+                          <li>
+                            sub lead for some services of the mobile app (
+                            toktokwallet , toktokload , toktokbills )
+                          </li>
+                          <li>
+                            create BE graphql service/api to be consume by the
+                            mobile app
+                          </li>
+                          <li>
+                            develop FE ( React Native ) mobile app based on
+                            UI/UX provided
+                          </li>
+                          <li>
+                            coordinate with other devs to accomplish app
+                            functionality
+                          </li>
+                        </ul>
+                      </ul>
+                    </div>
+                  </GridComponent>
+                </div>
+
+                <div className="content" style={{ height: "10%" }} />
+              </div>
+            </AboutContent>
+          </div>
+        );
+      };
+
+      const SampleProjects = () => {
+        const [mainProjects, setMainProjects] = React.useState([
+          {
+            id: 1,
+            name: "toktokwallet",
+            desc: " toktokwallet is an e wallet service inside toktok super app mobile application. It offers a convenient way of transacting payables. It provides an easy way to transfer funds from your bank accounts to toktokwallet account and vice versa. It is the main payment option of other services in toktok like toktokbills, toktokload, toktokdelivery etc.",
+            activeImageIndex: 0,
+            features:
+              "KYC Registration, Cash In, Send Money, Cash Out (Over the Counter), Bank Transfer, Payment Service",
+            backend:
+              "#NodeJS #ExpressJS #Apollo Server #GraphQL #MySQL #ObjectionJS/Knex",
+            frontend: "#React Native #Apollo Client #Redux #Context API",
+            images: [
+              "./assets/images/projects/wallet/Home1.png",
+              "./assets/images/projects/wallet/Home.png",
+              "./assets/images/projects/wallet/onboard-send-money.png",
+              "./assets/images/projects/wallet/onboard-cash-in.png",
+              "./assets/images/projects/wallet/kyc.png",
+              "./assets/images/projects/wallet/userlevel.png",
+              "./assets/images/projects/wallet/sendMoney.png",
+              "./assets/images/projects/wallet/tpin.png",
+              "./assets/images/projects/wallet/cashIn.png",
+              "./assets/images/projects/wallet/qr.png",
+              "./assets/images/projects/wallet/qr2.png",
+              "./assets/images/projects/wallet/qr3.png",
+              "./assets/images/projects/wallet/qr4.png",
+              "./assets/images/projects/wallet/bt1.png",
+              "./assets/images/projects/wallet/bt2.png",
+              "./assets/images/projects/wallet/bt3.png",
+            ],
+          },
+          {
+            id: 2,
+            name: "toktokload",
+            desc: "toktokload is one of the services of toktok super app. This application provides a feature which toktok user can avail mobile credits using their toktokwallet.",
+            activeImageIndex: 0,
+            features: "Loading Service",
+            backend:
+              "#NodeJS #ExpressJS #Apollo Server #GraphQL #MySQL #ObjectionJS/Knex",
+            frontend: "#React Native #Apollo Client #Redux #Context API",
+            images: [
+              "./assets/images/projects/load/home.png",
+              "./assets/images/projects/load/home1.png",
+              "./assets/images/projects/load/home3.png",
+              "./assets/images/projects/load/select.png",
+              "./assets/images/projects/load/summary.png",
+              "./assets/images/projects/wallet/tpin.png",
+              "./assets/images/projects/load/receipt.png",
+              "./assets/images/projects/load/notif.png",
+            ],
+          },
+          {
+            id: 3,
+            name: "toktokbills",
+            desc: "toktokbills is a service of toktok super app which let the toktok user to pay their bills (Electric, Water, Utility, Government etc.) using their toktokwallet.",
+            activeImageIndex: 0,
+            features: "Bill Payment Service",
+            backend:
+              "#NodeJS #ExpressJS #Apollo Server #GraphQL #MySQL #ObjectionJS/Knex",
+            frontend: "#React Native #Apollo Client #Redux #Context API",
+            images: [
+              "./assets/images/projects/bills/home.png",
+              "./assets/images/projects/bills/onboard.png",
+              "./assets/images/projects/bills/biller.png",
+              "./assets/images/projects/bills/form.png",
+              "./assets/images/projects/bills/summary.png",
+              "./assets/images/projects/wallet/tpin.png",
+              "./assets/images/projects/bills/receipt.png",
+              "./assets/images/projects/bills/notif.png",
+            ],
+          },
+        ]);
+
+        const [projects, setProjects] = React.useState([
+          {
+            id: 1,
+            name: "Cash In Transit v2 Using MEVN stack",
+            activeImageIndex: 0,
+            images: [
+              "./assets/images/projects/cit/preview.png",
+              "./assets/images/projects/cit/create_request.PNG",
+              "./assets/images/projects/cit/clusterring.PNG",
+              "./assets/images/projects/cit/clusterring2.PNG",
+              "./assets/images/projects/cit/route_planning.PNG",
+              "./assets/images/projects/cit/print_dispatch.PNG",
+              "./assets/images/projects/cit/reportMap.PNG",
+              "./assets/images/projects/cit/settings.PNG",
+              "./assets/images/projects/cit/login.jpg",
+              "./assets/images/projects/cit/dolist.jpg",
+              "./assets/images/projects/cit/viewdo.jpg",
+              "./assets/images/projects/cit/siteinfo.jpg",
+              "./assets/images/projects/cit/cashsign.jpg",
+              "./assets/images/projects/cit/allowlocation.jpg",
+              "./assets/images/projects/cit/map.jpg",
+              "./assets/images/projects/cit/notif.jpg",
+            ],
+            contents: [
+              "Cash-in-transit (CIT) is the physical transfer of banknotes or coins from one location to another.",
+              "A system that helps cit department to monitor the status of acu trip.",
+              "Prepare Cash Request.",
+              "Clustering of sites for the preparation of Dispatch Order.",
+              "Assigning Dispatch Order to specific Personnel.",
+              "Generate reports and dashboard monitoring.",
+            ],
+            techs: [
+              "Backend: #NodeJs #Express #MongoDB #NoSQL",
+              "Frontend: #HTML #CSS #Bootstrap #Javascript #VueJs",
+              "Mobile: #Ionic Capacitor #VueJs",
+              "Others: #Websockets #Socket.io #Leafletjs",
+            ],
+            codes: [
+              {
+                label: "Backend",
+                link: "https://github.com/asraquem00110/MEVN-sample-backend",
+              },
+              {
+                label: "Frontend",
+                link: "https://github.com/asraquem00110/MEVN-sample-frontend",
+              },
+              {
+                label: "Mobile",
+                link: "https://github.com/asraquem00110/MEVN-sample-mobile",
+              },
+            ],
+            demos: [
+              {
+                label: "DEMO",
+                link: "https://cashintransit-00110-asr-mevn.herokuapp.com/",
+              },
+            ],
+          },
+          {
+            id: 2,
+            name: "COVID-19 No. of Cases Tracker Mobile App",
+            activeImageIndex: 0,
+            images: [
+              "./assets/images/projects/covidTracker/preview.png",
+              "./assets/images/projects/covidTracker/picture1.jpg",
+              "./assets/images/projects/covidTracker/picture2.jpg",
+              "./assets/images/projects/covidTracker/picture3.jpg",
+              "./assets/images/projects/covidTracker/picture4.jpg",
+              "./assets/images/projects/covidTracker/splashscreen.jpg",
+              "./assets/images/projects/covidTracker/world.jpg",
+              "./assets/images/projects/covidTracker/php.jpg",
+              "./assets/images/projects/covidTracker/countries.jpg",
+              "./assets/images/projects/covidTracker/map.jpg",
+            ],
+            contents: [
+              "A simple mobile app for tracking No. of Covid Cases around the world.",
+              "Hybrid App using Ionic + Vuejs and React Native",
+              "API source: https://corona.lmao.ninja/docs",
+            ],
+            techs: [
+              "Mobile: #Ionic Capacitor #VueJs",
+              "Mobile 2: #React Native #ReactJs",
+            ],
+            codes: [
+              {
+                label: "Ionic Mobile",
+                link: "https://github.com/asraquem00110/Ncov-Updates-Tracker",
+              },
+              {
+                label: "React Native",
+                link: "https://github.com/asraquem00110/Covid-Case-React-Native-App",
+              },
+            ],
+            demos: [
+              {
+                label: "DEMO",
+                link: "https://ncov-tracker-asr-00110.herokuapp.com/Globe",
+              },
+            ],
+          },
+          {
+            id: 3,
+            name: "Home Quarantine Pass Management System",
+            activeImageIndex: 0,
+            images: [
+              "./assets/images/projects/hqp/preview.png",
+              "./assets/images/projects/hqp/barangay.png",
+              "./assets/images/projects/hqp/generateAll.png",
+              "./assets/images/projects/hqp/img1.jpg",
+              "./assets/images/projects/hqp/img2.jpg",
+              "./assets/images/projects/hqp/img3.jpg",
+              "./assets/images/projects/hqp/img4.jpg",
+              "./assets/images/projects/hqp/Capture.png",
+              "./assets/images/projects/hqp/pic1.jpg",
+              "./assets/images/projects/hqp/pic2.jpg",
+              "./assets/images/projects/hqp/pic3.jpg",
+              "./assets/images/projects/hqp/pic4.jpg",
+            ],
+            contents: [
+              "A Single Page Application using Vuejs.",
+              "A Project Idea during enchanced community quarantine because of corona virus.",
+              "This system manage the generation of Home Quarantine Pass for each family.",
+              "It checks the validity of that pass through scanning its qrcode.",
+              "It checks the list of authorized person who can use the pass.",
+            ],
+            techs: [
+              "Backend: #NodeJs #Express #MySQL #Sequelize",
+              "Frontend: #HTML #CSS #Bootstrap #Javascript #VueJs",
+              "Mobile: #Ionic Capacitor #VueJs",
+              "Mobile 2: #React Native #ReactJs",
+            ],
+            codes: [
+              {
+                label: "Backend",
+                link: "https://github.com/asraquem00110/hqp-backend",
+              },
+              {
+                label: "Frontend",
+                link: "https://github.com/asraquem00110/hqp-frontend",
+              },
+              {
+                label: "Ionic Mobile",
+                link: "https://github.com/asraquem00110/hqp-mobile-app",
+              },
+              {
+                label: "React Native",
+                link: "https://github.com/asraquem00110/HQP-Mobile-React-Native",
+              },
+            ],
+            demos: [
+              {
+                label: "DEMO",
+                link: "http://hqp-frontend-asr-00110.herokuapp.com/",
+              },
+            ],
+          },
+          {
+            id: 4,
+            name: "IHatid App",
+            activeImageIndex: 0,
+            images: [
+              "./assets/images/projects/ihatid/preview.PNG",
+              "./assets/images/projects/ihatid/login.png",
+              "./assets/images/projects/ihatid/login2.png",
+              "./assets/images/projects/ihatid/booking.png",
+              "./assets/images/projects/ihatid/destination.png",
+              "./assets/images/projects/ihatid/rider_book.png",
+              "./assets/images/projects/ihatid/waitingforPassenger.png",
+              "./assets/images/projects/ihatid/waiting.png",
+              "./assets/images/projects/ihatid/chat.PNG",
+              "./assets/images/projects/ihatid/passenger_profile.png",
+            ],
+            contents: [
+              "Status: Incomplete / Ongoing Development",
+              "A mini project to practice and enhance my react native skills.",
+              "A simple passenger transport application just like angkas app where users can book a rider.",
+            ],
+            techs: [
+              "Backend: #NodeJs #Express #MongoDB #Mongoose",
+              "Frontend: #ReactJs",
+              "Mobile: #React Native",
+              "Others: #Websockets #Socket.io #Googlemap API #Facebook Login",
+            ],
+            codes: [
+              {
+                label: "Backend",
+                link: "https://github.com/asraquem00110/IHatid-Backend-API",
+              },
+              {
+                label: "Mobile",
+                link: "https://github.com/asraquem00110/IHatid-Mobile-React-Native",
+              },
+            ],
+          },
+          {
+            id: 5,
+            name: "Dental Clinic Management System (Freelance Project - Project Study)",
+            activeImageIndex: 0,
+            images: [
+              "./assets/images/projects/dental/preview.png",
+              "./assets/images/projects/dental/appointment.PNG",
+              "./assets/images/projects/dental/dashboard.PNG",
+              "./assets/images/projects/dental/records.PNG",
+              "./assets/images/projects/dental/schedule.PNG",
+              "./assets/images/projects/dental/reports.PNG",
+              "./assets/images/projects/dental/pharmacy.PNG",
+              "./assets/images/projects/dental/pic1.jpg",
+              "./assets/images/projects/dental/pic2.jpg",
+              "./assets/images/projects/dental/pic3.jpg",
+              "./assets/images/projects/dental/pic4.jpg",
+              "./assets/images/projects/dental/pic5.jpg",
+            ],
+            contents: [
+              "An Online Dental Management System to save patient’s record.",
+              "To lessen the time-consuming checking of each paper-based patient’s record.",
+              "To monitor and view the available schedule of the Dental Clinic.",
+              "Help patients make reservation online and get notified if approved or not approved and be aware of the clinic’s information and schedule.",
+            ],
+            techs: [
+              "Backend: #NodeJs #Express #MySQL #Sequelize",
+              "Frontend: #HTML #CSS #Bootstrap #Javascript #VueJs",
+              "Mobile: #Ionic Capacitor #VueJs",
+            ],
+            codes: [
+              {
+                label: "Backend",
+                link: "https://github.com/asraquem00110/Dental-Clinic-Management-System-Backend",
+              },
+              {
+                label: "Frontend",
+                link: "https://github.com/asraquem00110/Dental-Clinic-Management-System-Frontend",
+              },
+              {
+                label: "Mobile",
+                link: "https://github.com/asraquem00110/Dental-Clinic-Management-System-Mobile-Hybrid",
+              },
+            ],
+            demos: [
+              {
+                label: "DEMO",
+                link: "https://anza-yap-dental-clinic.herokuapp.com/",
+              },
+            ],
+          },
+          {
+            id: 6,
+            name: "Warehouse Inventory Management",
+            activeImageIndex: 0,
+            images: [
+              "./assets/images/projects/inventory/preview.PNG",
+              "./assets/images/projects/inventory/index.PNG",
+              "./assets/images/projects/inventory/iteminfo.PNG",
+              "./assets/images/projects/inventory/itemlist.PNG",
+              "./assets/images/projects/inventory/reports.PNG",
+              "./assets/images/projects/inventory/settings.PNG",
+              "./assets/images/projects/inventory/createinbound.PNG",
+              "./assets/images/projects/inventory/detailed.PNG",
+              "./assets/images/projects/inventory/inboundlist.PNG",
+              "./assets/images/projects/inventory/pdf.PNG",
+            ],
+            contents: [
+              "A Simple Inventory system that can keep and save their records.",
+              "The system will be using barcode Stickers to act as a unique identifier for their items.",
+              "This system will help employee to produce report about the inventory or stock availability in their warehouse.",
+            ],
+            techs: [
+              "#Laravel Framework / #PHP(OOP) #MySQL",
+              "#HTML #CSS #Bootstrap #Javascript #Jquery #Ajax",
+            ],
+            codes: [
+              {
+                label: "Source",
+                link: "https://github.com/asraquem00110/Laravel-Simple-Inventory",
+              },
+            ],
+            demos: [
+              {
+                label: "DEMO",
+                link: "http://warehouse-inventory-management.herokuapp.com/",
+              },
+            ],
+          },
+          {
+            id: 7,
+            name: "Simple Online Shop ( React Js Frontend )",
+            activeImageIndex: 0,
+            images: [
+              "./assets/images/projects/onlineShop/preview.PNG",
+              "./assets/images/projects/onlineShop/adminlogin.PNG",
+              "./assets/images/projects/onlineShop/admindashboard.PNG",
+              "./assets/images/projects/onlineShop/adminreports.PNG",
+              "./assets/images/projects/onlineShop/cart.PNG",
+              "./assets/images/projects/onlineShop/checkout.PNG",
+              "./assets/images/projects/onlineShop/order.PNG",
+              "./assets/images/projects/onlineShop/paypal.PNG",
+              "./assets/images/projects/onlineShop/wish.PNG",
+            ],
+            contents: [
+              "This is a simple Online Shopping Web Application using php (Laravel) as backend.",
+              "React JS for shop frontend",
+              "Vue JS for admin frontend",
+            ],
+            techs: [
+              "Backend: #Laravel Framework / #PHP(OOP) #MySQL",
+              "Shop Frontend: #HTML #CSS #Bootstrap #Javascript #ReactJs",
+              "Admin Frontend: #HTML #CSS #Bootstrap #Javascript #Vuejs",
+            ],
+            codes: [
+              {
+                label: "Source",
+                link: "https://github.com/asraquem00110/Simple-Online-Shopping-Laravel-VueJS",
+              },
+              {
+                label: "Shop Frontend",
+                link: "https://github.com/asraquem00110/Ashop-React-FrontEnd",
+              },
+            ],
+            demos: [
+              {
+                label: "SHOP DEMO",
+                link: "https://ashopping-react.herokuapp.com/",
+              },
+              {
+                label: "ADMIN DEMO",
+                link: "http://ashopping.herokuapp.com/admin",
+              },
+            ],
+          },
+        ]);
+        const [activeProject, setActiveProject] = React.useState(projects[0]);
+        const [activeImage, setActiveImage] = React.useState(0);
+
+        const changeImage = (direction) => {
+          if (direction == "prev" && activeImage != 0) {
+            setActiveImage((state) => state - 1);
           }
 
-          if(direction == "next" && activeImage < activeProject.images.length - 1){
-             setActiveImage(state=>state+1);
+          if (
+            direction == "next" &&
+            activeImage < activeProject.images.length - 1
+          ) {
+            setActiveImage((state) => state + 1);
           }
-        
-        }
+        };
 
-        const changeDisplayImage = (action = "next", project, index , type = "mobile")=> {
-          const currentIndex = project.activeImageIndex
+        const changeDisplayImage = (
+          action = "next",
+          project,
+          index,
+          type = "mobile"
+        ) => {
+          const currentIndex = project.activeImageIndex;
 
-          if(action === "prev" && currentIndex == 0) return;
-          if(action === "next" && currentIndex + 1 >= project.images.length) return;
+          if (action === "prev" && currentIndex == 0) return;
+          if (action === "next" && currentIndex + 1 >= project.images.length)
+            return;
 
           project = {
             ...project,
-            activeImageIndex: action === "next" ? currentIndex + 1 : currentIndex - 1
-          }
-          
-          if(type==="mobile"){
-            setMainProjects(oldProjects => {
+            activeImageIndex:
+              action === "next" ? currentIndex + 1 : currentIndex - 1,
+          };
+
+          if (type === "mobile") {
+            setMainProjects((oldProjects) => {
               oldProjects[index] = project;
 
-              return [
-                ...oldProjects
-              ]
-            })
+              return [...oldProjects];
+            });
           }
 
-          if(type === "web"){
-            setProjects(oldProjects => {
+          if (type === "web") {
+            setProjects((oldProjects) => {
               oldProjects[index] = project;
 
-              return [
-                ...oldProjects
-              ]
-          })
+              return [...oldProjects];
+            });
           }
 
           return;
-        }
+        };
 
-        return(
+        return (
           <div className="PageContent">
             <div className="projectGrid">
-              <AboutContent title="Projects/Task Accomplished" icon="fa fa-code">
-                  <div className="mainProjectDiv">
-                      {
-                        mainProjects.map((item,index)=> (
-                          <div className="projectSecondDiv">
-                          <div className="projectFirstContent">
-                              <div className="cellphoneBG" style={{height:"700px",width:"300px",marginTop: "-40px"}}>
-                                <img style={{marginLeft: "16px",marginTop: "102px", height:"485px",width: "265px",position:"absolute"}} src={item.images[item.activeImageIndex]}/>
-                                <span onClick={()=> changeDisplayImage("prev",item,index)} className="cellphoneBck"><i className="fa fa-caret-left"/></span>
-                                <span onClick={()=> changeDisplayImage("next",item,index)} className="cellphoneFor"><i className="fa fa-caret-right"/></span>
-                              </div>
-                          </div>
-                          <div  className="projectSecondContent">
-                                <span className="projectName">{item.name}</span>
-                                <span className="projectDesc">
-                                  {item.desc}
-                                </span>
-                                <span style={{marginTop: "20px",fontWeight:"bold",fontSize:"20pt"}}>Features</span>
-                                <span style={{marginTop: "10px",fontSize:"18pt"}}>{item.features}</span>
-                                {
-                                  item.backend && item.backend != "" && (
-                                    <div style={{marginTop: "20px"}}>
-                                    <span style={{marginTop: "20px",fontWeight:"bold",fontSize:"20pt"}}>Backend</span>
-                                    <br/>
-                                    <span style={{marginTop: "10px",fontSize:"18pt"}}>{item.backend}</span>
-                                    </div>
-                                  )
-                                }
-
-                                {
-                                  item.frontend && item.frontend != "" && (
-                                    <div style={{marginTop: "20px"}}>
-                                    <span style={{marginTop: "20px",fontWeight:"bold",fontSize:"20pt"}}>Frontend</span>
-                                    <br/>
-                                    <span style={{marginTop: "10px",fontSize:"18pt"}}>{item.frontend}</span>
-                                    </div>
-                                  )
-                                }
-                          </div>
-                          
+              <AboutContent
+                title="Projects/Task Accomplished"
+                icon="fa fa-code"
+              >
+                <div className="mainProjectDiv">
+                  {mainProjects.map((item, index) => (
+                    <div className="projectSecondDiv">
+                      <div className="projectFirstContent">
+                        <div
+                          className="cellphoneBG"
+                          style={{
+                            height: "700px",
+                            width: "300px",
+                            marginTop: "-40px",
+                          }}
+                        >
+                          <img
+                            style={{
+                              marginLeft: "16px",
+                              marginTop: "102px",
+                              height: "485px",
+                              width: "265px",
+                              position: "absolute",
+                            }}
+                            src={item.images[item.activeImageIndex]}
+                          />
+                          <span
+                            onClick={() =>
+                              changeDisplayImage("prev", item, index)
+                            }
+                            className="cellphoneBck"
+                          >
+                            <i className="fa fa-caret-left" />
+                          </span>
+                          <span
+                            onClick={() =>
+                              changeDisplayImage("next", item, index)
+                            }
+                            className="cellphoneFor"
+                          >
+                            <i className="fa fa-caret-right" />
+                          </span>
+                        </div>
                       </div>
-                        ))
-                      }
+                      <div className="projectSecondContent">
+                        <span className="projectName">{item.name}</span>
+                        <span className="projectDesc">{item.desc}</span>
+                        <span
+                          style={{
+                            marginTop: "20px",
+                            fontWeight: "bold",
+                            fontSize: "20pt",
+                          }}
+                        >
+                          Features
+                        </span>
+                        <span style={{ marginTop: "10px", fontSize: "18pt" }}>
+                          {item.features}
+                        </span>
+                        {item.backend && item.backend != "" && (
+                          <div style={{ marginTop: "20px" }}>
+                            <span
+                              style={{
+                                marginTop: "20px",
+                                fontWeight: "bold",
+                                fontSize: "20pt",
+                              }}
+                            >
+                              Backend
+                            </span>
+                            <br />
+                            <span
+                              style={{ marginTop: "10px", fontSize: "18pt" }}
+                            >
+                              {item.backend}
+                            </span>
+                          </div>
+                        )}
 
-                   </div>
-                </AboutContent>
+                        {item.frontend && item.frontend != "" && (
+                          <div style={{ marginTop: "20px" }}>
+                            <span
+                              style={{
+                                marginTop: "20px",
+                                fontWeight: "bold",
+                                fontSize: "20pt",
+                              }}
+                            >
+                              Frontend
+                            </span>
+                            <br />
+                            <span
+                              style={{ marginTop: "10px", fontSize: "18pt" }}
+                            >
+                              {item.frontend}
+                            </span>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </AboutContent>
 
-                <AboutContent title="Others/Personal Projects" icon="fa fa-code">
-                  <div className="mainProjectDiv">
-                    {
-                      projects.map((item,index)=> {
-                        return (
-                          <div className="projectSecondDiv">
-                            <div className="projectThirdContent">
-                              <div style={{height:"500px",width:"100%",position:"relative"}}>
-                                <img style={{
-                                  height:"485px",
-                                  width: item.images[item.activeImageIndex].split(".")[2] == "jpg" ? "50%" : "90%" ,
-                                  marginTop: "10px",}} src={item.images[item.activeImageIndex]}/>
-                                <span onClick={()=> changeDisplayImage("prev",item,index,"web")} className="webBck"><i className="fa fa-caret-left"/></span>
-                                <span onClick={()=> changeDisplayImage("next",item,index,"web")} className="webNxt"><i className="fa fa-caret-right"/></span>
-                              
-                                </div>
-                           
-                            </div>
-
-                            <div  className="projectFourthContent">
-                              <span className="projectName">{item.name}</span>
-                                  {
-                                    item.contents.map((content,index)=> (
-                                      <span className="projectDesc">
-                                          {content}
-                                      </span>
-                                    ))
-                                  }
-                                
-                                <span style={{marginTop: "20px",fontWeight:"bold",fontSize:"20pt"}}>Technologies</span>
-                                 {
-                                  item.techs.map((tech,index)=> (
-                                    <span style={{marginTop: "10px",fontSize:"18pt"}}>{tech}</span>
-                                  ))
-                                 }
-                                 <span style={{marginTop: "20px",fontWeight:"bold",fontSize:"20pt"}}>Code repo <i className="fa fa-github"/></span>
-                                 <div style={{display:"flex",flex: 1,flexWrap: "wrap"}}>
-                                 {
-                                    item.codes.map((code)=> {
-                                      return <div>
-                                        <span style={{padding:"10px 0px",fontSize: "18pt"}}>{code.label}: </span> <a style={{color:"#33accc",marginRight: "10px", }} href={code.link} target="_blank">View Code</a>
-                                        </div>
-                                    })
-                                 }
-                                 </div>
-                            </div>
+              <AboutContent title="Others/Personal Projects" icon="fa fa-code">
+                <div className="mainProjectDiv">
+                  {projects.map((item, index) => {
+                    return (
+                      <div className="projectSecondDiv">
+                        <div className="projectThirdContent">
+                          <div
+                            style={{
+                              height: "500px",
+                              width: "100%",
+                              position: "relative",
+                            }}
+                          >
+                            <img
+                              style={{
+                                height: "485px",
+                                width:
+                                  item.images[item.activeImageIndex].split(
+                                    "."
+                                  )[2] == "jpg"
+                                    ? "50%"
+                                    : "90%",
+                                marginTop: "10px",
+                              }}
+                              src={item.images[item.activeImageIndex]}
+                            />
+                            <span
+                              onClick={() =>
+                                changeDisplayImage("prev", item, index, "web")
+                              }
+                              className="webBck"
+                            >
+                              <i className="fa fa-caret-left" />
+                            </span>
+                            <span
+                              onClick={() =>
+                                changeDisplayImage("next", item, index, "web")
+                              }
+                              className="webNxt"
+                            >
+                              <i className="fa fa-caret-right" />
+                            </span>
+                          </div>
                         </div>
 
-                        )
-                      })
-                    }
+                        <div className="projectFourthContent">
+                          <span className="projectName">{item.name}</span>
+                          {item.contents.map((content, index) => (
+                            <span className="projectDesc">{content}</span>
+                          ))}
 
-                  </div>
-
-                </AboutContent>
-
+                          <span
+                            style={{
+                              marginTop: "20px",
+                              fontWeight: "bold",
+                              fontSize: "20pt",
+                            }}
+                          >
+                            Technologies
+                          </span>
+                          {item.techs.map((tech, index) => (
+                            <span
+                              style={{ marginTop: "10px", fontSize: "18pt" }}
+                            >
+                              {tech}
+                            </span>
+                          ))}
+                          <span
+                            style={{
+                              marginTop: "20px",
+                              fontWeight: "bold",
+                              fontSize: "20pt",
+                            }}
+                          >
+                            Code repo <i className="fa fa-github" />
+                          </span>
+                          <div
+                            style={{
+                              display: "flex",
+                              flex: 1,
+                              flexWrap: "wrap",
+                            }}
+                          >
+                            {item.codes.map((code) => {
+                              return (
+                                <div>
+                                  <span
+                                    style={{
+                                      padding: "10px 0px",
+                                      fontSize: "18pt",
+                                    }}
+                                  >
+                                    {code.label}:{" "}
+                                  </span>{" "}
+                                  <a
+                                    style={{
+                                      color: "#33accc",
+                                      marginRight: "10px",
+                                    }}
+                                    href={code.link}
+                                    target="_blank"
+                                  >
+                                    View Code
+                                  </a>
+                                </div>
+                              );
+                            })}
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </AboutContent>
             </div>
           </div>
-        )
+        );
 
+        return (
+          <div className="PageContent">
+            <div className="projectGrid">
+              <div className="mainDiv">
+                <div
+                  style={{
+                    position: "relative",
+                    justifyContent: "grid",
+                    placeItems: "center",
+                  }}
+                  className="images"
+                >
+                  <div
+                    style={{
+                      position: "absolute",
+                      borderTop: "10px solid orange",
+                      borderRight: "10px solid orange",
+                      top: -10,
+                      right: -10,
+                      width: "100px",
+                      height: "100px",
+                      zIndex: 10,
+                    }}
+                  />
+                  <div
+                    style={{
+                      position: "absolute",
+                      borderTop: "10px solid orange",
+                      borderLeft: "10px solid orange",
+                      top: -10,
+                      left: -10,
+                      width: "100px",
+                      height: "100px",
+                      zIndex: 10,
+                    }}
+                  />
+                  <div
+                    style={{
+                      position: "absolute",
+                      borderBottom: "10px solid orange",
+                      borderRight: "10px solid orange",
+                      bottom: -10,
+                      right: -10,
+                      width: "100px",
+                      height: "100px",
+                      zIndex: 10,
+                    }}
+                  />
+                  <div
+                    style={{
+                      position: "absolute",
+                      borderBottom: "10px solid orange",
+                      borderLeft: "10px solid orange",
+                      bottom: -10,
+                      left: -10,
+                      width: "100px",
+                      height: "100px",
+                      zIndex: 10,
+                    }}
+                  />
+                  <img
+                    style={{
+                      height: "100%",
+                      width:
+                        activeProject.images[activeImage].split(".")[2] == "jpg"
+                          ? "50%"
+                          : "100%",
+                    }}
+                    src={activeProject.images[activeImage]}
+                  />
+                  <span
+                    onClick={() => changeImage("prev")}
+                    style={{
+                      color: activeImage == 0 ? "white" : "orange",
+                      padding: 10,
+                      background: "rgba(0,0,0,0.5)",
+                      cursor: "pointer",
+                      position: "absolute",
+                      zIndex: 9999,
+                      left: -30,
+                      fontSize: 50,
+                    }}
+                  >
+                    <i className="fa fa-chevron-left" />
+                  </span>
+                  <span
+                    onClick={() => changeImage("next")}
+                    style={{
+                      color:
+                        activeImage < activeProject.images.length - 1
+                          ? "orange"
+                          : "white",
+                      padding: 10,
+                      background: "rgba(0,0,0,0.5)",
+                      cursor: "pointer",
+                      position: "absolute",
+                      zIndex: 9999,
+                      right: -30,
+                      fontSize: 50,
+                    }}
+                  >
+                    <i className="fa fa-chevron-right" />
+                  </span>
+                  <span
+                    onClick={() => changeImage("next")}
+                    style={{
+                      width: "100%",
+                      color: "white",
+                      padding: 10,
+                      background: "rgba(0,0,0,0.5)",
+                      cursor: "pointer",
+                      position: "absolute",
+                      zIndex: 9999,
+                      bottom: 0,
+                      fontSize: 18,
+                    }}
+                  >
+                    Image {activeImage + 1}/{activeProject.images.length}
+                  </span>
+                </div>
 
-          return (
-            <div className="PageContent">
-                  <div className="projectGrid">
-                    <div className="mainDiv">
-                          <div style={{position:"relative",justifyContent:'grid',placeItems:"center"}} className="images">
-                             <div style={{position:"absolute",borderTop: "10px solid orange",borderRight: "10px solid orange",top: -10 , right: -10 , width: "100px",height:"100px",zIndex: 10}}/>
-                             <div style={{position:"absolute",borderTop: "10px solid orange",borderLeft: "10px solid orange",top: -10 , left: -10 , width: "100px",height:"100px",zIndex: 10}}/>
-                             <div style={{position:"absolute",borderBottom: "10px solid orange",borderRight: "10px solid orange",bottom: -10 , right: -10 , width: "100px",height:"100px",zIndex: 10}}/>
-                             <div style={{position:"absolute",borderBottom: "10px solid orange",borderLeft: "10px solid orange",bottom: -10 , left: -10 , width: "100px",height:"100px",zIndex: 10}}/>
-                             <img style={{height:"100%",width:  activeProject.images[activeImage].split(".")[2] == "jpg" ? "50%" : "100%"}} src={activeProject.images[activeImage]}/>
-                             <span onClick={()=>changeImage("prev")} style={{color: activeImage == 0 ? "white" : "orange",padding: 10, background:"rgba(0,0,0,0.5)",cursor: "pointer",position:"absolute",zIndex: 9999,left:-30,fontSize:50}}><i className="fa fa-chevron-left"/></span>
-                             <span onClick={()=>changeImage("next")} style={{color: activeImage < activeProject.images.length - 1 ? "orange" : "white",padding: 10, background:"rgba(0,0,0,0.5)",cursor: "pointer",position:"absolute",zIndex: 9999,right:-30,fontSize:50}}><i className="fa fa-chevron-right"/></span>
-                             <span onClick={()=>changeImage("next")} style={{width:"100%",color: "white",padding: 10, background:"rgba(0,0,0,0.5)",cursor: "pointer",position:"absolute",zIndex: 9999,bottom: 0,fontSize:18}}>Image {activeImage + 1}/{activeProject.images.length}</span>
-                          </div>  
-
-                            <div  className="info">
-                                <div id="title">
-                                    <span>{activeProject.name}</span>
-                                </div>
-                                <div id="content">
-                                     <ul>
-                                        {
-                                          activeProject.contents.map((content)=> {
-                                            return <li>{content}</li>
-                                          })
-                                        }
-                                    </ul>
-                                    <DarkCard>
-                                    <GridComponent>
-                                        <div className="grid-col-6">
-                                          <span style={{fontSize:"16pt",fontWeight:"bold"}}><span className="fa fa-code"></span> Technology Used</span><br/>
-                                          {
-                                            activeProject.techs.map((tech)=> {
-                                              return <span style={{padding:"20px 0px"}}>{tech}<br/></span>
-                                            })
-                                          }
-                                        </div>
-
-                                        <div className="grid-col-6">
-                                          <span style={{fontSize:"16pt",fontWeight:"bold"}}><span className="fa fa-github"></span> Github Source Code</span><br/>
-                                          {
-                                            activeProject.codes.map((code)=> {
-                                              return <div><span style={{padding:"20px 0px"}}>{code.label}: </span> <a style={{color:"#33accc"}} href={code.link} target="_blank">View Code</a><br/></div>
-                                            })
-                                          }
-                                        </div>
-                                    </GridComponent>
-                                  </DarkCard>
-
-                                  {
-                                    activeProject.demos &&
-                                    <GridComponent>
-                                    <div className="grid-col-6">
-                                      <WhiteCard>
-                                          <div style={{cursor:"pointer",display:"grid",placeItems:"center"}}>
-                                              <a target="_blank" href={activeProject.demos[0].link} style={{color:"dimgray",fontWeight:"bold",fontSize:"14pt"}}><span className="fa fa-search"></span> {activeProject.demos[0].label}</a>
-                                          </div>
-                                        </WhiteCard>
-                                      </div>
-                                      {
-                                        activeProject.demos[1] &&
-                                        <div className="grid-col-6">
-                                         <WhiteCard>
-                                          <div style={{cursor:"pointer",display:"grid",placeItems:"center"}}>
-                                              <a target="_blank" href={activeProject.demos[1].link} style={{color:"dimgray",fontWeight:"bold",fontSize:"14pt"}}><span className="fa fa-search"></span> {activeProject.demos[1].label}</a>
-                                          </div>
-                                        </WhiteCard>
-                                      </div>
-                                      }
-                                   
-                                </GridComponent>
-
-                                  }
-                             
-                
-                                </div>
-                                  
-                          </div>  
-                    </div>
-                    <div className="listDiv">
-                      {
-                        projects.map((project,index)=>{
-
-                          if(project.id == activeProject.id){
-                            return (
-                              <div onClick={()=>{
-                                setActiveImage(0)
-                                setActiveProject(project)
-                              }} key={`${project}-index`} className="projects" style={{border:"2px solid black",position:'relative'}}>
-                                    <div style={{display:"grid",placeItems:"center", position:'absolute',height: "30px",width:"30px",borderRadius:"100%",background:"#21222C",top: -10 ,right: -10,zIndex:999}}>
-                                        {project.id}
-                                    </div>
-                                    <div style={{width: "300px",display:"grid",placeItems:"center",position:"relative"}}>
-                                        
-                                      <img src={project.images[0]} style={{height: "120px",width:"250px"}}/>
-                                      <div style={{position:"absolute",height: "50px",width:"50px",background:"orange",opacity:"0.2",borderRadius:"100%"}}>
-
-                                      </div>
-
-                                    </div>
-                                </div> 
-                            )
-                          }
-
-                          return (
-                            <div onClick={()=>{
-                              setActiveImage(0)
-                              setActiveProject(project)
-                            }} key={`${project}-index`} className="projects" style={{position:"relative"}}>
-                                     <div style={{display:"grid",placeItems:"center", position:'absolute',height: "25px",width:"25px",borderRadius:"100%",background:"silver",top: -10 ,right: -10,zIndex:999}}>
-                                        {project.id}
-                                    </div>
-                                    <div style={{width: "300px",display:"grid",placeItems:"center"}}>
-                                          
-                                        <img src={project.images[0]} style={{height: "120px",width:"250px",opacity: 0.6}}/>
-
-                                      </div>
-                              </div> 
-                          )
-                        })
-                      }
-                    </div>
+                <div className="info">
+                  <div id="title">
+                    <span>{activeProject.name}</span>
                   </div>
+                  <div id="content">
+                    <ul>
+                      {activeProject.contents.map((content) => {
+                        return <li>{content}</li>;
+                      })}
+                    </ul>
+                    <DarkCard>
+                      <GridComponent>
+                        <div className="grid-col-6">
+                          <span
+                            style={{ fontSize: "16pt", fontWeight: "bold" }}
+                          >
+                            <span className="fa fa-code"></span> Technology Used
+                          </span>
+                          <br />
+                          {activeProject.techs.map((tech) => {
+                            return (
+                              <span style={{ padding: "20px 0px" }}>
+                                {tech}
+                                <br />
+                              </span>
+                            );
+                          })}
+                        </div>
+
+                        <div className="grid-col-6">
+                          <span
+                            style={{ fontSize: "16pt", fontWeight: "bold" }}
+                          >
+                            <span className="fa fa-github"></span> Github Source
+                            Code
+                          </span>
+                          <br />
+                          {activeProject.codes.map((code) => {
+                            return (
+                              <div>
+                                <span style={{ padding: "20px 0px" }}>
+                                  {code.label}:{" "}
+                                </span>{" "}
+                                <a
+                                  style={{ color: "#33accc" }}
+                                  href={code.link}
+                                  target="_blank"
+                                >
+                                  View Code
+                                </a>
+                                <br />
+                              </div>
+                            );
+                          })}
+                        </div>
+                      </GridComponent>
+                    </DarkCard>
+
+                    {activeProject.demos && (
+                      <GridComponent>
+                        <div className="grid-col-6">
+                          <WhiteCard>
+                            <div
+                              style={{
+                                cursor: "pointer",
+                                display: "grid",
+                                placeItems: "center",
+                              }}
+                            >
+                              <a
+                                target="_blank"
+                                href={activeProject.demos[0].link}
+                                style={{
+                                  color: "dimgray",
+                                  fontWeight: "bold",
+                                  fontSize: "14pt",
+                                }}
+                              >
+                                <span className="fa fa-search"></span>{" "}
+                                {activeProject.demos[0].label}
+                              </a>
+                            </div>
+                          </WhiteCard>
+                        </div>
+                        {activeProject.demos[1] && (
+                          <div className="grid-col-6">
+                            <WhiteCard>
+                              <div
+                                style={{
+                                  cursor: "pointer",
+                                  display: "grid",
+                                  placeItems: "center",
+                                }}
+                              >
+                                <a
+                                  target="_blank"
+                                  href={activeProject.demos[1].link}
+                                  style={{
+                                    color: "dimgray",
+                                    fontWeight: "bold",
+                                    fontSize: "14pt",
+                                  }}
+                                >
+                                  <span className="fa fa-search"></span>{" "}
+                                  {activeProject.demos[1].label}
+                                </a>
+                              </div>
+                            </WhiteCard>
+                          </div>
+                        )}
+                      </GridComponent>
+                    )}
+                  </div>
+                </div>
+              </div>
+              <div className="listDiv">
+                {projects.map((project, index) => {
+                  if (project.id == activeProject.id) {
+                    return (
+                      <div
+                        onClick={() => {
+                          setActiveImage(0);
+                          setActiveProject(project);
+                        }}
+                        key={`${project}-index`}
+                        className="projects"
+                        style={{
+                          border: "2px solid black",
+                          position: "relative",
+                        }}
+                      >
+                        <div
+                          style={{
+                            display: "grid",
+                            placeItems: "center",
+                            position: "absolute",
+                            height: "30px",
+                            width: "30px",
+                            borderRadius: "100%",
+                            background: "#21222C",
+                            top: -10,
+                            right: -10,
+                            zIndex: 999,
+                          }}
+                        >
+                          {project.id}
+                        </div>
+                        <div
+                          style={{
+                            width: "300px",
+                            display: "grid",
+                            placeItems: "center",
+                            position: "relative",
+                          }}
+                        >
+                          <img
+                            src={project.images[0]}
+                            style={{ height: "120px", width: "250px" }}
+                          />
+                          <div
+                            style={{
+                              position: "absolute",
+                              height: "50px",
+                              width: "50px",
+                              background: "orange",
+                              opacity: "0.2",
+                              borderRadius: "100%",
+                            }}
+                          ></div>
+                        </div>
+                      </div>
+                    );
+                  }
+
+                  return (
+                    <div
+                      onClick={() => {
+                        setActiveImage(0);
+                        setActiveProject(project);
+                      }}
+                      key={`${project}-index`}
+                      className="projects"
+                      style={{ position: "relative" }}
+                    >
+                      <div
+                        style={{
+                          display: "grid",
+                          placeItems: "center",
+                          position: "absolute",
+                          height: "25px",
+                          width: "25px",
+                          borderRadius: "100%",
+                          background: "silver",
+                          top: -10,
+                          right: -10,
+                          zIndex: 999,
+                        }}
+                      >
+                        {project.id}
+                      </div>
+                      <div
+                        style={{
+                          width: "300px",
+                          display: "grid",
+                          placeItems: "center",
+                        }}
+                      >
+                        <img
+                          src={project.images[0]}
+                          style={{
+                            height: "120px",
+                            width: "250px",
+                            opacity: 0.6,
+                          }}
+                        />
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
             </div>
-          )
+          </div>
+        );
+      };
 
-         }
-
-
-
-
-    
-        const domContainer = document.querySelector('#app');
-        ReactDOM.render(<App/>, domContainer);
+      const domContainer = document.querySelector("#app");
+      ReactDOM.render(<App />, domContainer);
     </script>
-
   </body>
 </html>
