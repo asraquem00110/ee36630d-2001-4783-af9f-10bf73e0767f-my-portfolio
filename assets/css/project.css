@@ -130,4 +130,19 @@
   color: white;
   cursor: pointer;
   font-size: 50pt;
+}
+
+.project-btn-view {
+  padding: 10pt;
+  background: transparent;
+  border: 4px solid dimgray;
+  color: dimgray;
+  font-style: italic;
+  font-size: 14pt;
+  cursor: pointer;
+  border-radius: 5pt;
+}
+
+ul.a {
+  list-style-type: circle;
 }/*# sourceMappingURL=project.css.map */

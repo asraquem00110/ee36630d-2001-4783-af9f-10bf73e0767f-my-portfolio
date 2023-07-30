@@ -1,0 +1,334 @@
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-gap: 20pt;
+  margin-bottom: 10px;
+}
+
+.grid-col-1 {
+  grid-column: span 1;
+}
+
+.grid-col-2 {
+  grid-column: span 2;
+}
+
+.grid-col-3 {
+  grid-column: span 3;
+}
+
+.grid-col-4 {
+  grid-column: span 4;
+}
+
+.grid-col-5 {
+  grid-column: span 5;
+}
+
+.grid-col-6 {
+  grid-column: span 6;
+}
+
+.grid-col-7 {
+  grid-column: span 7;
+}
+
+.grid-col-8 {
+  grid-column: span 8;
+}
+
+.grid-col-9 {
+  grid-column: span 9;
+}
+
+.grid-col-10 {
+  grid-column: span 10;
+}
+
+.grid-col-11 {
+  grid-column: span 11;
+}
+
+.grid-col-12 {
+  grid-column: span 12;
+}
+
+/*panels*/
+
+.panel {
+  width: 100%;
+  overflow-x: hidden;
+  display: block;
+  margin: 20px 0px;
+}
+
+.panel-header {
+  /*padding: 10pt;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;*/
+  padding: 10pt;
+  background: #f1f1f1;
+  border: 1px solid #ccc;
+}
+
+.panel-title {
+  color: white;
+  font-weight: bold;
+  font-size: 18pt;
+}
+
+.panel-primary {
+  background: #3071a9;
+}
+
+.panel-success {
+  background: #79ac1e;
+}
+
+.panel-warning {
+  background: #dda765;
+  color: white;
+}
+
+.panel-danger {
+  background: mistyrose;
+  color: dimgray;
+}
+
+.panel-default {
+  background: #f1f1f1;
+}
+
+.panel-body {
+  padding: 10px;
+  border: 1px solid #ccc;
+  display: block;
+  background: white;
+}
+
+/*Basic Modal*/
+
+.modal {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  background: rgba(0, 0, 0, 0.4);
+  overflow: auto;
+  z-index: 9999;
+  display: block;
+  top: 0;
+  left: 0;
+  padding-top: 80px;
+  /*animation: example 0.2s linear;
+    -webkit-animation: example 0.2s linear;*/
+}
+
+.modal-header {
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  width: 50%;
+  box-shadow: 2pt 2pt 0pt black;
+}
+
+.modal-25 {
+  width: 25%;
+}
+
+.modal-30 {
+  width: 30%;
+}
+
+.modal-50 {
+  width: 50%;
+}
+
+.modal-75 {
+  width: 75%;
+}
+
+.modal-80 {
+  width: 80%;
+}
+
+.modal-100 {
+  width: 100%;
+}
+
+.modal-body {
+  padding-top: 30px;
+}
+
+.modal-footer {
+}
+
+.close-modal {
+  font-size: 20pt;
+  font-weight: bold;
+  color: #aaaaaa;
+  float: right;
+}
+
+.close-modal:hover,
+.close-modal:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.projectdiv {
+  width: 100%;
+  height: 400px;
+  background: white;
+  box-shadow: 1pt 1pt 1pt silver;
+}
+
+.projectimg {
+  height: 280px;
+  margin-top: 50px;
+  background: #f0eeef;
+  width: 100%;
+  text-align: center;
+  padding: 5pt;
+  box-sizing: border-box;
+}
+
+.projectimg:hover {
+  background: #6a6d6e;
+  cursor: pointer;
+  position: relative;
+  transition: 0.5s;
+}
+
+.projectimg a button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 10pt;
+  background: transparent;
+  border: 4px solid dimgray;
+  color: dimgray;
+  font-style: italic;
+  font-size: 14pt;
+  cursor: pointer;
+  border-radius: 5pt;
+}
+
+.projectimgbtn {
+  display: block;
+}
+
+.projectdescription {
+  height: 100px;
+  background: white;
+  width: 100%;
+  padding: 20px 0px 0px 0px;
+  text-align: center;
+}
+
+.imgprojectsrc {
+  width: 500px;
+  max-height: 265px;
+  border-radius: 10px;
+}
+
+@media (max-width: 1000px) {
+  #contact {
+    height: 370px !important;
+  }
+}
+
+@media (min-width: 901px) and (max-width: 1000px) {
+  div#project,
+  div#about {
+    padding: 15pt 50pt;
+  }
+
+  .grid-col-6 {
+    grid-column: span 12;
+  }
+}
+
+@media (max-width: 900px) {
+  div#project,
+  div#about {
+    padding: 15pt 10pt;
+  }
+
+  .imgprojectsrc {
+    width: 400px;
+  }
+
+  span#messageme {
+    font-size: 25pt;
+  }
+
+  span#messageme2 {
+    font-size: 12pt;
+  }
+
+  #ulabout li a {
+    font-size: 10pt;
+  }
+
+  div#allserve span {
+    font-size: 10pt;
+  }
+
+  div#details p {
+    font-size: 14pt;
+  }
+
+  div#details h1 {
+    font-size: 30pt;
+  }
+
+  #tuplogo {
+    opacity: 0.5;
+  }
+
+  .grid-col-6 {
+    grid-column: span 12;
+  }
+}
+
+@media (max-width: 600px) {
+  header ul {
+    text-align: center;
+    margin-top: 103px;
+    display: none;
+  }
+
+  header ul li {
+    display: block;
+    background: black;
+  }
+
+  #toggle-button {
+    display: block;
+  }
+
+  div#details p {
+    font-size: 14pt;
+  }
+
+  div#details h1 {
+    font-size: 30pt;
+  }
+
+  #tuplogo {
+    opacity: 0.5;
+  }
+
+  .grid-col-6 {
+    grid-column: span 12;
+  }
+
+  .imgprojectsrc {
+    width: 300px;
+  }
+}

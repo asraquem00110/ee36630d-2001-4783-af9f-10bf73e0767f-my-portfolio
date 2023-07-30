@@ -14,6 +14,7 @@
     <link type="text/css" rel="stylesheet" href="./assets/css/skills.css" />
     <link type="text/css" rel="stylesheet" href="./assets/css/experience.css" />
     <link type="text/css" rel="stylesheet" href="./assets/css/project.css" />
+    <link type="text/css" rel="stylesheet" href="./assets/css/grid.css" />
   </head>
   <body>
     <div id="app"></div>
@@ -173,7 +174,7 @@
               text: "This page is not yet fully responsive. For better experience you should view this on your computer or larger device.",
               confirmButtonText: "Continue",
             }).then((result) => {
-              setShowExplorer(true);
+              // setShowExplorer(true);
             });
           }
         }, []);
@@ -1476,7 +1477,206 @@
         );
       };
 
+      const ProjectModal = ({
+        data: item,
+        setShowViewMore,
+        projects,
+        index,
+        setProjects,
+        key,
+        children,
+      }) => {
+        if (!item) return null;
+
+        return (
+          <div className="modal" key={key}>
+            <div className="modal-content modal-80">
+              <div className="modal-header"></div>
+              <div className="modal-body">
+                <div
+                  style={{
+                    width: "100%",
+                    position: "relative",
+                    display: "flex",
+                    flexGrow: 1,
+                    flexDirection: "column",
+                  }}
+                >
+                  <div className="panel">
+                    <div
+                      className="panel-header panel-default"
+                      style={{ textAlign: "center" }}
+                    >
+                      <span style={{ fontSize: "24pt", color: "dimgray" }}>
+                        <a
+                          style={{
+                            color: "dimgray",
+                            float: "left",
+                            textDecoration: "none",
+                          }}
+                          href="javascript:void(0)"
+                          onClick={() => setShowViewMore(false)}
+                        >
+                          <span>&times;</span>
+                        </a>
+
+                        {item.name}
+                      </span>
+                    </div>
+                    <div className="panel-body">
+                      <div className="projectSecondDiv">
+                        <div className="projectThirdContent">
+                          <div
+                            style={{
+                              height: "500px",
+                              width: "100%",
+                              position: "relative",
+                              display: "flex",
+                              flexGrow: 1,
+                              justifyContent: "center",
+                              alignItems: "center",
+                              flexDirection: "column",
+                            }}
+                          >
+                            <img
+                              style={{
+                                height: "485px",
+                                width:
+                                  item.images[item.activeImageIndex].split(
+                                    "."
+                                  )[2] == "jpg"
+                                    ? "40%"
+                                    : "75%",
+                                marginTop: "10px 0px",
+                              }}
+                              src={item.images[item.activeImageIndex]}
+                            />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="grid-container">
+                    <div className="grid-col-6">
+                      <div className="panel">
+                        <div className="panel-header panel-default">
+                          <span
+                            style={{
+                              fontWeight: "bold",
+                              fontSize: "20pt",
+                              color: "dimgray",
+                            }}
+                          >
+                            <i className="fa fa-edit" /> Description
+                          </span>
+                        </div>
+                        <div className="panel-body">
+                          <ul>
+                            {item.contents.map((content, index) => (
+                              <li style={{ margin: "10px 0px" }}>
+                                <span
+                                  className="projectDesc"
+                                  style={{
+                                    color: "black",
+                                    fontSize: "16pt",
+                                  }}
+                                >
+                                  {content}
+                                </span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="grid-col-6">
+                      <div className="panel">
+                        <div className="panel-header panel-default">
+                          <span
+                            style={{
+                              fontWeight: "bold",
+                              fontSize: "20pt",
+                              color: "dimgray",
+                            }}
+                          >
+                            <i className="fa fa-desktop" /> Technologies
+                          </span>
+                        </div>
+                        <div className="panel-body">
+                          <ul>
+                            {item.techs.map((tech, index) => (
+                              <li style={{ margin: "10px 0px" }}>
+                                <span
+                                  style={{
+                                    fontSize: "16pt",
+                                    color: "black",
+                                  }}
+                                >
+                                  {tech}
+                                </span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+
+                    {item.codes.length > 0 && (
+                      <div className="grid-col-6">
+                        <div className="panel">
+                          <div className="panel-header panel-default">
+                            <span
+                              style={{
+                                fontWeight: "bold",
+                                fontSize: "20pt",
+                                color: "dimgray",
+                              }}
+                            >
+                              <i className="fa fa-github" /> Code repo
+                            </span>
+                          </div>
+                          <div className="panel-body">
+                            {item.codes.map((code) => {
+                              return (
+                                <div style={{ margin: "10px 0px" }}>
+                                  <span
+                                    style={{
+                                      fontSize: "16pt",
+                                      color: "black",
+                                    }}
+                                  >
+                                    {code.label}:{" "}
+                                  </span>{" "}
+                                  <a
+                                    style={{
+                                      fontSize: "16pt",
+                                      color: "#33accc",
+                                      marginRight: "10px",
+                                    }}
+                                    href={code.link}
+                                    target="_blank"
+                                  >
+                                    View Code
+                                  </a>
+                                </div>
+                              );
+                            })}
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        );
+      };
+
       const SampleProjects = () => {
+        const [showViewMore, setShowViewMore] = React.useState(false);
+        const [data, setData] = React.useState(null);
         const [mainProjects, setMainProjects] = React.useState([
           {
             id: 1,
@@ -1609,6 +1809,75 @@
           },
           {
             id: 2,
+            name: "ACU Monitoring",
+            activeImageIndex: 0,
+            images: [
+              "./assets/images/projects/acu/index.PNG",
+              "./assets/images/projects/acu/login.PNG",
+              "./assets/images/projects/acu/dispatch.PNG",
+              "./assets/images/projects/acu/create.PNG",
+              "./assets/images/projects/acu/PM.PNG",
+              "./assets/images/projects/acu/reports.PNG",
+              "./assets/images/projects/acu/settings.PNG",
+            ],
+            contents: [
+              "Monitors the availability of Armored Car Unit (ACU) for dispatching.",
+              "Checks the status of ACU.",
+              "Creation of preventive maintenance schedule for ACU.",
+              "Creation of Job Order for ACU.",
+              "Generate reports.",
+            ],
+            techs: [
+              "Backend: #PHP #MySQL",
+              "Frontend: #HTML #CSS #Bootstrap #Javascript #JQUERY",
+            ],
+            codes: [],
+            demos: [
+              {
+                label: "DEMO",
+                link: "http://dorian-wreck.000webhostapp.com/mysite/acu",
+              },
+            ],
+          },
+          {
+            id: 3,
+            name: "Helpdesk Event System",
+            activeImageIndex: 0,
+            images: [
+              "./assets/images/projects/hes/index.PNG",
+              "./assets/images/projects/hes/dashboard.PNG",
+              "./assets/images/projects/hes/login.PNG",
+              "./assets/images/projects/hes/flm.PNG",
+              "./assets/images/projects/hes/slm.PNG",
+              "./assets/images/projects/hes/print.PNG",
+              "./assets/images/projects/hes/reportlist.PNG",
+              "./assets/images/projects/hes/settings.PNG",
+            ],
+            contents: [
+              "A system for Helpdesk/Technical Team that tracks incident/problem reported by the clients.",
+              "Helps to monitor the status of a ticket.",
+              "Used to keep track list of incident reports.",
+              "Generate daily,monthly and yearly report.",
+            ],
+            techs: [
+              "Backend: #PHP #MySQL",
+              "Frontend: #HTML #CSS #Bootstrap #Javascript #JQUERY",
+            ],
+            codes: [
+              {
+                label: "Source Code",
+                link: "https://github.com/asraquem00110/Helpdesk-Event-Tracker-MVC-PHP",
+              },
+            ],
+            demos: [
+              {
+                label: "DEMO",
+                link: "http://dorian-wreck.000webhostapp.com/mysite/acu",
+              },
+            ],
+          },
+          {
+            id: 4,
             name: "COVID-19 No. of Cases Tracker Mobile App",
             activeImageIndex: 0,
             images: [
@@ -1650,7 +1919,7 @@
             ],
           },
           {
-            id: 3,
+            id: 5,
             name: "Home Quarantine Pass Management System",
             activeImageIndex: 0,
             images: [
@@ -1706,7 +1975,7 @@
             ],
           },
           {
-            id: 4,
+            id: 6,
             name: "IHatid App",
             activeImageIndex: 0,
             images: [
@@ -1744,7 +2013,7 @@
             ],
           },
           {
-            id: 5,
+            id: 7,
             name: "Dental Clinic Management System (Freelance Project - Project Study)",
             activeImageIndex: 0,
             images: [
@@ -1794,7 +2063,7 @@
             ],
           },
           {
-            id: 6,
+            id: 8,
             name: "Warehouse Inventory Management",
             activeImageIndex: 0,
             images: [
@@ -1828,52 +2097,6 @@
               {
                 label: "DEMO",
                 link: "http://warehouse-inventory-management.herokuapp.com/",
-              },
-            ],
-          },
-          {
-            id: 7,
-            name: "Simple Online Shop ( React Js Frontend )",
-            activeImageIndex: 0,
-            images: [
-              "./assets/images/projects/onlineShop/preview.PNG",
-              "./assets/images/projects/onlineShop/adminlogin.PNG",
-              "./assets/images/projects/onlineShop/admindashboard.PNG",
-              "./assets/images/projects/onlineShop/adminreports.PNG",
-              "./assets/images/projects/onlineShop/cart.PNG",
-              "./assets/images/projects/onlineShop/checkout.PNG",
-              "./assets/images/projects/onlineShop/order.PNG",
-              "./assets/images/projects/onlineShop/paypal.PNG",
-              "./assets/images/projects/onlineShop/wish.PNG",
-            ],
-            contents: [
-              "This is a simple Online Shopping Web Application using php (Laravel) as backend.",
-              "React JS for shop frontend",
-              "Vue JS for admin frontend",
-            ],
-            techs: [
-              "Backend: #Laravel Framework / #PHP(OOP) #MySQL",
-              "Shop Frontend: #HTML #CSS #Bootstrap #Javascript #ReactJs",
-              "Admin Frontend: #HTML #CSS #Bootstrap #Javascript #Vuejs",
-            ],
-            codes: [
-              {
-                label: "Source",
-                link: "https://github.com/asraquem00110/Simple-Online-Shopping-Laravel-VueJS",
-              },
-              {
-                label: "Shop Frontend",
-                link: "https://github.com/asraquem00110/Ashop-React-FrontEnd",
-              },
-            ],
-            demos: [
-              {
-                label: "SHOP DEMO",
-                link: "https://ashopping-react.herokuapp.com/",
-              },
-              {
-                label: "ADMIN DEMO",
-                link: "http://ashopping.herokuapp.com/admin",
               },
             ],
           },
@@ -1930,6 +2153,186 @@
 
           return;
         };
+
+        const [index, setIndex] = React.useState(null);
+
+        const showModalDetails = (data, index) => {
+          setData(data);
+          setIndex(index);
+          setShowViewMore(true);
+        };
+
+        const showHideViewMorebutton = (x) => setShowViewMore(x);
+        return (
+          <div>
+            {showViewMore && (
+              <ProjectModal
+                projects={projects}
+                data={data}
+                index={index}
+                setShowViewMore={setShowViewMore}
+                setProjects={setProjects}
+                key={`project-modal=${index}`}
+              />
+            )}
+            <div className="PageContent">
+              <div className="projectGrid">
+                <AboutContent
+                  title="Projects/Task Accomplished"
+                  icon="fa fa-code"
+                >
+                  <div className="mainProjectDiv">
+                    {mainProjects.map((item, index) => (
+                      <div className="projectSecondDiv">
+                        <div className="projectFirstContent">
+                          <div
+                            className="cellphoneBG"
+                            style={{
+                              height: "700px",
+                              width: "300px",
+                              marginTop: "-40px",
+                            }}
+                          >
+                            <img
+                              style={{
+                                marginLeft: "16px",
+                                marginTop: "102px",
+                                height: "485px",
+                                width: "265px",
+                                position: "absolute",
+                              }}
+                              src={item.images[item.activeImageIndex]}
+                            />
+                            <span
+                              onClick={() =>
+                                changeDisplayImage("prev", item, index)
+                              }
+                              className="cellphoneBck"
+                            >
+                              <i className="fa fa-caret-left" />
+                            </span>
+                            <span
+                              onClick={() =>
+                                changeDisplayImage("next", item, index)
+                              }
+                              className="cellphoneFor"
+                            >
+                              <i className="fa fa-caret-right" />
+                            </span>
+                          </div>
+                        </div>
+                        <div className="projectSecondContent">
+                          <span className="projectName">{item.name}</span>
+                          <span className="projectDesc">{item.desc}</span>
+                          <span
+                            style={{
+                              marginTop: "20px",
+                              fontWeight: "bold",
+                              fontSize: "20pt",
+                            }}
+                          >
+                            Features
+                          </span>
+                          <span style={{ marginTop: "10px", fontSize: "18pt" }}>
+                            {item.features}
+                          </span>
+                          {item.backend && item.backend != "" && (
+                            <div style={{ marginTop: "20px" }}>
+                              <span
+                                style={{
+                                  marginTop: "20px",
+                                  fontWeight: "bold",
+                                  fontSize: "20pt",
+                                }}
+                              >
+                                Backend
+                              </span>
+                              <br />
+                              <span
+                                style={{ marginTop: "10px", fontSize: "18pt" }}
+                              >
+                                {item.backend}
+                              </span>
+                            </div>
+                          )}
+
+                          {item.frontend && item.frontend != "" && (
+                            <div style={{ marginTop: "20px" }}>
+                              <span
+                                style={{
+                                  marginTop: "20px",
+                                  fontWeight: "bold",
+                                  fontSize: "20pt",
+                                }}
+                              >
+                                Frontend
+                              </span>
+                              <br />
+                              <span
+                                style={{ marginTop: "10px", fontSize: "18pt" }}
+                              >
+                                {item.frontend}
+                              </span>
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </AboutContent>
+
+                <AboutContent
+                  title="Others/Personal Projects"
+                  icon="fa fa-code"
+                >
+                  <div className="grid-container">
+                    {projects.map((data) => (
+                      <div className="projectitem grid-col-6">
+                        <div
+                          className="projectdiv"
+                          style={{ position: "relative" }}
+                        >
+                          <div
+                            style={{
+                              height: "20px",
+                              width: "100%",
+                              background: "#343746",
+                              position: "absolute",
+                              top: "-20px",
+                              boxShadow: "2px 2px 2px black",
+                            }}
+                          />
+
+                          <div
+                            className="projectimg"
+                            onClick={() => showModalDetails(data, index)}
+                          >
+                            <img
+                              className="imgprojectsrc"
+                              src={data.images[0]}
+                            />
+                          </div>
+                          <div className="projectdescription">
+                            <span
+                              style={{
+                                fontSize: "20pt",
+                                fontWeight: "bold",
+                                color: "dimgray",
+                              }}
+                            >
+                              {data.name}
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </AboutContent>
+              </div>
+            </div>
+            <div style={{ height: 3650 }} />
+          </div>
+        );
 
         return (
           <div className="PageContent">
