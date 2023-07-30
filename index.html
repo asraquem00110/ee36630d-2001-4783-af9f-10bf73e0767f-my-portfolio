@@ -1493,6 +1493,39 @@
       }) => {
         if (!item) return null;
 
+        const [isMin, setIsMin] = React.useState(true);
+        const [isMax, setIsMax] = React.useState(false);
+
+        const changeDisplayImage = (
+          action = "next",
+          project,
+          index,
+          type = "mobile"
+        ) => {
+          const currentIndex = project.activeImageIndex;
+          if (action === "prev" && currentIndex - 1 === 0) setIsMin(true);
+          if (action === "prev" && currentIndex == 0) return;
+          if (action === "next" && currentIndex + 2 >= project.images.length)
+            setIsMax(true);
+          if (action === "next" && currentIndex + 1 >= project.images.length)
+            return;
+
+          action === "prev" ? setIsMax(false) : setIsMin(false);
+
+          project = {
+            ...project,
+            activeImageIndex:
+              action === "next" ? currentIndex + 1 : currentIndex - 1,
+          };
+
+          setProjects((oldProjects) => {
+            oldProjects[index] = project;
+            return [...oldProjects];
+          });
+
+          return;
+        };
+
         return (
           <div className="modal" key={key}>
             <div className="modal-content modal-80">
@@ -1545,17 +1578,51 @@
                           >
                             <img
                               style={{
-                                height: "485px",
+                                height: "500px",
                                 width:
-                                  item.images[item.activeImageIndex].split(
-                                    "."
-                                  )[2] == "jpg"
+                                  projects[index].images[
+                                    projects[index].activeImageIndex
+                                  ].split(".")[2] == "jpg"
                                     ? "40%"
                                     : "75%",
                                 marginTop: "10px 0px",
                               }}
-                              src={item.images[item.activeImageIndex]}
+                              src={
+                                projects[index].images[
+                                  projects[index].activeImageIndex
+                                ]
+                              }
                             />
+
+                            <span
+                              onClick={() =>
+                                changeDisplayImage(
+                                  "prev",
+                                  projects[index],
+                                  index,
+                                  "web"
+                                )
+                              }
+                              className="webBck"
+                              style={{ color: isMin ? "#607D8B" : "#343746" }}
+                            >
+                              <i className="fa fa-caret-left" />
+                            </span>
+
+                            <span
+                              onClick={() =>
+                                changeDisplayImage(
+                                  "next",
+                                  projects[index],
+                                  index,
+                                  "web"
+                                )
+                              }
+                              className="webNxt"
+                              style={{ color: isMax ? "#607D8B" : "#343746" }}
+                            >
+                              <i className="fa fa-caret-right" />
+                            </span>
                           </div>
                         </div>
                       </div>
@@ -2177,7 +2244,6 @@
                 index={index}
                 setShowViewMore={setShowViewMore}
                 setProjects={setProjects}
-                key={`project-modal=${index}`}
               />
             )}
             <div className="PageContent">
@@ -2291,7 +2357,7 @@
                   icon="fa fa-code"
                 >
                   <div className="grid-container">
-                    {projects.map((data) => (
+                    {projects.map((data, index) => (
                       <div className="projectitem grid-col-6">
                         <div
                           className="projectdiv"
@@ -2560,351 +2626,6 @@
                   })}
                 </div>
               </AboutContent>
-            </div>
-          </div>
-        );
-
-        return (
-          <div className="PageContent">
-            <div className="projectGrid">
-              <div className="mainDiv">
-                <div
-                  style={{
-                    position: "relative",
-                    justifyContent: "grid",
-                    placeItems: "center",
-                  }}
-                  className="images"
-                >
-                  <div
-                    style={{
-                      position: "absolute",
-                      borderTop: "10px solid orange",
-                      borderRight: "10px solid orange",
-                      top: -10,
-                      right: -10,
-                      width: "100px",
-                      height: "100px",
-                      zIndex: 10,
-                    }}
-                  />
-                  <div
-                    style={{
-                      position: "absolute",
-                      borderTop: "10px solid orange",
-                      borderLeft: "10px solid orange",
-                      top: -10,
-                      left: -10,
-                      width: "100px",
-                      height: "100px",
-                      zIndex: 10,
-                    }}
-                  />
-                  <div
-                    style={{
-                      position: "absolute",
-                      borderBottom: "10px solid orange",
-                      borderRight: "10px solid orange",
-                      bottom: -10,
-                      right: -10,
-                      width: "100px",
-                      height: "100px",
-                      zIndex: 10,
-                    }}
-                  />
-                  <div
-                    style={{
-                      position: "absolute",
-                      borderBottom: "10px solid orange",
-                      borderLeft: "10px solid orange",
-                      bottom: -10,
-                      left: -10,
-                      width: "100px",
-                      height: "100px",
-                      zIndex: 10,
-                    }}
-                  />
-                  <img
-                    style={{
-                      height: "100%",
-                      width:
-                        activeProject.images[activeImage].split(".")[2] == "jpg"
-                          ? "50%"
-                          : "100%",
-                    }}
-                    src={activeProject.images[activeImage]}
-                  />
-                  <span
-                    onClick={() => changeImage("prev")}
-                    style={{
-                      color: activeImage == 0 ? "white" : "orange",
-                      padding: 10,
-                      background: "rgba(0,0,0,0.5)",
-                      cursor: "pointer",
-                      position: "absolute",
-                      zIndex: 9999,
-                      left: -30,
-                      fontSize: 50,
-                    }}
-                  >
-                    <i className="fa fa-chevron-left" />
-                  </span>
-                  <span
-                    onClick={() => changeImage("next")}
-                    style={{
-                      color:
-                        activeImage < activeProject.images.length - 1
-                          ? "orange"
-                          : "white",
-                      padding: 10,
-                      background: "rgba(0,0,0,0.5)",
-                      cursor: "pointer",
-                      position: "absolute",
-                      zIndex: 9999,
-                      right: -30,
-                      fontSize: 50,
-                    }}
-                  >
-                    <i className="fa fa-chevron-right" />
-                  </span>
-                  <span
-                    onClick={() => changeImage("next")}
-                    style={{
-                      width: "100%",
-                      color: "white",
-                      padding: 10,
-                      background: "rgba(0,0,0,0.5)",
-                      cursor: "pointer",
-                      position: "absolute",
-                      zIndex: 9999,
-                      bottom: 0,
-                      fontSize: 18,
-                    }}
-                  >
-                    Image {activeImage + 1}/{activeProject.images.length}
-                  </span>
-                </div>
-
-                <div className="info">
-                  <div id="title">
-                    <span>{activeProject.name}</span>
-                  </div>
-                  <div id="content">
-                    <ul>
-                      {activeProject.contents.map((content) => {
-                        return <li>{content}</li>;
-                      })}
-                    </ul>
-                    <DarkCard>
-                      <GridComponent>
-                        <div className="grid-col-6">
-                          <span
-                            style={{ fontSize: "16pt", fontWeight: "bold" }}
-                          >
-                            <span className="fa fa-code"></span> Technology Used
-                          </span>
-                          <br />
-                          {activeProject.techs.map((tech) => {
-                            return (
-                              <span style={{ padding: "20px 0px" }}>
-                                {tech}
-                                <br />
-                              </span>
-                            );
-                          })}
-                        </div>
-
-                        <div className="grid-col-6">
-                          <span
-                            style={{ fontSize: "16pt", fontWeight: "bold" }}
-                          >
-                            <span className="fa fa-github"></span> Github Source
-                            Code
-                          </span>
-                          <br />
-                          {activeProject.codes.map((code) => {
-                            return (
-                              <div>
-                                <span style={{ padding: "20px 0px" }}>
-                                  {code.label}:{" "}
-                                </span>{" "}
-                                <a
-                                  style={{ color: "#33accc" }}
-                                  href={code.link}
-                                  target="_blank"
-                                >
-                                  View Code
-                                </a>
-                                <br />
-                              </div>
-                            );
-                          })}
-                        </div>
-                      </GridComponent>
-                    </DarkCard>
-
-                    {activeProject.demos && (
-                      <GridComponent>
-                        <div className="grid-col-6">
-                          <WhiteCard>
-                            <div
-                              style={{
-                                cursor: "pointer",
-                                display: "grid",
-                                placeItems: "center",
-                              }}
-                            >
-                              <a
-                                target="_blank"
-                                href={activeProject.demos[0].link}
-                                style={{
-                                  color: "dimgray",
-                                  fontWeight: "bold",
-                                  fontSize: "14pt",
-                                }}
-                              >
-                                <span className="fa fa-search"></span>{" "}
-                                {activeProject.demos[0].label}
-                              </a>
-                            </div>
-                          </WhiteCard>
-                        </div>
-                        {activeProject.demos[1] && (
-                          <div className="grid-col-6">
-                            <WhiteCard>
-                              <div
-                                style={{
-                                  cursor: "pointer",
-                                  display: "grid",
-                                  placeItems: "center",
-                                }}
-                              >
-                                <a
-                                  target="_blank"
-                                  href={activeProject.demos[1].link}
-                                  style={{
-                                    color: "dimgray",
-                                    fontWeight: "bold",
-                                    fontSize: "14pt",
-                                  }}
-                                >
-                                  <span className="fa fa-search"></span>{" "}
-                                  {activeProject.demos[1].label}
-                                </a>
-                              </div>
-                            </WhiteCard>
-                          </div>
-                        )}
-                      </GridComponent>
-                    )}
-                  </div>
-                </div>
-              </div>
-              <div className="listDiv">
-                {projects.map((project, index) => {
-                  if (project.id == activeProject.id) {
-                    return (
-                      <div
-                        onClick={() => {
-                          setActiveImage(0);
-                          setActiveProject(project);
-                        }}
-                        key={`${project}-index`}
-                        className="projects"
-                        style={{
-                          border: "2px solid black",
-                          position: "relative",
-                        }}
-                      >
-                        <div
-                          style={{
-                            display: "grid",
-                            placeItems: "center",
-                            position: "absolute",
-                            height: "30px",
-                            width: "30px",
-                            borderRadius: "100%",
-                            background: "#21222C",
-                            top: -10,
-                            right: -10,
-                            zIndex: 999,
-                          }}
-                        >
-                          {project.id}
-                        </div>
-                        <div
-                          style={{
-                            width: "300px",
-                            display: "grid",
-                            placeItems: "center",
-                            position: "relative",
-                          }}
-                        >
-                          <img
-                            src={project.images[0]}
-                            style={{ height: "120px", width: "250px" }}
-                          />
-                          <div
-                            style={{
-                              position: "absolute",
-                              height: "50px",
-                              width: "50px",
-                              background: "orange",
-                              opacity: "0.2",
-                              borderRadius: "100%",
-                            }}
-                          ></div>
-                        </div>
-                      </div>
-                    );
-                  }
-
-                  return (
-                    <div
-                      onClick={() => {
-                        setActiveImage(0);
-                        setActiveProject(project);
-                      }}
-                      key={`${project}-index`}
-                      className="projects"
-                      style={{ position: "relative" }}
-                    >
-                      <div
-                        style={{
-                          display: "grid",
-                          placeItems: "center",
-                          position: "absolute",
-                          height: "25px",
-                          width: "25px",
-                          borderRadius: "100%",
-                          background: "silver",
-                          top: -10,
-                          right: -10,
-                          zIndex: 999,
-                        }}
-                      >
-                        {project.id}
-                      </div>
-                      <div
-                        style={{
-                          width: "300px",
-                          display: "grid",
-                          placeItems: "center",
-                        }}
-                      >
-                        <img
-                          src={project.images[0]}
-                          style={{
-                            height: "120px",
-                            width: "250px",
-                            opacity: 0.6,
-                          }}
-                        />
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
             </div>
           </div>
         );
