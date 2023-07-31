@@ -1858,6 +1858,16 @@
               "Mobile: #Ionic Capacitor #VueJs",
               "Others: #Websockets #Socket.io #Leafletjs",
             ],
+            techIcons: [
+              "./assets/images/skills/node.png",
+              "./assets/images/skills/mongo.png",
+              "./assets/images/skills/html.png",
+              "./assets/images/skills/css.png",
+              "./assets/images/skills/bs.png",
+              "./assets/images/skills/js.png",
+              "./assets/images/skills/vue.png",
+              "./assets/images/skills/ionic.png",
+            ],
             codes: [
               {
                 label: "Backend",
@@ -1903,6 +1913,14 @@
               "Backend: #PHP #MySQL",
               "Frontend: #HTML #CSS #Bootstrap #Javascript #JQUERY",
             ],
+            techIcons: [
+              "./assets/images/skills/php.png",
+              "./assets/images/skills/mysql.png",
+              "./assets/images/skills/html.png",
+              "./assets/images/skills/css.png",
+              "./assets/images/skills/bs.png",
+              "./assets/images/skills/js.png",
+            ],
             codes: [],
             demos: [
               {
@@ -1934,6 +1952,14 @@
             techs: [
               "Backend: #PHP #MySQL",
               "Frontend: #HTML #CSS #Bootstrap #Javascript #JQUERY",
+            ],
+            techIcons: [
+              "./assets/images/skills/php.png",
+              "./assets/images/skills/mysql.png",
+              "./assets/images/skills/html.png",
+              "./assets/images/skills/css.png",
+              "./assets/images/skills/bs.png",
+              "./assets/images/skills/js.png",
             ],
             codes: [
               {
@@ -1972,6 +1998,11 @@
             techs: [
               "Mobile: #Ionic Capacitor #VueJs",
               "Mobile 2: #React Native #ReactJs",
+            ],
+            techIcons: [
+              "./assets/images/skills/ionic.png",
+              "./assets/images/skills/vue.png",
+              "./assets/images/skills/reactnative.png",
             ],
             codes: [
               {
@@ -2020,6 +2051,18 @@
               "Frontend: #HTML #CSS #Bootstrap #Javascript #VueJs",
               "Mobile: #Ionic Capacitor #VueJs",
               "Mobile 2: #React Native #ReactJs",
+            ],
+            techIcons: [
+              "./assets/images/skills/node.png",
+              "./assets/images/skills/mysql.png",
+              "./assets/images/skills/html.png",
+              "./assets/images/skills/css.png",
+              "./assets/images/skills/bs.png",
+              "./assets/images/skills/js.png",
+              "./assets/images/skills/vue.png",
+              "./assets/images/skills/ionic.png",
+              "./assets/images/skills/react.png",
+              "./assets/images/skills/reactnative.png",
             ],
             codes: [
               {
@@ -2073,6 +2116,14 @@
               "Mobile: #React Native",
               "Others: #Websockets #Socket.io #Googlemap API #Facebook Login",
             ],
+            techIcons: [
+              "./assets/images/skills/node.png",
+              "./assets/images/skills/mongo.png",
+              "./assets/images/skills/html.png",
+              "./assets/images/skills/css.png",
+              "./assets/images/skills/react.png",
+              "./assets/images/skills/reactnative.png",
+            ],
             codes: [
               {
                 label: "Backend",
@@ -2112,6 +2163,16 @@
               "Backend: #NodeJs #Express #MySQL #Sequelize",
               "Frontend: #HTML #CSS #Bootstrap #Javascript #VueJs",
               "Mobile: #Ionic Capacitor #VueJs",
+            ],
+            techIcons: [
+              "./assets/images/skills/node.png",
+              "./assets/images/skills/mysql.png",
+              "./assets/images/skills/html.png",
+              "./assets/images/skills/css.png",
+              "./assets/images/skills/bs.png",
+              "./assets/images/skills/js.png",
+              "./assets/images/skills/vue.png",
+              "./assets/images/skills/ionic.png",
             ],
             codes: [
               {
@@ -2158,6 +2219,15 @@
             techs: [
               "#Laravel Framework / #PHP(OOP) #MySQL",
               "#HTML #CSS #Bootstrap #Javascript #Jquery #Ajax",
+            ],
+            techIcons: [
+              "./assets/images/skills/php.png",
+              "./assets/images/skills/laravel.png",
+              "./assets/images/skills/mysql.png",
+              "./assets/images/skills/html.png",
+              "./assets/images/skills/css.png",
+              "./assets/images/skills/bs.png",
+              "./assets/images/skills/js.png",
             ],
             codes: [
               {
@@ -2393,6 +2463,20 @@
                             >
                               {data.name}
                             </span>
+                            {data.techIcons && data.techIcons.length > 0 && (
+                              <div style={{ marginTop: "15px" }}>
+                                {data.techIcons.map((icon) => (
+                                  <img
+                                    src={icon}
+                                    style={{
+                                      height: "25px",
+                                      width: "25px",
+                                      margin: "0px 5px",
+                                    }}
+                                  />
+                                ))}
+                              </div>
+                            )}
                           </div>
                         </div>
                       </div>
