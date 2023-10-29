@@ -424,7 +424,7 @@
 
             {pages.length > 0 && (
               <div id="contentNavigation">
-                <div id="activeRowPage">
+                <div className="scroll-container" id="activeRowPage">
                   {pages.map((page, index) => {
                     let background =
                       page.title === activePage.title ? "#1F2227" : "#35383D";

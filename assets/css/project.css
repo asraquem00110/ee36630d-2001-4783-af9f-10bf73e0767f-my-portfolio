@@ -117,8 +117,8 @@
 .webBck {
   position: absolute;
   bottom: 220px;
-  left: -5px;
-  color: #343746;
+  left: -32px;
+  color: white;
   cursor: pointer;
   font-size: 50pt;
 }
@@ -126,8 +126,8 @@
 .webNxt {
   position: absolute;
   bottom: 220px;
-  right: 5px;
-  color: #343746;
+  right: 35px;
+  color: white;
   cursor: pointer;
   font-size: 50pt;
 }
@@ -145,4 +145,4 @@
 
 ul.a {
   list-style-type: circle;
-} /*# sourceMappingURL=project.css.map */
+}/*# sourceMappingURL=project.css.map */
