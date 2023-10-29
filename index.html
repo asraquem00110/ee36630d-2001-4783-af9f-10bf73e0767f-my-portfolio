@@ -166,6 +166,26 @@
           setActivePage(completeListofPages[index]);
         };
 
+        const handleDragStart = (e, index) => {
+          e.dataTransfer.setData("text/plain", index);
+        };
+
+        const handleDragOver = (e) => {
+          e.preventDefault();
+        };
+
+        const handleDrop = (e, toIndex) => {
+          e.preventDefault();
+          const fromIndex = e.dataTransfer.getData("text/plain");
+          const updatedDivs = [...pages];
+
+          // Reorder the divs
+          const [draggedDiv] = updatedDivs.splice(fromIndex, 1);
+          updatedDivs.splice(toIndex, 0, draggedDiv);
+
+          setPages(updatedDivs);
+        };
+
         React.useEffect(() => {
           if (Swal) {
             Swal.fire({
@@ -411,6 +431,10 @@
 
                     return (
                       <div
+                        onDragStart={(e) => handleDragStart(e, index)}
+                        onDragOver={handleDragOver}
+                        onDrop={(e) => handleDrop(e, index)}
+                        draggable="true"
                         className="pagenavtitle"
                         style={{
                           height: "100%",
@@ -1267,7 +1291,9 @@
                         <ul>
                           <li>Answer and solve issues over phone calls</li>
                           <li>Encode client's issue in Ticketing System</li>
-                          <li>Setup Computer (Hardware and Software)</li>
+                          <li>
+                            Initial Setup of Computer (Hardware and Software)
+                          </li>
                           <li>Fixing issue on site</li>
                         </ul>
                       </ul>
