@@ -23,15 +23,16 @@
 }
 #MainAbout #AboutIntro #Aboutdescription div#AboutName {
   width: 100%;
-  flex-basis: 20%;
-  display: grid;
-  justify-content: flex-start;
-  align-content: flex-end;
+  display: flex;
+  justify-content: space-between;
 }
 #MainAbout #AboutIntro #Aboutdescription div#AboutName h1 {
   font-size: 40pt;
   padding: 0;
   margin: 0 0 20px 0;
+}
+#MainAbout #AboutIntro #Aboutdescription div#AboutName img {
+  right: 0 !important;
 }
 #MainAbout #AboutIntro #Aboutdescription div#AboutInfoExpertise {
   flex-grow: 1;
@@ -72,6 +73,26 @@ div.AboutTitle span.AboutTitleDescription {
   #AboutIntro {
     flex-direction: column !important;
   }
+  #aboutProfileImage {
+    display: none !important;
+  }
+}
+@media (max-width: 1550px) {
+  #aboutProfileImage {
+    height: 250px !important;
+    width: 250px !important;
+  }
+}
+@media (max-width: 1350px) {
+  #aboutProfileImage {
+    height: 200px !important;
+    width: 200px !important;
+  }
+}
+@media (max-width: 1127px) {
+  #aboutProfileImageCircle {
+    display: block !important;
+  }
 }
 @media (max-width: 768px) and (min-width: 577px) {
   #AboutIntro {
@@ -82,9 +103,21 @@ div.AboutTitle span.AboutTitleDescription {
   #AboutIntro {
     flex-direction: column !important;
   }
+  #aboutProfileImage {
+    display: none !important;
+  }
+  #aboutProfileImageCircle {
+    display: block !important;
+  }
 }
 @media (max-width: 1080px) {
   .grid-col-6 {
     grid-column: span 12 !important;
+  }
+  #aboutProfileImage {
+    display: none !important;
+  }
+  #aboutProfileImageCircle {
+    display: block !important;
   }
 }/*# sourceMappingURL=about.css.map */
