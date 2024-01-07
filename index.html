@@ -1818,7 +1818,7 @@
                                     href={code.link}
                                     target="_blank"
                                   >
-                                    View Code
+                                    {code.link}
                                   </a>
                                 </div>
                               );
@@ -2331,6 +2331,75 @@
               },
             ],
           },
+          {
+            id: 9,
+            name: "Biometrics Time in/out Tracker",
+            activeImageIndex: 0,
+            images: [
+              "./assets/images/projects/biometric/home.png",
+              "./assets/images/projects/biometric/login.png",
+              "./assets/images/projects/biometric/landing.png",
+              "./assets/images/projects/biometric/list.png",
+              "./assets/images/projects/biometric/register.png",
+            ],
+            contents: [
+              "A simple windows software application that employs the Digital Persona 4500 biometric device.",
+              "The system tracks the attendance records of security personnel by monitoring their clock-in and clock-out times.",
+            ],
+            techs: ["#Digital Persona 4500", "#Vb.net #MySQL"],
+            techIcons: [
+              "./assets/images/skills/vb.png",
+              "./assets/images/skills/mysql.png",
+            ],
+            codes: [
+              {
+                label: "Source",
+                link: "https://github.com/asraquem00110/Biometric-Attendance-System-using-Digital-Persona-4500u",
+              },
+            ],
+            demos: [
+              {
+                label: "DEMO",
+                link: "http://warehouse-inventory-management.herokuapp.com/",
+              },
+            ],
+          },
+          {
+            id: 10,
+            name: "My Old Portfolio Site",
+            activeImageIndex: 0,
+            images: [
+              "./assets/images/projects/old_portfolio/home.PNG",
+              "./assets/images/projects/old_portfolio/about.PNG",
+              "./assets/images/projects/old_portfolio/skills.PNG",
+              "./assets/images/projects/old_portfolio/projects.PNG",
+              "./assets/images/projects/old_portfolio/modal1.PNG",
+              "./assets/images/projects/old_portfolio/modal2.PNG",
+              "./assets/images/projects/old_portfolio/modal3.PNG",
+              "./assets/images/projects/old_portfolio/modal4.PNG",
+              "./assets/images/projects/old_portfolio/modal5.PNG",
+            ],
+            contents: ["My First Portfolio Site"],
+            techs: ["#HTML #CSS #Bootstrap #Javascript #Jquery"],
+            techIcons: [
+              "./assets/images/skills/html.png",
+              "./assets/images/skills/css.png",
+              "./assets/images/skills/bs.png",
+              "./assets/images/skills/js.png",
+            ],
+            codes: [
+              {
+                label: "DEMO",
+                link: "https://asraquem00110.github.io/portfolio/",
+              },
+            ],
+            demos: [
+              {
+                label: "DEMO",
+                link: "https://asraquem00110.github.io/portfolio/",
+              },
+            ],
+          },
         ]);
         const [activeProject, setActiveProject] = React.useState(projects[0]);
         const [activeImage, setActiveImage] = React.useState(0);
@@ -2787,7 +2856,7 @@
                                     href={code.link}
                                     target="_blank"
                                   >
-                                    View Code
+                                    {code.link}
                                   </a>
                                 </div>
                               );
