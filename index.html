@@ -313,8 +313,21 @@
                         showPages ? "fa fa-caret-down" : "fa fa-caret-right"
                       }
                       style={{ flexBasis: "10px" }}
+                    />{" "}
+                    <img
+                      src={
+                        showPages
+                          ? "./assets/images/folder-open.png"
+                          : "./assets/images/folder.png"
+                      }
+                      style={{
+                        height: 15,
+                        width: 15,
+                        alignSelf: "center",
+                        marginLeft: "5px",
+                      }}
                     />
-                    <span style={{ fontSize: "10pt", marginLeft: "10px" }}>
+                    <span style={{ fontSize: "10pt", marginLeft: "5px" }}>
                       ALVIN RAQUEM'S PORTFOLIO
                     </span>
                   </div>
@@ -378,7 +391,20 @@
                       }
                       style={{ flexBasis: "10px" }}
                     />
-                    <span style={{ fontSize: "10pt", marginLeft: "10px" }}>
+                    <img
+                      src={
+                        showResume
+                          ? "./assets/images/folder-open.png"
+                          : "./assets/images/folder.png"
+                      }
+                      style={{
+                        height: 15,
+                        width: 15,
+                        alignSelf: "center",
+                        marginLeft: "5px",
+                      }}
+                    />
+                    <span style={{ fontSize: "10pt", marginLeft: "5px" }}>
                       RESUME
                     </span>
                   </div>
@@ -419,6 +445,175 @@
                       </a>
                     </div>
                   )}
+
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "row",
+                      margin: "10px",
+                      cursor: "pointer",
+                    }}
+                  >
+                    <img
+                      src={"./assets/images/env.svg"}
+                      style={{
+                        height: 15,
+                        width: 15,
+                        alignSelf: "center",
+                        marginLeft: "16px",
+                      }}
+                    />
+                    <span style={{ fontSize: "10pt", marginLeft: "5px" }}>
+                      .env
+                    </span>
+                  </div>
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "row",
+                      margin: "10px",
+                      cursor: "pointer",
+                    }}
+                  >
+                    <img
+                      src={"./assets/images/prettier.png"}
+                      style={{
+                        height: 15,
+                        width: 15,
+                        alignSelf: "center",
+                        marginLeft: "16px",
+                      }}
+                    />
+                    <span style={{ fontSize: "10pt", marginLeft: "5px" }}>
+                      .prettier.js
+                    </span>
+                  </div>
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "row",
+                      margin: "10px",
+                      cursor: "pointer",
+                    }}
+                  >
+                    <img
+                      src={"./assets/images/git.png"}
+                      style={{
+                        height: 15,
+                        width: 15,
+                        alignSelf: "center",
+                        marginLeft: "16px",
+                      }}
+                    />
+                    <span style={{ fontSize: "10pt", marginLeft: "5px" }}>
+                      .gitignore
+                    </span>
+                  </div>
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "row",
+                      margin: "10px",
+                      cursor: "pointer",
+                    }}
+                  >
+                    <img
+                      src={"./assets/images/ts.svg"}
+                      style={{
+                        height: 15,
+                        width: 15,
+                        alignSelf: "center",
+                        marginLeft: "16px",
+                      }}
+                    />
+                    <span style={{ fontSize: "10pt", marginLeft: "5px" }}>
+                      .tsconfig.json
+                    </span>
+                  </div>
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "row",
+                      margin: "10px",
+                      cursor: "pointer",
+                    }}
+                  >
+                    <img
+                      src={"./assets/images/docker.png"}
+                      style={{
+                        height: 15,
+                        width: 15,
+                        alignSelf: "center",
+                        marginLeft: "16px",
+                      }}
+                    />
+                    <span style={{ fontSize: "10pt", marginLeft: "5px" }}>
+                      docker-compose-yml
+                    </span>
+                  </div>
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "row",
+                      margin: "10px",
+                      cursor: "pointer",
+                    }}
+                  >
+                    <img
+                      src={"./assets/images/node.png"}
+                      style={{
+                        height: 15,
+                        width: 15,
+                        alignSelf: "center",
+                        marginLeft: "16px",
+                      }}
+                    />
+                    <span style={{ fontSize: "10pt", marginLeft: "5px" }}>
+                      package-lock.json
+                    </span>
+                  </div>
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "row",
+                      margin: "10px",
+                      cursor: "pointer",
+                    }}
+                  >
+                    <img
+                      src={"./assets/images/node.png"}
+                      style={{
+                        height: 15,
+                        width: 15,
+                        alignSelf: "center",
+                        marginLeft: "16px",
+                      }}
+                    />
+                    <span style={{ fontSize: "10pt", marginLeft: "5px" }}>
+                      package.json
+                    </span>
+                  </div>
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "row",
+                      margin: "10px",
+                      cursor: "pointer",
+                    }}
+                  >
+                    <img
+                      src={"./assets/images/readme.png"}
+                      style={{
+                        height: 15,
+                        width: 15,
+                        alignSelf: "center",
+                        marginLeft: "15px",
+                      }}
+                    />
+                    <span style={{ fontSize: "10pt", marginLeft: "5px" }}>
+                      README.md
+                    </span>
+                  </div>
                 </div>
               </div>
             )}
