@@ -256,6 +256,7 @@ header {
   flex-direction: column;
   position: fixed;
   z-index: 9;
+  transition: margin-left 0.3s ease;
 
   #activeRowPage {
     display: flex;
@@ -374,4 +375,5 @@ nav {
 
 .PageContent {
   margin-top: 20px;
+  transition: margin-left 0.3s ease;
 }

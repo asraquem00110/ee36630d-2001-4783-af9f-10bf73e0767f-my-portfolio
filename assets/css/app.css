@@ -209,6 +209,7 @@ header {
   flex-direction: column;
   position: fixed;
   z-index: 9;
+  transition: margin-left 0.3s ease;
   /* Style the scrollbar track */
   /* Style the scrollbar thumb */
   /* Add some hover effects to the scrollbar thumb */
@@ -314,4 +315,5 @@ nav aside #contactme {
 
 .PageContent {
   margin-top: 20px;
+  transition: margin-left 0.3s ease;
 }/*# sourceMappingURL=app.css.map */

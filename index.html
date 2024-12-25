@@ -41,7 +41,7 @@
       const GlobalContextProvider = ({ children }) => {
         const { Provider } = GlobalContext;
         const [showPromptModal, setShowPromptModal] = React.useState(true);
-        const [showExplorer, setShowExplorer] = React.useState(false);
+        const [showExplorer, setShowExplorer] = React.useState(true);
         const [showSearch, setShowSearch] = React.useState(false);
         const [completeListofPages, _] = React.useState([
           {
@@ -640,7 +640,10 @@
             )}
 
             {pages.length > 0 && (
-              <div id="contentNavigation">
+              <div
+                id="contentNavigation"
+                style={{ marginLeft: showExplorer ? "350px" : "55px" }}
+              >
                 <div className="scroll-container" id="activeRowPage">
                   {pages.map((page, index) => {
                     let background =
@@ -858,10 +861,15 @@
       };
 
       const WelcomeMessage = () => {
-        const { setActivePage, pages } = React.useContext(GlobalContext);
+        const { setActivePage, pages, showExplorer } =
+          React.useContext(GlobalContext);
 
         return (
-          <div className="PageContent" id="WelcomeMessageMainDiv">
+          <div
+            className="PageContent"
+            id="WelcomeMessageMainDiv"
+            style={{ marginLeft: showExplorer ? "300px" : "0px" }}
+          >
             <div id="greetings">
               <h1>Welcome to my Portfolio</h1>
               <span>
@@ -1000,8 +1008,13 @@
       };
 
       const AboutMe = () => {
+        const { showExplorer } = React.useContext(GlobalContext);
+
         return (
-          <div className="PageContent">
+          <div
+            className="PageContent"
+            style={{ marginLeft: showExplorer ? "300px" : "0px" }}
+          >
             <div id="MainAbout">
               <div id="AboutIntro">
                 <div id="AboutImage">
@@ -1300,8 +1313,13 @@
       );
 
       const Skills = () => {
+        const { showExplorer } = React.useContext(GlobalContext);
+
         return (
-          <div className="PageContent">
+          <div
+            className="PageContent"
+            style={{ marginLeft: showExplorer ? "300px" : "0px" }}
+          >
             <AboutContent title="My Skills" icon="fa fa-cogs">
               <GridComponent style={{ padding: "0px 50px 0px 50px" }}>
                 <div className="grid-col-3">
@@ -1485,8 +1503,13 @@
       };
 
       const Experience = () => {
+        const { showExplorer } = React.useContext(GlobalContext);
+
         return (
-          <div className="PageContent">
+          <div
+            className="PageContent"
+            style={{ marginLeft: showExplorer ? "300px" : "0px" }}
+          >
             <AboutContent title="Work Experience" icon="fa fa-desktop">
               <div className="works">
                 <div className="content">
@@ -2183,6 +2206,8 @@
       };
 
       const SampleProjects = () => {
+        const { showExplorer } = React.useContext(GlobalContext);
+
         const [showViewMore, setShowViewMore] = React.useState(false);
         const [data, setData] = React.useState(null);
         const [mainProjects, setMainProjects] = React.useState([
@@ -2821,7 +2846,10 @@
                 setProjects={setProjects}
               />
             )}
-            <div className="PageContent">
+            <div
+              className="PageContent"
+              style={{ marginLeft: showExplorer ? "300px" : "0px" }}
+            >
               <div className="projectGrid">
                 <AboutContent
                   title="Projects/Task Accomplished"
@@ -2964,6 +2992,7 @@
                                 fontSize: "20pt",
                                 fontWeight: "bold",
                                 color: "dimgray",
+                                ...(showExplorer ? { fontSize: "22px" } : {}),
                               }}
                             >
                               {data.name}
