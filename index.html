@@ -1017,45 +1017,9 @@
           >
             <div id="MainAbout">
               <div id="AboutIntro">
-                <div id="AboutImage">
-                  <div
-                    style={{
-                      position: "absolute",
-                      height: "84%",
-                      bottom: 0,
-                      background: "#EBEBEB",
-                      zIndex: 0,
-                      width: "100%",
-                      borderBottomLeftRadius: "20px",
-                      borderTopLeftRadius: "20px",
-                    }}
-                  />
-                  <img
-                    id="aboutProfileImage"
-                    style={{
-                      marginTop: 85,
-                      height: "300px",
-                      width: "300px",
-                      placeSelf: "center",
-                      position: "absolute",
-                      zIndex: 1,
-                    }}
-                    src="./assets/images/me4.jpg"
-                  />
-                </div>
                 <div id="Aboutdescription">
                   <div id="AboutName">
                     <h1>Hi I'm Alvin Sison Raquem</h1>
-                    <img
-                      id="aboutProfileImageCircle"
-                      style={{
-                        height: "100px",
-                        width: "100px",
-                        borderRadius: "50%",
-                        display: "none",
-                      }}
-                      src="./assets/images/me4.jpg"
-                    />
                   </div>
 
                   <div id="AboutInfoExpertise">
@@ -1079,21 +1043,56 @@
                     </div>
                     <div
                       style={{
-                        height: "250px",
+                        height: "300px",
                         width: "100%",
                         position: "relative",
                       }}
                     >
-                      <img
+                      <div
                         style={{
-                          position: "absolute",
                           height: "100%",
-                          bottom: -60,
-                          right: 0,
                           width: "100%",
+                          position: "absolute",
+                          bottom: -80,
+                          display: "flex",
                         }}
-                        src="./assets/images/site/aboutdev.svg"
-                      />
+                      >
+                        <div
+                          style={{
+                            display: "flex",
+                            flex: 1,
+                          }}
+                        >
+                          <img
+                            style={{
+                              height: "100%",
+                              width: "100%",
+                              boxShadow: "10px 10px 30px rgba(0, 0, 0, 0.3)",
+                              borderRadius: "10px",
+                            }}
+                            src="./assets/images/site/aboutdev.svg"
+                          />
+                        </div>
+                        <div
+                          style={{
+                            display: "flex",
+                            flex: 1,
+                            justifyContent: "center",
+                            alignItems: "center",
+                            // backgroundColor: "yellow",
+                          }}
+                        >
+                          <img
+                            style={{
+                              height: "400px",
+                              width: "400px",
+                              boxShadow: "10px 10px 30px rgba(0, 0, 0, 0.3)",
+                              borderRadius: "10px",
+                            }}
+                            src="./assets/images/me4.jpg"
+                          />
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -1213,6 +1212,14 @@
                           </div>
                         </div>
                       </DarkCard>
+                    </div>
+                  </GridComponent>
+                </AboutContent>
+
+                <AboutContent title="Certifications" icon="fa fa-file-text">
+                  <GridComponent>
+                    <div className="grid-col-6">
+                      <DarkCard></DarkCard>
                     </div>
                   </GridComponent>
                 </AboutContent>
@@ -1364,36 +1371,6 @@
                     >
                       <div className="specialtygrid">
                         <img
-                          src="./assets/images/site/react.svg"
-                          style={{ height: "120px", width: "120px" }}
-                        />
-                      </div>
-                      <div className="specialtygrid">
-                        <span className="specialtytitle">Mobile App</span>
-                        <hr />
-                        <span style={{ color: "white" }}>
-                          Lorem ipsum dolor sit amet, consectetur adipiscing
-                          elit. Fusce sit amet risus rhoncus, ornare sapien in,
-                          sodales lectus. Mauris neque justo, dictum ac ante et,
-                          finibus commodo lorem. Cras laoreet gravida accumsan.
-                          Interdum et malesuada fames ac ante ipsum primis in
-                          faucibus.
-                        </span>
-                      </div>
-                    </div>
-                  </DarkCard>
-                </div>
-                <div className="grid-col-3">
-                  <DarkCard>
-                    <div
-                      style={{
-                        padding: "10px 50px",
-                        textAlign: "center",
-                        position: "relative",
-                      }}
-                    >
-                      <div className="specialtygrid">
-                        <img
                           src="./assets/images/site/db.svg"
                           style={{ height: "120px", width: "120px" }}
                         />
@@ -1413,6 +1390,38 @@
                     </div>
                   </DarkCard>
                 </div>
+
+                <div className="grid-col-3">
+                  <DarkCard>
+                    <div
+                      style={{
+                        padding: "10px 50px",
+                        textAlign: "center",
+                        position: "relative",
+                      }}
+                    >
+                      <div className="specialtygrid">
+                        <img
+                          src="./assets/images/site/react.svg"
+                          style={{ height: "120px", width: "120px" }}
+                        />
+                      </div>
+                      <div className="specialtygrid">
+                        <span className="specialtytitle">Mobile App</span>
+                        <hr />
+                        <span style={{ color: "white" }}>
+                          Lorem ipsum dolor sit amet, consectetur adipiscing
+                          elit. Fusce sit amet risus rhoncus, ornare sapien in,
+                          sodales lectus. Mauris neque justo, dictum ac ante et,
+                          finibus commodo lorem. Cras laoreet gravida accumsan.
+                          Interdum et malesuada fames ac ante ipsum primis in
+                          faucibus.
+                        </span>
+                      </div>
+                    </div>
+                  </DarkCard>
+                </div>
+
                 <div className="grid-col-3">
                   <DarkCard>
                     <div
