@@ -1079,15 +1079,46 @@
                             flex: 1,
                             justifyContent: "center",
                             alignItems: "center",
-                            // backgroundColor: "yellow",
+                            position: "relative",
                           }}
                         >
+                          {/* Back Image (Rotated Left) */}
                           <img
                             style={{
                               height: "350px",
                               width: "350px",
                               boxShadow: "10px 10px 30px rgba(0, 0, 0, 0.3)",
                               borderRadius: "10px",
+                              position: "absolute",
+                              transform: "rotate(-10deg)", // Rotate left
+                              zIndex: 1,
+                            }}
+                            src="./assets/images/bg1.png"
+                          />
+
+                          {/* Middle Image (Rotated Right) */}
+                          <img
+                            style={{
+                              height: "350px",
+                              width: "350px",
+                              boxShadow: "10px 10px 30px rgba(0, 0, 0, 0.3)",
+                              borderRadius: "10px",
+                              position: "absolute",
+                              transform: "rotate(5deg)", // Rotate slightly right
+                              zIndex: 2,
+                            }}
+                            src="./assets/images/bg2.jpg"
+                          />
+
+                          {/* Front Image (Centered) */}
+                          <img
+                            style={{
+                              height: "350px",
+                              width: "350px",
+                              boxShadow: "10px 10px 30px rgba(0, 0, 0, 0.3)",
+                              borderRadius: "10px",
+                              position: "relative",
+                              zIndex: 3, // Top layer
                             }}
                             src="./assets/images/about.jpg"
                           />
@@ -3078,6 +3109,7 @@
                 </AboutContent>
               </div>
             </div>
+            {/*Adjust height when projects content is broken*/}
             <div style={{ height: 5000 }} />
           </div>
         );
