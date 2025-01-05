@@ -2403,8 +2403,8 @@
         const [mainProjects, setMainProjects] = React.useState([
           {
             id: 1,
-            name: "toktokwallet",
-            desc: " toktokwallet is an e wallet service inside toktok super app mobile application. It offers a convenient way of transacting payables. It provides an easy way to transfer funds from your bank accounts to toktokwallet account and vice versa. It is the main payment option of other services in toktok like toktokbills, toktokload, toktokdelivery etc. Cards & Online Bank Service a sub service under toktokwallet that gives option to the user to pay toktok services using their debit/credit cards or online bank account. User can link their debit/credit card account through tokenization.",
+            name: "ToktokWallet",
+            desc: "ToktokWallet is an integrated e-wallet service within the Toktok Super App mobile application, offering a seamless and convenient way for users to manage and transact payments. Designed to simplify financial transactions, ToktokWallet enables users to securely transfer funds between their bank accounts and ToktokWallet accounts with ease. As the primary payment method for other services within the Toktok Super App ecosystem, ToktokWallet serves as the backbone for services such as ToktokBills, ToktokLoad, ToktokDelivery, and more. This integration allows users to perform transactions effortlessly across multiple services within the app, all from a unified payment system. Cards & Online Bank Service is a sub-service under ToktokWallet that provides users with the option to pay for Toktok services using their debit/credit cards or online bank accounts. Through tokenization, users can securely link their debit/credit card accounts to their ToktokWallet, ensuring both ease of use and enhanced security for financial transactions. This functionality supports a wide range of payment methods, enabling users to choose the most convenient option for their needs.",
             activeImageIndex: 0,
             features:
               "KYC Registration, Cash In, Send Money, Scan QR, Cash Out (Over the Counter), Bank Transfer, Payment Service, Implemented Instapay / Bancnet IS0 20022 Standard Message P2P",
@@ -2432,8 +2432,8 @@
           },
           {
             id: 2,
-            name: "toktokload",
-            desc: "toktokload is one of the services of toktok super app. This application provides a feature which toktok user can avail mobile credits using their toktokwallet.",
+            name: "ToktokLoad",
+            desc: "ToktokLoad is a core service within the Toktok Super App ecosystem, designed to facilitate seamless mobile credit top-ups for users. This service enables Toktok users to effortlessly recharge their mobile accounts using funds available in their ToktokWallet. The integration ensures a smooth user experience by offering instant access to a variety of mobile credit options, directly from the app's wallet balance. Users can load credits for various mobile services, including call, text, and data plans, based on their specific needs and preferences.",
             activeImageIndex: 0,
             features: "Loading Service",
             backend:
@@ -2452,8 +2452,8 @@
           },
           {
             id: 3,
-            name: "toktokbills",
-            desc: "toktokbills is a service of toktok super app which let the toktok user to pay their bills (Electric, Water, Utility, Government etc.) using their toktokwallet.",
+            name: "ToktokBills",
+            desc: "ToktokBills is a core service within the Toktok Super App that enables Toktok users to pay their bills, such as electricity, water, utility, and government fees, using their ToktokWallet. This service simplifies the bill payment process by allowing users to pay for their bills through their ToktokWallet, providing a fast and secure transaction experience. With ToktokBills, users can easily select from a variety of bill categories and complete payments in real time. The service leverages the ToktokWallet for seamless, efficient transactions, offering a reliable and user-friendly solution for managing regular payments.",
             activeImageIndex: 0,
             features: "Bill Payment Service",
             backend:
@@ -2473,7 +2473,7 @@
           {
             id: 4,
             name: "ESI CCDM App",
-            desc: "The ESI CCDM App is a mobile dispatching tool designed for CCDM Engineers to manage their daily responsibilities. It enables engineers to track, update, and oversee the status of phone support, first-line maintenance (FLM), second-line maintenance (SLM), preventive maintenance, site inspections, and deployment tasks.",
+            desc: "ESI CCDM App is a mobile dispatching tool developed specifically for CCDM Engineers to streamline and manage their daily responsibilities efficiently. The app empowers engineers to track, update, and monitor the status of various tasks, including phone support, first-line maintenance (FLM), second-line maintenance (SLM), preventive maintenance, site inspections, and deployment activities. With an intuitive interface, the ESI CCDM App enables real-time task management, ensuring engineers can promptly respond to and resolve issues, maintain operational continuity, and improve service quality. The app enhances workflow efficiency, helping engineers stay organized, prioritize tasks, and ensure timely completion of maintenance and deployment operations.",
             activeImageIndex: 0,
             features:
               "Onboarding & Dispatching Service - Streamlines the onboarding process and facilitates efficient task dispatching for CCDM Engineers, ensuring smooth workflow management and task allocation.",
@@ -3088,12 +3088,12 @@
                             style={{
                               marginTop: "20px",
                               fontWeight: "bold",
-                              fontSize: "20pt",
+                              fontSize: "18pt",
                             }}
                           >
                             Features
                           </span>
-                          <span style={{ marginTop: "10px", fontSize: "18pt" }}>
+                          <span style={{ marginTop: "10px", fontSize: "14pt" }}>
                             {item.features}
                           </span>
                           {item.backend && item.backend != "" && (
@@ -3102,14 +3102,14 @@
                                 style={{
                                   marginTop: "20px",
                                   fontWeight: "bold",
-                                  fontSize: "20pt",
+                                  fontSize: "18pt",
                                 }}
                               >
                                 Backend
                               </span>
                               <br />
                               <span
-                                style={{ marginTop: "10px", fontSize: "18pt" }}
+                                style={{ marginTop: "10px", fontSize: "14pt" }}
                               >
                                 {item.backend}
                               </span>
@@ -3122,14 +3122,14 @@
                                 style={{
                                   marginTop: "20px",
                                   fontWeight: "bold",
-                                  fontSize: "20pt",
+                                  fontSize: "18pt",
                                 }}
                               >
                                 Frontend
                               </span>
                               <br />
                               <span
-                                style={{ marginTop: "10px", fontSize: "18pt" }}
+                                style={{ marginTop: "10px", fontSize: "14pt" }}
                               >
                                 {item.frontend}
                               </span>
