@@ -2072,8 +2072,8 @@
                             <strong>
                               Technology Strategy and Decision-Making:
                             </strong>{" "}
-                            Led and collaborated with cross-functional teams to
-                            make strategic technical decisions regarding the
+                            Collaborated with cross-functional teams to make
+                            strategic technical decisions regarding the
                             selection of technologies, frameworks, and tools for
                             software solution development, ensuring alignment
                             with business goals and technical requirements.
@@ -2090,12 +2090,24 @@
                           </li>
                           <li>
                             <strong>High-Level Architecture Design:</strong>{" "}
-                            Proposed high-level architecture diagrams to
-                            represent system interactions, data flow, and
-                            dependencies between servers, systems, and
+                            Participated in creating high-level architecture
+                            diagrams to represent system interactions, data
+                            flow, and dependencies between servers, systems, and
                             components. Collaborated closely with DevOps, System
                             Administrators, and Network Engineers to ensure
                             architecture feasibility and optimal performance.
+                          </li>
+                          <li>
+                            <strong>DevOps Task:</strong> Implemented a
+                            comprehensive version control system using Git to
+                            streamline development workflows. Established a
+                            private Git repository by setting up Gitea on a
+                            Docker container, ensuring a secure and efficient
+                            internal version control solution. Configured
+                            automated build and deployment pipelines through a
+                            simple CI/CD process using Gitea Actions, enabling
+                            continuous integration and streamlined delivery of
+                            backend services.
                           </li>
                           <li>
                             <strong>Third-Party API Integration:</strong> Led
@@ -2827,7 +2839,7 @@
             contents: [
               "Status: Incomplete",
               "A mini project to practice and enhance my react native skills.",
-              "A simple passenger transport application just like angkas app where users can book a rider.",
+              "A simple passenger transport application just like ride hailing motorcycle app where users can book a rider.",
             ],
             techs: [
               "Backend: #NodeJs #Express #MongoDB #Mongoose",
@@ -2961,39 +2973,39 @@
               },
             ],
           },
-          {
-            id: 9,
-            name: "Biometrics Time in/out Tracker",
-            activeImageIndex: 0,
-            images: [
-              "./assets/images/projects/biometric/home.png",
-              "./assets/images/projects/biometric/login.png",
-              "./assets/images/projects/biometric/landing.png",
-              "./assets/images/projects/biometric/list.png",
-              "./assets/images/projects/biometric/register.png",
-            ],
-            contents: [
-              "A simple windows software application that employs the Digital Persona 4500 biometric device.",
-              "The system tracks the attendance records of security personnel by monitoring their clock-in and clock-out times.",
-            ],
-            techs: ["#Digital Persona 4500", "#Vb.net #MySQL"],
-            techIcons: [
-              "./assets/images/skills/vb.png",
-              "./assets/images/skills/mysql.png",
-            ],
-            codes: [
-              {
-                label: "Source",
-                link: "https://github.com/asraquem00110/Biometric-Attendance-System-using-Digital-Persona-4500u",
-              },
-            ],
-            demos: [
-              {
-                label: "DEMO",
-                link: "http://warehouse-inventory-management.herokuapp.com/",
-              },
-            ],
-          },
+          // {
+          //   id: 9,
+          //   name: "Biometrics Time in/out Tracker",
+          //   activeImageIndex: 0,
+          //   images: [
+          //     "./assets/images/projects/biometric/home.png",
+          //     "./assets/images/projects/biometric/login.png",
+          //     "./assets/images/projects/biometric/landing.png",
+          //     "./assets/images/projects/biometric/list.png",
+          //     "./assets/images/projects/biometric/register.png",
+          //   ],
+          //   contents: [
+          //     "A simple windows software application that employs the Digital Persona 4500 biometric device.",
+          //     "The system tracks the attendance records of security personnel by monitoring their clock-in and clock-out times.",
+          //   ],
+          //   techs: ["#Digital Persona 4500", "#Vb.net #MySQL"],
+          //   techIcons: [
+          //     "./assets/images/skills/vb.png",
+          //     "./assets/images/skills/mysql.png",
+          //   ],
+          //   codes: [
+          //     {
+          //       label: "Source",
+          //       link: "https://github.com/asraquem00110/Biometric-Attendance-System-using-Digital-Persona-4500u",
+          //     },
+          //   ],
+          //   demos: [
+          //     {
+          //       label: "DEMO",
+          //       link: "http://warehouse-inventory-management.herokuapp.com/",
+          //     },
+          //   ],
+          // },
         ]);
         const [activeProject, setActiveProject] = React.useState(projects[0]);
         const [activeImage, setActiveImage] = React.useState(0);
@@ -3242,7 +3254,7 @@
               </div>
             </div>
             {/*Adjust height when projects content is broken*/}
-            <div style={{ height: 5000 }} />
+            <div style={{ height: 4500 }} />
           </div>
         );
       };
