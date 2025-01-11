@@ -154,6 +154,10 @@
 
         const changePage = (index) => {
           setActivePage(pages[index]);
+          window.scrollTo({
+            top: 0,
+            behavior: "smooth",
+          });
         };
 
         const addtoPage = (index) => {
@@ -2101,13 +2105,13 @@
                             <strong>DevOps Task:</strong> Implemented a
                             comprehensive version control system using Git to
                             streamline development workflows. Established a
-                            private Git repository by setting up Gitea on a
-                            Docker container, ensuring a secure and efficient
-                            internal version control solution. Configured
-                            automated build and deployment pipelines through a
-                            simple CI/CD process using Gitea Actions, enabling
-                            continuous integration and streamlined delivery of
-                            backend services.
+                            private/local Git repository server by setting up
+                            Gitea on a Docker container, ensuring a secure and
+                            efficient internal version control solution.
+                            Configured automated build and deployment pipelines
+                            through a simple CI/CD process using Gitea Actions,
+                            enabling continuous integration and streamlined
+                            delivery of backend services.
                           </li>
                           <li>
                             <strong>Third-Party API Integration:</strong> Led
