@@ -1563,8 +1563,24 @@
             </DarkCard>
           ) : (
             <WhiteCard>
-              <div style={{ display: "grid", placeItems: "center" }}>
-                <img style={style} src={`assets/images/skills/${image}`} />
+              <div
+                style={{
+                  display: "grid",
+                  gridTemplateColumns: "1fr 1fr",
+                  gridColumn: 1,
+                  gridRow: 2,
+                }}
+              >
+                <img
+                  style={{
+                    height: "80px",
+                    width: "80px",
+                  }}
+                  src={`assets/images/skills/${image}`}
+                />
+                <div>
+                  <span>GG</span>
+                </div>
               </div>
             </WhiteCard>
           )}
@@ -1716,20 +1732,12 @@
                 <StackTechnology theme="white" image="express.png" />
                 <StackTechnology theme="white" image="rest.png" />
                 <StackTechnology theme="white" image="graphql.png" />
-                <StackTechnology
-                  theme="white"
-                  image="apollo.png"
-                  style={{ height: "100px", width: "150px" }}
-                />
+                <StackTechnology theme="white" image="apollo.svg" />
                 <StackTechnology theme="white" image="react.png" />
                 <StackTechnology theme="white" image="redux.png" />
                 <StackTechnology theme="white" image="reactnative.png" />
                 <StackTechnology theme="white" image="mysql.png" />
-                <StackTechnology
-                  theme="white"
-                  image="knex.png"
-                  style={{ height: "100px", width: "150px" }}
-                />
+                <StackTechnology theme="white" image="knex.png" />
                 <StackTechnology theme="white" image="bs.png" />
                 <StackTechnology theme="white" image="css.png" />
                 <StackTechnology theme="white" image="html.png" />
@@ -1740,7 +1748,7 @@
             </AboutContent>
 
             <br />
-            <AboutContent title="Interested To Learn" icon="fa fa-desktop">
+            <AboutContent title="Interested To Learn" icon="fa fa-cloud">
               <GridComponent style={{ padding: "0px 50px 0px 50px" }}>
                 <StackTechnology theme="white" image="vitest.png" />
                 <StackTechnology theme="white" image="nosql.png" />
@@ -1748,6 +1756,15 @@
                 <StackTechnology theme="white" image="aws.png" />
                 <StackTechnology theme="white" image="docker.png" />
                 <StackTechnology theme="white" image="githubaction.png" />
+              </GridComponent>
+            </AboutContent>
+
+            <br />
+            <AboutContent title="AI Development Tools" icon="fa fa-code">
+              <GridComponent style={{ padding: "0px 50px 0px 50px" }}>
+                <StackTechnology theme="white" image="chatgpt.png" />
+                <StackTechnology theme="white" image="claude.png" />
+                <StackTechnology theme="white" image="copilot.png" />
               </GridComponent>
             </AboutContent>
           </div>
