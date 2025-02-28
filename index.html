@@ -1616,6 +1616,8 @@
         image,
         style = { height: "100px", width: "100px" },
         theme = "dark",
+        title = "Technology",
+        description = "Description",
       }) => (
         <div className="grid-col-3 stackTechnology">
           {theme == "dark" ? (
@@ -1629,7 +1631,7 @@
               <div
                 style={{
                   display: "grid",
-                  gridTemplateColumns: "1fr 1fr",
+                  gridTemplateColumns: "100px 1fr",
                   gridColumn: 1,
                   gridRow: 2,
                 }}
@@ -1641,8 +1643,23 @@
                   }}
                   src={`assets/images/skills/${image}`}
                 />
-                <div>
-                  <span>GG</span>
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center",
+                  }}
+                >
+                  <span
+                    style={{
+                      color: "black",
+                      fontWeight: "bold",
+                      fontSize: "14pt",
+                    }}
+                  >
+                    {title}
+                  </span>
+                  <span style={{ color: "black" }}>{description}</span>
                 </div>
               </div>
             </WhiteCard>
@@ -1791,15 +1808,60 @@
               icon="fa fa-desktop"
             >
               <GridComponent style={{ padding: "0px 50px 0px 50px" }}>
-                <StackTechnology theme="white" image="node.png" />
-                <StackTechnology theme="white" image="express.png" />
-                <StackTechnology theme="white" image="rest.png" />
-                <StackTechnology theme="white" image="graphql.png" />
-                <StackTechnology theme="white" image="apollo.svg" />
-                <StackTechnology theme="white" image="react.png" />
-                <StackTechnology theme="white" image="reactnative.png" />
-                <StackTechnology theme="white" image="zustand.png" />
-                <StackTechnology theme="white" image="redux.png" />
+                <StackTechnology
+                  theme="white"
+                  image="node.png"
+                  title="NodeJS"
+                  description="JavaScript runtime for backend applications"
+                />
+                <StackTechnology
+                  theme="white"
+                  image="express.png"
+                  title="ExpressJS"
+                  description="Minimalist web framework for Node.js"
+                />
+                <StackTechnology
+                  theme="white"
+                  image="rest.png"
+                  title="REST API"
+                  description="Standardized HTTP-based API for web services"
+                />
+                <StackTechnology
+                  theme="white"
+                  image="graphql.png"
+                  title="GraphQL API"
+                  description="Flexible query language for APIs"
+                />
+                <StackTechnology
+                  theme="white"
+                  image="apollo.svg"
+                  title="Apollo Server"
+                  description="GraphQL server for building flexible APIs"
+                />
+                <StackTechnology
+                  theme="white"
+                  image="react.png"
+                  title="ReactJS"
+                  description="UI library for building web applications"
+                />
+                <StackTechnology
+                  theme="white"
+                  image="reactnative.png"
+                  title="React Native"
+                  description="Build mobile apps using React and JavaScript"
+                />
+                <StackTechnology
+                  theme="white"
+                  image="zustand.png"
+                  title="Zustand"
+                  description="Lightweight and flexible state management for React"
+                />
+                <StackTechnology
+                  theme="white"
+                  image="redux.png"
+                  title="Redux"
+                  description="State management for JavaScript apps"
+                />
 
                 <StackTechnology theme="white" image="mysql.png" />
                 <StackTechnology theme="white" image="knex.png" />
