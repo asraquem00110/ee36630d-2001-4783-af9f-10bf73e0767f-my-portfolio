@@ -349,7 +349,13 @@
                       {completeListofPages.map((page, index) => {
                         return (
                           <div
-                            onClick={() => addtoPage(index)}
+                            onClick={() => {
+                              addtoPage(index);
+                              window.scrollTo({
+                                top: 0,
+                                behavior: "smooth",
+                              });
+                            }}
                             style={{
                               background:
                                 page.title == activePage.title
