@@ -2953,122 +2953,115 @@
                     </div>
                   </div>
 
-                  <div className="grid-container">
-                    <div className="grid-col-6">
-                      <div className="panel">
-                        <div className="panel-header panel-default">
-                          <span
-                            className="projectHeader"
-                            style={{
-                              fontWeight: "bold",
-                              fontSize: "20pt",
-                              color: "dimgray",
-                            }}
-                          >
-                            <i className="fa fa-edit" /> Description
-                          </span>
-                        </div>
-                        <div className="panel-body">
-                          <ul>
-                            {item.contents.map((content, index) => (
-                              <li style={{ margin: "10px 0px" }}>
-                                <span
-                                  className="projectDesc"
-                                  style={{
-                                    color: "black",
-                                    fontSize: "16pt",
-                                  }}
-                                >
-                                  {content}
-                                </span>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      </div>
+                  <div className="panel">
+                    <div className="panel-header panel-default">
+                      <span
+                        className="projectHeader"
+                        style={{
+                          fontWeight: "bold",
+                          fontSize: "20pt",
+                          color: "dimgray",
+                        }}
+                      >
+                        <i className="fa fa-edit" /> Description
+                      </span>
                     </div>
-                    <div className="grid-col-6">
-                      <div className="panel">
-                        <div className="panel-header panel-default">
-                          <span
-                            className="projectHeader"
-                            style={{
-                              fontWeight: "bold",
-                              fontSize: "20pt",
-                              color: "dimgray",
-                            }}
-                          >
-                            <i className="fa fa-desktop" /> Technologies
-                          </span>
-                        </div>
-                        <div className="panel-body">
-                          <ul>
-                            {item.techs.map((tech, index) => (
-                              <li style={{ margin: "10px 0px" }}>
-                                <span
-                                  className="projectDesc"
-                                  style={{
-                                    fontSize: "16pt",
-                                    color: "black",
-                                  }}
-                                >
-                                  {tech}
-                                </span>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-
-                    {item.codes.length > 0 && (
-                      <div className="grid-col-6">
-                        <div className="panel">
-                          <div className="panel-header panel-default">
+                    <div className="panel-body">
+                      <ul>
+                        {item.contents.map((content, index) => (
+                          <li style={{ margin: "10px 0px" }}>
                             <span
-                              className="projectHeader"
+                              className="projectDesc"
                               style={{
-                                fontWeight: "bold",
-                                fontSize: "20pt",
-                                color: "dimgray",
+                                color: "black",
+                                fontSize: "16pt",
                               }}
                             >
-                              <i className="fa fa-github" /> Code repo
+                              {content}
                             </span>
-                          </div>
-                          <div className="panel-body">
-                            {item.codes.map((code) => {
-                              return (
-                                <div style={{ margin: "10px 0px" }}>
-                                  <span
-                                    className="projectDesc"
-                                    style={{
-                                      fontSize: "16pt",
-                                      color: "black",
-                                    }}
-                                  >
-                                    {code.label}:{" "}
-                                  </span>{" "}
-                                  <a
-                                    className="projectDesc"
-                                    style={{
-                                      fontSize: "16pt",
-                                      color: "#33accc",
-                                      marginRight: "10px",
-                                    }}
-                                    href={code.link}
-                                    target="_blank"
-                                  >
-                                    {code.link}
-                                  </a>
-                                </div>
-                              );
-                            })}
-                          </div>
-                        </div>
-                      </div>
-                    )}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   </div>
+
+                  <div className="panel">
+                    <div className="panel-header panel-default">
+                      <span
+                        className="projectHeader"
+                        style={{
+                          fontWeight: "bold",
+                          fontSize: "20pt",
+                          color: "dimgray",
+                        }}
+                      >
+                        <i className="fa fa-desktop" /> Technologies
+                      </span>
+                    </div>
+                    <div className="panel-body">
+                      <ul>
+                        {item.techs.map((tech, index) => (
+                          <li style={{ margin: "10px 0px" }}>
+                            <span
+                              className="projectDesc"
+                              style={{
+                                fontSize: "16pt",
+                                color: "black",
+                              }}
+                            >
+                              {tech}
+                            </span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+
+                  {item.codes.length > 0 && (
+                    <div className="panel">
+                      <div className="panel-header panel-default">
+                        <span
+                          className="projectHeader"
+                          style={{
+                            fontWeight: "bold",
+                            fontSize: "20pt",
+                            color: "dimgray",
+                          }}
+                        >
+                          <i className="fa fa-github" /> Code repo
+                        </span>
+                      </div>
+                      <div className="panel-body">
+                        {item.codes.map((code) => {
+                          return (
+                            <div style={{ margin: "10px 0px" }}>
+                              <span
+                                className="projectDesc"
+                                style={{
+                                  fontSize: "16pt",
+                                  color: "black",
+                                }}
+                              >
+                                {code.label}:{" "}
+                              </span>{" "}
+                              <a
+                                className="projectDesc"
+                                style={{
+                                  fontSize: "16pt",
+                                  color: "#33accc",
+                                  marginRight: "10px",
+                                }}
+                                href={code.link}
+                                target="_blank"
+                              >
+                                {code.link}
+                              </a>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
