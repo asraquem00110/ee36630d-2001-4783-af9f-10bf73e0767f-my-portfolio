@@ -3721,11 +3721,110 @@
               className="PageContent"
               style={{ marginLeft: showExplorer ? "300px" : "0px" }}
             >
-              <div className="projectGrid">
+              <div>
                 <AboutContent
                   title="Projects/Task Accomplished"
                   icon="fa fa-code"
-                ></AboutContent>
+                >
+                  <div className="mainProjectDiv">
+                    {mainProjects.map((item, index) => (
+                      <div className="projectSecondDiv">
+                        <div className="projectFirstContent">
+                          <div
+                            className="cellphoneBG"
+                            style={{
+                              height: "700px",
+                              width: "300px",
+                              marginTop: "-40px",
+                            }}
+                          >
+                            <img
+                              style={{
+                                marginLeft: "16px",
+                                marginTop: "102px",
+                                height: "485px",
+                                width: "265px",
+                                // position: "absolute",
+                              }}
+                              src={item.images[item.activeImageIndex]}
+                            />
+                            <span
+                              onClick={() =>
+                                changeDisplayImage("prev", item, index)
+                              }
+                              className="cellphoneBck"
+                            >
+                              <i className="fa fa-caret-left" />
+                            </span>
+                            <span
+                              onClick={() =>
+                                changeDisplayImage("next", item, index)
+                              }
+                              className="cellphoneFor"
+                            >
+                              <i className="fa fa-caret-right" />
+                            </span>
+                          </div>
+                        </div>
+                        <div className="projectSecondContent">
+                          <span className="projectName">{item.name}</span>
+                          <span className="projectDesc">{item.desc}</span>
+                          <span
+                            style={{
+                              marginTop: "20px",
+                              fontWeight: "bold",
+                              fontSize: "18pt",
+                            }}
+                          >
+                            Features
+                          </span>
+                          <span style={{ marginTop: "10px", fontSize: "14pt" }}>
+                            {item.features}
+                          </span>
+                          {item.backend && item.backend != "" && (
+                            <div style={{ marginTop: "20px" }}>
+                              <span
+                                style={{
+                                  marginTop: "20px",
+                                  fontWeight: "bold",
+                                  fontSize: "18pt",
+                                }}
+                              >
+                                Backend
+                              </span>
+                              <br />
+                              <span
+                                style={{ marginTop: "10px", fontSize: "14pt" }}
+                              >
+                                {item.backend}
+                              </span>
+                            </div>
+                          )}
+
+                          {item.frontend && item.frontend != "" && (
+                            <div style={{ marginTop: "20px" }}>
+                              <span
+                                style={{
+                                  marginTop: "20px",
+                                  fontWeight: "bold",
+                                  fontSize: "18pt",
+                                }}
+                              >
+                                Frontend
+                              </span>
+                              <br />
+                              <span
+                                style={{ marginTop: "10px", fontSize: "14pt" }}
+                              >
+                                {item.frontend}
+                              </span>
+                            </div>
+                          )}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </AboutContent>
                 <AboutContent
                   title="Others/Personal Projects"
                   icon="fa fa-code"
@@ -3791,8 +3890,6 @@
                 </AboutContent>
               </div>
             </div>
-            {/*Adjust height when projects content is broken*/}
-            <div style={{ height: 4500 }} />
           </div>
         );
       };

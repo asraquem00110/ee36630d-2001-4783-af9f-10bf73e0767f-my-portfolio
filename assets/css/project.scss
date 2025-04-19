@@ -74,17 +74,12 @@
 }
 
 .mainProjectDiv {
-  height: 100%;
-  // background-color: blue;
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  margin: 50px 200px;
+  // margin: 50px 200px;
+  margin-top: 50px;
 
   .projectSecondDiv {
     display: flex;
-    // flex: 1;
-    // background-color: green;
+    flex-direction: row; // column in small device
     margin-bottom: 70px;
 
     .projectFirstContent {
@@ -193,6 +188,11 @@ ul.a {
   .modalHeaderTitle {
     font-size: 16pt !important;
   }
+
+  .projectSecondDiv {
+    flex-direction: column !important;
+    padding: 0px 10px !important;
+  }
 }
 
 // Small Device / Cellphone
@@ -220,5 +220,10 @@ ul.a {
 
   .webNxt {
     right: -14px !important;
+  }
+
+  .projectSecondDiv {
+    flex-direction: column !important;
+    padding: 0px 10px !important;
   }
 }
