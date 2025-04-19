@@ -316,4 +316,15 @@ nav aside #contactme {
 .PageContent {
   margin-top: 20px;
   transition: margin-left 0.3s ease;
+}
+
+@media (max-width: 768px) and (min-width: 577px) {
+  #MainContent {
+    padding: 50px 10px 10px 10px !important;
+  }
+}
+@media (max-width: 578px) {
+  #MainContent {
+    padding: 50px 0px 0px 0px !important;
+  }
 }/*# sourceMappingURL=app.css.map */
