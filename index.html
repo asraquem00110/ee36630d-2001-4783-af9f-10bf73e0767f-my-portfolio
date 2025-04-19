@@ -204,6 +204,16 @@
         //   }
         // }, []);
 
+        React.useEffect(() => {
+          const isMobile =
+            window.innerWidth <= 600 ||
+            /Mobi|Android/i.test(navigator.userAgent);
+          if (isMobile) {
+            setShowExplorer(false);
+            document.body.style.overflowX = "hidden";
+          }
+        }, []);
+
         return (
           <div>
             <header>
