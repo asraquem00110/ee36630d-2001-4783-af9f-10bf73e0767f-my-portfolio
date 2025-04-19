@@ -1812,9 +1812,10 @@
           ) : (
             <WhiteCard>
               <div
+                className="stackTechnologyDiv"
                 style={{
                   display: "grid",
-                  gridTemplateColumns: "100px 1fr",
+                  gridTemplateColumns: "80px 1fr",
                   gridColumn: 1,
                   gridRow: 2,
                 }}
@@ -1822,8 +1823,8 @@
                 <img
                   className="stackTechnologyImage"
                   style={{
-                    height: "80px",
-                    width: "80px",
+                    height: "60px",
+                    width: "60px",
                   }}
                   src={`assets/images/skills/${image}`}
                 />
@@ -1835,6 +1836,7 @@
                   }}
                 >
                   <span
+                    className="stackTechnologyTitle"
                     style={{
                       color: "black",
                       fontWeight: "bold",
@@ -1843,7 +1845,12 @@
                   >
                     {title}
                   </span>
-                  <span style={{ color: "black" }}>{description}</span>
+                  <span
+                    className="stackTechnologyDescription"
+                    style={{ color: "black" }}
+                  >
+                    {description}
+                  </span>
                 </div>
               </div>
             </WhiteCard>
@@ -1880,7 +1887,10 @@
                       <div className="specialtygrid">
                         <span className="specialtytitle">API</span>
                         <hr />
-                        <span style={{ color: "white" }}>
+                        <span
+                          className="specialtyDescription"
+                          style={{ color: "white" }}
+                        >
                           Lorem ipsum dolor sit amet, consectetur adipiscing
                           elit. Fusce sit amet risus rhoncus, ornare sapien in,
                           sodales lectus. Mauris neque justo, dictum ac ante et,
@@ -1912,7 +1922,10 @@
                       <div className="specialtygrid">
                         <span className="specialtytitle">Database</span>
                         <hr />
-                        <span style={{ color: "white" }}>
+                        <span
+                          className="specialtyDescription"
+                          style={{ color: "white" }}
+                        >
                           Lorem ipsum dolor sit amet, consectetur adipiscing
                           elit. Fusce sit amet risus rhoncus, ornare sapien in,
                           sodales lectus. Mauris neque justo, dictum ac ante et,
@@ -1944,7 +1957,10 @@
                       <div className="specialtygrid">
                         <span className="specialtytitle">Mobile App</span>
                         <hr />
-                        <span style={{ color: "white" }}>
+                        <span
+                          className="specialtyDescription"
+                          style={{ color: "white" }}
+                        >
                           Lorem ipsum dolor sit amet, consectetur adipiscing
                           elit. Fusce sit amet risus rhoncus, ornare sapien in,
                           sodales lectus. Mauris neque justo, dictum ac ante et,
@@ -1976,7 +1992,10 @@
                       <div className="specialtygrid">
                         <span className="specialtytitle">Web App</span>
                         <hr />
-                        <span style={{ color: "white" }}>
+                        <span
+                          className="specialtyDescription"
+                          style={{ color: "white" }}
+                        >
                           Lorem ipsum dolor sit amet, consectetur adipiscing
                           elit. Fusce sit amet risus rhoncus, ornare sapien in,
                           sodales lectus. Mauris neque justo, dictum ac ante et,

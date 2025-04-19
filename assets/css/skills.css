@@ -38,11 +38,23 @@
   .stackTechnology {
     grid-column: span 12 !important;
   }
-  .specialtygrid > img {
+  .specialtyMainDiv {
+    padding: 10px !important;
+  }
+  .stackTechnologyImage {
     height: 60px !important;
     width: 60px !important;
   }
-  .specialtyMainDiv {
-    padding: 10px !important;
+  .stackTechnologyTitle {
+    font-size: 12pt !important;
+  }
+  .stackTechnologyDescription {
+    font-size: 10pt !important;
+  }
+  .specialtytitle {
+    font-size: 12pt !important;
+  }
+  .specialtyDescription {
+    font-size: 10pt !important;
   }
 }/*# sourceMappingURL=skills.css.map */
