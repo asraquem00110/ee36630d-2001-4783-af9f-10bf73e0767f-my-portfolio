@@ -322,4 +322,12 @@
   .projecttitle {
     font-size: 14pt !important;
   }
+}
+@media (max-width: 325px) {
+  .imgprojectsrc {
+    height: 240px !important;
+    width: 240px !important;
+    margin-top: 20px !important;
+    margin-right: 50px !important;
+  }
 }/*# sourceMappingURL=grid.css.map */
