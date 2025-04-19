@@ -1048,15 +1048,20 @@
 
                   <div id="AboutInfoExpertise">
                     <div>
-                      <span style={{ fontSize: "24pt" }}>
+                      <span style={{ fontSize: "clamp(16pt, 4vw, 24pt)" }}>
                         <span>&#60;Mediocre Software</span>{" "}
                         <span style={{ color: "#FF896C" }}>Engineer/></span>
                       </span>
                     </div>
                     <br />
                     <div style={{ marginTop: "16px", flexGrow: 1 }}>
-                      <span style={{ fontSize: "20pt" }}>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      <span
+                        style={{
+                          fontSize: "clamp(14pt, 3vw, 20pt)",
+                          display: "block",
+                          padding: "0 10px",
+                        }}
+                      >
                         Experienced Software Engineer specializing in web and
                         mobile application development, with a primary focus on
                         back-end engineering and the flexibility to contribute
@@ -1071,31 +1076,33 @@
                     </div>
                     <div
                       style={{
-                        height: "300px",
+                        height: "auto",
                         width: "100%",
                         position: "relative",
+                        marginTop: "40px",
                       }}
                     >
                       <div
                         style={{
-                          height: "100%",
                           width: "100%",
-                          position: "absolute",
-                          bottom: -80,
+                          position: "relative",
                           display: "flex",
+                          flexDirection: "row",
+                          flexWrap: "wrap",
+                          gap: "20px",
+                          padding: "0 10px",
                         }}
                       >
                         <div
                           style={{
-                            display: "flex",
-                            flex: 1,
+                            flex: "1 1 300px",
+                            minWidth: "300px",
                           }}
                         >
                           <img
                             style={{
-                              height: "100%",
                               width: "100%",
-                              // boxShadow: "10px 10px 30px rgba(0, 0, 0, 0.3)",
+                              height: "auto",
                               borderRadius: "10px",
                             }}
                             src="./assets/images/site/aboutdev.svg"
@@ -1103,22 +1110,25 @@
                         </div>
                         <div
                           style={{
+                            flex: "1 1 300px",
+                            minWidth: "300px",
                             display: "flex",
-                            flex: 1,
                             justifyContent: "center",
                             alignItems: "center",
                             position: "relative",
+                            height: "350px",
                           }}
                         >
                           {/* Back Image (Rotated Left) */}
                           <img
                             style={{
-                              height: "350px",
-                              width: "350px",
+                              height: "auto",
+                              width: "90%",
+                              maxWidth: "350px",
                               boxShadow: "10px 10px 30px rgba(0, 0, 0, 0.3)",
                               borderRadius: "10px",
                               position: "absolute",
-                              transform: "rotate(-10deg)", // Rotate left
+                              transform: "rotate(-10deg)",
                               zIndex: 1,
                             }}
                             src="./assets/images/bg1.png"
@@ -1127,12 +1137,13 @@
                           {/* Middle Image (Rotated Right) */}
                           <img
                             style={{
-                              height: "350px",
-                              width: "350px",
+                              height: "auto",
+                              width: "90%",
+                              maxWidth: "350px",
                               boxShadow: "10px 10px 30px rgba(0, 0, 0, 0.3)",
                               borderRadius: "10px",
                               position: "absolute",
-                              transform: "rotate(5deg)", // Rotate slightly right
+                              transform: "rotate(5deg)",
                               zIndex: 2,
                             }}
                             src="./assets/images/bg2.jpg"
@@ -1141,12 +1152,13 @@
                           {/* Front Image (Centered) */}
                           <img
                             style={{
-                              height: "350px",
-                              width: "350px",
+                              height: "auto",
+                              width: "90%",
+                              maxWidth: "350px",
                               boxShadow: "10px 10px 30px rgba(0, 0, 0, 0.3)",
                               borderRadius: "10px",
                               position: "relative",
-                              zIndex: 3, // Top layer
+                              zIndex: 3,
                             }}
                             src="./assets/images/about.jpg"
                           />
@@ -1196,53 +1208,91 @@
                   <GridComponent>
                     <div className="grid-col-6">
                       <DarkCard>
-                        <div style={{ display: "flex", flexDirection: "row" }}>
+                        <div
+                          style={{
+                            display: "flex",
+                            flexDirection: "row",
+                            flexWrap: "wrap",
+                            gap: "20px",
+                            padding: "10px",
+                          }}
+                        >
                           <div
                             style={{
-                              flexBasis: "200px",
-                              height: "200px",
+                              flex: "0 1 180px",
+                              minWidth: "180px",
+                              display: "flex",
                               justifyContent: "center",
                               alignItems: "center",
-                              display: "flex",
+                              margin: "0 auto",
                             }}
                           >
                             <img
                               src="./assets/images/about/tup.png"
-                              style={{ height: "180px", width: "180px" }}
+                              style={{
+                                maxWidth: "100%",
+                                height: "auto",
+                                maxHeight: "180px",
+                                objectFit: "contain",
+                              }}
                             />
                           </div>
 
                           <div
                             style={{
-                              flexGrow: 1,
-                              height: "200px",
-                              flexDirection: "column",
+                              flex: "1 1 300px",
                               display: "flex",
+                              flexDirection: "column",
                               justifyContent: "center",
+                              textAlign: "center",
                             }}
                           >
-                            <span style={{ fontSize: 24, fontWeight: "bold" }}>
+                            <span
+                              style={{
+                                fontSize: "clamp(18px, 3vw, 24px)",
+                                fontWeight: "bold",
+                                marginBottom: "10px",
+                              }}
+                            >
                               Diploma in Computer Engineering Technology
                             </span>
-                            <span style={{ fontSize: 18, marginTop: 2 }}>
+                            <span
+                              style={{
+                                fontSize: "clamp(14px, 2vw, 18px)",
+                                marginBottom: "5px",
+                              }}
+                            >
                               Technician Course
                             </span>
-                            <span style={{ fontSize: 18, marginTop: 2 }}>
+                            <span
+                              style={{
+                                fontSize: "clamp(14px, 2vw, 18px)",
+                                marginBottom: "5px",
+                              }}
+                            >
                               2015
                             </span>
-                            <span style={{ fontSize: 18, marginTop: 2 }}>
+                            <span
+                              style={{
+                                fontSize: "clamp(14px, 2vw, 18px)",
+                                marginBottom: "5px",
+                              }}
+                            >
                               Technological University of the Philippines -
                               Taguig Campus
                             </span>
 
                             <a
                               href="https://tupt.edu.ph/"
-                              style={{ marginTop: 10, color: "#F8C9CA" }}
+                              style={{
+                                marginTop: "10px",
+                                color: "#F8C9CA",
+                                fontSize: "clamp(14px, 2vw, 18px)",
+                                wordBreak: "break-word",
+                              }}
                               target="_blank"
                             >
-                              <span style={{ fontSize: 18 }}>
-                                https://tupt.edu.ph/
-                              </span>
+                              https://tupt.edu.ph/
                             </a>
                           </div>
                         </div>
@@ -1253,55 +1303,88 @@
                       <DarkCard>
                         <div
                           style={{
-                            display: "grid",
-                            gridTemplateColumns: "200px 1fr",
-                            gridTemplateRows: "200px",
+                            display: "flex",
+                            flexDirection: "row",
+                            flexWrap: "wrap",
+                            gap: "20px",
+                            padding: "10px",
                           }}
                         >
                           <div
                             style={{
-                              gridColumn: "1 / 2",
-                              gridRow: "1 /1 ",
-                              display: "grid",
-                              placeItems: "center",
+                              flex: "0 1 180px",
+                              minWidth: "180px",
+                              display: "flex",
+                              justifyContent: "center",
+                              alignItems: "center",
+                              margin: "0 auto",
                             }}
                           >
                             <img
                               src="./assets/images/about/tup.png"
-                              style={{ height: "180px", width: "180px" }}
+                              style={{
+                                maxWidth: "100%",
+                                height: "auto",
+                                maxHeight: "180px",
+                                objectFit: "contain",
+                              }}
                             />
                           </div>
 
                           <div
                             style={{
-                              gridColumn: "2 / 3",
-                              gridRow: "1 /1 ",
-                              flexDirection: "column",
+                              flex: "1 1 300px",
                               display: "flex",
+                              flexDirection: "column",
                               justifyContent: "center",
+                              textAlign: "center",
                             }}
                           >
-                            <span style={{ fontSize: 24, fontWeight: "bold" }}>
+                            <span
+                              style={{
+                                fontSize: "clamp(18px, 3vw, 24px)",
+                                fontWeight: "bold",
+                                marginBottom: "10px",
+                              }}
+                            >
                               Bachelor of Technology in Information Technology
                             </span>
-                            <span style={{ fontSize: 18, marginTop: 2 }}>
+                            <span
+                              style={{
+                                fontSize: "clamp(14px, 2vw, 18px)",
+                                marginBottom: "5px",
+                              }}
+                            >
                               Ladderized Degree Course
                             </span>
-                            <span style={{ fontSize: 18, marginTop: 2 }}>
+                            <span
+                              style={{
+                                fontSize: "clamp(14px, 2vw, 18px)",
+                                marginBottom: "5px",
+                              }}
+                            >
                               2017
                             </span>
-                            <span style={{ fontSize: 18, marginTop: 2 }}>
+                            <span
+                              style={{
+                                fontSize: "clamp(14px, 2vw, 18px)",
+                                marginBottom: "5px",
+                              }}
+                            >
                               Technological University of the Philippines -
                               Taguig Campus
                             </span>
                             <a
                               href="https://tupt.edu.ph/"
-                              style={{ marginTop: 10, color: "#F8C9CA" }}
+                              style={{
+                                marginTop: "10px",
+                                color: "#F8C9CA",
+                                fontSize: "clamp(14px, 2vw, 18px)",
+                                wordBreak: "break-word",
+                              }}
                               target="_blank"
                             >
-                              <span style={{ fontSize: 18 }}>
-                                https://tupt.edu.ph/
-                              </span>
+                              https://tupt.edu.ph/
                             </a>
                           </div>
                         </div>
