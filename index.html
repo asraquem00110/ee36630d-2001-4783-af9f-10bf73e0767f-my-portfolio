@@ -2865,7 +2865,10 @@
                       className="panel-header panel-default"
                       style={{ textAlign: "center" }}
                     >
-                      <span style={{ fontSize: "24pt", color: "dimgray" }}>
+                      <span
+                        className="modalHeaderTitle"
+                        style={{ fontSize: "24pt", color: "dimgray" }}
+                      >
                         <a
                           style={{
                             color: "dimgray",
@@ -2897,6 +2900,7 @@
                             }}
                           >
                             <img
+                              className="projectModalImage"
                               style={{
                                 height: "500px",
                                 width:
@@ -2954,6 +2958,7 @@
                       <div className="panel">
                         <div className="panel-header panel-default">
                           <span
+                            className="projectHeader"
                             style={{
                               fontWeight: "bold",
                               fontSize: "20pt",
@@ -2986,6 +2991,7 @@
                       <div className="panel">
                         <div className="panel-header panel-default">
                           <span
+                            className="projectHeader"
                             style={{
                               fontWeight: "bold",
                               fontSize: "20pt",
@@ -3000,6 +3006,7 @@
                             {item.techs.map((tech, index) => (
                               <li style={{ margin: "10px 0px" }}>
                                 <span
+                                  className="projectDesc"
                                   style={{
                                     fontSize: "16pt",
                                     color: "black",
@@ -3019,6 +3026,7 @@
                         <div className="panel">
                           <div className="panel-header panel-default">
                             <span
+                              className="projectHeader"
                               style={{
                                 fontWeight: "bold",
                                 fontSize: "20pt",
@@ -3033,6 +3041,7 @@
                               return (
                                 <div style={{ margin: "10px 0px" }}>
                                   <span
+                                    className="projectDesc"
                                     style={{
                                       fontSize: "16pt",
                                       color: "black",
@@ -3041,6 +3050,7 @@
                                     {code.label}:{" "}
                                   </span>{" "}
                                   <a
+                                    className="projectDesc"
                                     style={{
                                       fontSize: "16pt",
                                       color: "#33accc",
@@ -3420,7 +3430,6 @@
               "./assets/images/skills/js.png",
               "./assets/images/skills/vue.png",
               "./assets/images/skills/ionic.png",
-              "./assets/images/skills/react.png",
               "./assets/images/skills/reactnative.png",
             ],
             codes: [
@@ -3716,107 +3725,7 @@
                 <AboutContent
                   title="Projects/Task Accomplished"
                   icon="fa fa-code"
-                >
-                  <div className="mainProjectDiv">
-                    {mainProjects.map((item, index) => (
-                      <div className="projectSecondDiv">
-                        <div className="projectFirstContent">
-                          <div
-                            className="cellphoneBG"
-                            style={{
-                              height: "700px",
-                              width: "300px",
-                              marginTop: "-40px",
-                            }}
-                          >
-                            <img
-                              style={{
-                                marginLeft: "16px",
-                                marginTop: "102px",
-                                height: "485px",
-                                width: "265px",
-                                position: "absolute",
-                              }}
-                              src={item.images[item.activeImageIndex]}
-                            />
-                            <span
-                              onClick={() =>
-                                changeDisplayImage("prev", item, index)
-                              }
-                              className="cellphoneBck"
-                            >
-                              <i className="fa fa-caret-left" />
-                            </span>
-                            <span
-                              onClick={() =>
-                                changeDisplayImage("next", item, index)
-                              }
-                              className="cellphoneFor"
-                            >
-                              <i className="fa fa-caret-right" />
-                            </span>
-                          </div>
-                        </div>
-                        <div className="projectSecondContent">
-                          <span className="projectName">{item.name}</span>
-                          <span className="projectDesc">{item.desc}</span>
-                          <span
-                            style={{
-                              marginTop: "20px",
-                              fontWeight: "bold",
-                              fontSize: "18pt",
-                            }}
-                          >
-                            Features
-                          </span>
-                          <span style={{ marginTop: "10px", fontSize: "14pt" }}>
-                            {item.features}
-                          </span>
-                          {item.backend && item.backend != "" && (
-                            <div style={{ marginTop: "20px" }}>
-                              <span
-                                style={{
-                                  marginTop: "20px",
-                                  fontWeight: "bold",
-                                  fontSize: "18pt",
-                                }}
-                              >
-                                Backend
-                              </span>
-                              <br />
-                              <span
-                                style={{ marginTop: "10px", fontSize: "14pt" }}
-                              >
-                                {item.backend}
-                              </span>
-                            </div>
-                          )}
-
-                          {item.frontend && item.frontend != "" && (
-                            <div style={{ marginTop: "20px" }}>
-                              <span
-                                style={{
-                                  marginTop: "20px",
-                                  fontWeight: "bold",
-                                  fontSize: "18pt",
-                                }}
-                              >
-                                Frontend
-                              </span>
-                              <br />
-                              <span
-                                style={{ marginTop: "10px", fontSize: "14pt" }}
-                              >
-                                {item.frontend}
-                              </span>
-                            </div>
-                          )}
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </AboutContent>
-
+                ></AboutContent>
                 <AboutContent
                   title="Others/Personal Projects"
                   icon="fa fa-code"
@@ -3850,6 +3759,7 @@
                           </div>
                           <div className="projectdescription">
                             <span
+                              className="projecttitle"
                               style={{
                                 fontSize: "20pt",
                                 fontWeight: "bold",

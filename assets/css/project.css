@@ -126,7 +126,7 @@
 .webNxt {
   position: absolute;
   bottom: 220px;
-  right: 35px;
+  right: 20px;
   color: white;
   cursor: pointer;
   font-size: 50pt;
@@ -145,4 +145,37 @@
 
 ul.a {
   list-style-type: circle;
+}
+
+@media (max-width: 768px) and (min-width: 577px) {
+  .projectDesc {
+    font-size: 12pt !important;
+  }
+  .projectHeader {
+    font-size: 16pt !important;
+  }
+  .modalHeaderTitle {
+    font-size: 16pt !important;
+  }
+}
+@media (max-width: 578px) {
+  .projectDesc {
+    font-size: 12pt !important;
+  }
+  .projectHeader {
+    font-size: 16pt !important;
+  }
+  .modalHeaderTitle {
+    font-size: 16pt !important;
+  }
+  .projectModalImage {
+    height: 250px !important;
+    width: 90% !important;
+  }
+  .webBck {
+    left: -14px !important;
+  }
+  .webNxt {
+    right: -14px !important;
+  }
 }/*# sourceMappingURL=project.css.map */

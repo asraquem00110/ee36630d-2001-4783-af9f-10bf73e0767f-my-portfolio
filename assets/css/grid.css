@@ -303,4 +303,22 @@
   .imgprojectsrc {
     width: 300px;
   }
+}
+@media (max-width: 768px) and (min-width: 577px) {
+  .imgprojectsrc {
+    height: 250px !important;
+    margin-top: 10px;
+  }
+  .projecttitle {
+    font-size: 14pt !important;
+  }
+}
+@media (max-width: 578px) {
+  .imgprojectsrc {
+    height: 250px !important;
+    margin-top: 10px;
+  }
+  .projecttitle {
+    font-size: 14pt !important;
+  }
 }/*# sourceMappingURL=grid.css.map */
