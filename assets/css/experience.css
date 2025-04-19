@@ -48,10 +48,46 @@
   text-align: left;
 }
 
+@media (max-width: 992px) and (min-width: 767px) {
+  .grid-col-8 {
+    grid-column: span 12 !important;
+  }
+}
+@media (max-width: 768px) and (min-width: 577px) {
+  .content {
+    padding: 20px 0px !important;
+  }
+  .worktitle {
+    font-size: 16pt !important;
+  }
+  .grid-col-8 {
+    grid-column: span 12 !important;
+  }
+}
 @media (max-width: 578px) {
   .works {
     padding: 1rem;
     margin: 0;
     margin-top: 20px;
+  }
+  .content {
+    padding: 20px 0px !important;
+  }
+  .grid-col-8 {
+    grid-column: span 12 !important;
+  }
+  .dateRight,
+  .dateLeft {
+    padding: 10px !important;
+    font-size: 10pt !important;
+  }
+  .worktitle {
+    font-size: 14pt !important;
+  }
+  .list {
+    font-size: 12pt !important;
+  }
+  #lookingForOpportunity {
+    font-size: 14pt !important;
   }
 }/*# sourceMappingURL=experience.css.map */

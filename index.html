@@ -30,10 +30,10 @@
     ></script>
     <!-- Load our React component. -->
     <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
-    <script
+    <!-- <script
       src="https://cdn.jsdelivr.net/npm/sweetalert2@11"
       crossorigin
-    ></script>
+    ></script> -->
 
     <script type="text/babel">
       const GlobalContext = React.createContext();
@@ -191,18 +191,18 @@
           setPages(updatedDivs);
         };
 
-        React.useEffect(() => {
-          if (Swal) {
-            Swal.fire({
-              title: "Yow! Welcome to My Portfolio 😊",
-              icon: "info",
-              text: "This page is not yet fully optimized for smaller screens. For the best experience, please view it on a computer or larger device.",
-              confirmButtonText: "Continue",
-            }).then((result) => {
-              // setShowExplorer(true);
-            });
-          }
-        }, []);
+        // React.useEffect(() => {
+        //   if (Swal) {
+        //     Swal.fire({
+        //       title: "Yow! Welcome to My Portfolio 😊",
+        //       icon: "info",
+        //       text: "This page is not yet fully optimized for smaller screens. For the best experience, please view it on a computer or larger device.",
+        //       confirmButtonText: "Continue",
+        //     }).then((result) => {
+        //       // setShowExplorer(true);
+        //     });
+        //   }
+        // }, []);
 
         return (
           <div>
@@ -2230,6 +2230,7 @@
                           fontSize: "24pt",
                           fontWeight: "bold",
                         }}
+                        className="worktitle"
                       >
                         Intern (POS Technical Support)
                       </span>
@@ -2445,6 +2446,7 @@
                           fontSize: "24pt",
                           fontWeight: "bold",
                         }}
+                        className="worktitle"
                       >
                         PHP Web Developer
                       </span>
@@ -2481,6 +2483,7 @@
                           fontSize: "24pt",
                           fontWeight: "bold",
                         }}
+                        className="worktitle"
                       >
                         Sr. Software Engineer II
                       </span>
@@ -2732,6 +2735,7 @@
                           fontSize: "24pt",
                           fontWeight: "bold",
                         }}
+                        className="worktitle"
                       >
                         Lead Software Engineer
                       </span>
@@ -2759,7 +2763,9 @@
                       flexDirection: "column",
                     }}
                   >
-                    <h1>. . . LOOKING FOR A NEW OPPORTUNITY . . .</h1>
+                    <h1 id="lookingForOpportunity">
+                      . . . LOOKING FOR A NEW OPPORTUNITY . . .
+                    </h1>
                   </div>
                 </div>
               </div>
