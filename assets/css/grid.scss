@@ -118,7 +118,6 @@
   display: block;
   top: 0;
   left: 0;
-  padding-top: 80px;
   /*animation: example 0.2s linear;
     -webkit-animation: example 0.2s linear;*/
 }
@@ -356,6 +355,9 @@
   .projecttitle {
     font-size: 14pt !important;
   }
+  .modal-content {
+    width: 95% !important;
+  }
 }
 
 @media (max-width: 325px) {
@@ -364,5 +366,9 @@
     width: 240px !important;
     margin-top: 20px !important;
     margin-right: 50px !important;
+  }
+
+  .modal-content {
+    width: 95% !important;
   }
 }

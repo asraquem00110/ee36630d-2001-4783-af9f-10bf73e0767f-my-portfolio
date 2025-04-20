@@ -159,4 +159,34 @@ div.AboutTitle {
   #aboutProfileImageCircle {
     display: block !important;
   }
+  #greetings,
+  #AboutName {
+    padding: 0px 10px !important;
+  }
+  #AboutInfoExpertise {
+    padding: 0px !important;
+  }
+
+  #mediocoreTag {
+    padding: 0px 10px !important;
+    font-size: 13pt !important;
+  }
+}
+
+@media (max-width: 325px) {
+  .AboutTitleDescription {
+    font-size: 16pt !important;
+  }
+  #greetings,
+  #AboutName {
+    padding: 0px 10px !important;
+  }
+  #AboutInfoExpertise {
+    padding: 0px !important;
+  }
+
+  #mediocoreTag {
+    padding: 0px 10px !important;
+    font-size: 13pt !important;
+  }
 }

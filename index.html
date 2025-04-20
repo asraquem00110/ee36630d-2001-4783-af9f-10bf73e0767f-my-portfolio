@@ -1057,7 +1057,10 @@
 
                   <div id="AboutInfoExpertise">
                     <div>
-                      <span style={{ fontSize: "clamp(16pt, 4vw, 24pt)" }}>
+                      <span
+                        id="mediocoreTag"
+                        style={{ fontSize: "clamp(16pt, 4vw, 24pt)" }}
+                      >
                         <span>&#60;Mediocre Software</span>{" "}
                         <span style={{ color: "#FF896C" }}>Engineer/></span>
                       </span>
@@ -2874,6 +2877,8 @@
                             color: "dimgray",
                             float: "left",
                             textDecoration: "none",
+                            fontSize: "32pt",
+                            marginTop: "-10px",
                           }}
                           href="javascript:void(0)"
                           onClick={() => setShowViewMore(false)}
