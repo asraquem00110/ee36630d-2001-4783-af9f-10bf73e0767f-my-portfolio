@@ -57,4 +57,15 @@
   .specialtyDescription {
     font-size: 10pt !important;
   }
+  .gridContainer {
+    padding: 0px !important;
+  }
+}
+@media (max-width: 325px) {
+  .specialtyMainDiv {
+    padding: 10px !important;
+  }
+  .gridContainer {
+    padding: 0px !important;
+  }
 }/*# sourceMappingURL=skills.css.map */

@@ -136,6 +136,18 @@ div.AboutTitle span.AboutTitleDescription {
     padding: 0px 10px !important;
     font-size: 13pt !important;
   }
+  .AboutTitleDescription {
+    font-size: 16pt !important;
+  }
+  .contact-icon {
+    font-size: 20pt !important;
+  }
+  .contact-icon-email {
+    font-size: 12pt !important;
+  }
+  #AboutName h1 {
+    font-size: 30pt !important;
+  }
 }
 @media (max-width: 325px) {
   .AboutTitleDescription {
@@ -151,5 +163,14 @@ div.AboutTitle span.AboutTitleDescription {
   #mediocoreTag {
     padding: 0px 10px !important;
     font-size: 13pt !important;
+  }
+  .contact-icon {
+    font-size: 20pt !important;
+  }
+  .contact-icon-email {
+    font-size: 12pt !important;
+  }
+  #AboutName h1 {
+    font-size: 30pt !important;
   }
 }/*# sourceMappingURL=about.css.map */
